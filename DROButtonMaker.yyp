@@ -1,9 +1,15 @@
 {
   "resources": [
+    {"id":{"name":"objButton_ChooseCharacter","path":"objects/objButton_ChooseCharacter/objButton_ChooseCharacter.yy",},"order":1,},
     {"id":{"name":"objController","path":"objects/objController/objController.yy",},"order":2,},
     {"id":{"name":"objImageDisplay","path":"objects/objImageDisplay/objImageDisplay.yy",},"order":0,},
+    {"id":{"name":"objButton","path":"objects/objButton/objButton.yy",},"order":0,},
+    {"id":{"name":"sprButton_NextImage","path":"sprites/sprButton_NextImage/sprButton_NextImage.yy",},"order":2,},
     {"id":{"name":"objFrame","path":"objects/objFrame/objFrame.yy",},"order":1,},
+    {"id":{"name":"sprButton_ChooseCharacter","path":"sprites/sprButton_ChooseCharacter/sprButton_ChooseCharacter.yy",},"order":0,},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},"order":0,},
+    {"id":{"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},"order":3,},
+    {"id":{"name":"sprButton_GenerateButton","path":"sprites/sprButton_GenerateButton/sprButton_GenerateButton.yy",},"order":1,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -38,6 +44,7 @@
     {"folderPath":"folders/Animation Curves.yy","order":12,"resourceVersion":"1.0","name":"Animation Curves","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Notes.yy","order":13,"resourceVersion":"1.0","name":"Notes","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":14,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Objects/Buttons.yy","order":3,"resourceVersion":"1.0","name":"Buttons","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
