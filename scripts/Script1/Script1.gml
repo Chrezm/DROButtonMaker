@@ -31,7 +31,15 @@ function find_char_ini(mapEmotions) {
 	    return "";
 	}
 
-	ini_open(ini_file);
+	var file = file_text_open_read(ini_file);
+	var raw_text = "";
+	while (!file_text_eof(file)) {
+		raw_text = raw_text + file_text_readln(file);
+	}
+	file_text_close(file);
+	var ini_text = string_replace_all(raw_text, "#", "|");
+	
+	ini_open_from_string(ini_text);
 
 	var i;
 	var emotion, full_emotion;
@@ -43,8 +51,8 @@ function find_char_ini(mapEmotions) {
 	    if (full_emotion == "<NONE>") {
 	        return ini_file;
 	    }
-	    //emotion = string_split(full_emotion, "#");
-	    ds_map_add(mapEmotions, i, full_emotion);
+	    emotion = string_split(full_emotion, "|")[2];
+	    ds_map_add(mapEmotions, i, emotion);
 	    i += 1;
 	}
 	
@@ -52,15 +60,15 @@ function find_char_ini(mapEmotions) {
 }
 
 function string_split(s, d) {
-	var r = ds_list_create();
+	var r = array_create(0);
 	var p = string_pos(d, s);
 	var dl = string_length(d);
 	if (dl) while (p) {
 	    p -= 1;
-	    ds_list_add(r, string_copy(s, 1, p));
+	    array_push(r, string_copy(s, 1, p));
 	    s = string_delete(s, 1, p + dl);
 	    p = string_pos(d, s);
 	}
-	ds_list_add(r, s);
+	array_push(r, s);
 	return r;
 }
