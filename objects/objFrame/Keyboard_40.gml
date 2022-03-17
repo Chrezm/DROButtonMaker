@@ -1,3 +1,3 @@
-if (y < room_height) {
+if (y + height + scroll_speed < room_height) {
     y += scroll_speed;
 }

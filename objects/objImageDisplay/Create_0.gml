@@ -12,6 +12,11 @@ current_size = ds_map_size(mapEmotions);
 
 event_user(0);
 
+frame = instance_create_depth(0, 0, depth-1, objFrame);
+frame.x = (sprite_width - frame.width)/2;
+
+camera_set_view_pos(view_camera[0], (sprite_width - camera_get_view_width(view_camera[0])/2), 0);
+
 if !directory_exists(current_directory + "\\emotions") {
 	target_directory = current_directory + "\\emotions";
 	directory_create(target_directory);
