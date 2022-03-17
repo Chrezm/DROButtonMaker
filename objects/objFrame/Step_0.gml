@@ -15,11 +15,14 @@ if not (kl or kr or ku or kd) {
 if (held_direction == held_direction_max || held_direction == 0) {
 	if (kl and x > 0) {
 		x -= scroll_speed;
-	} else if (kr and x + width + scroll_speed < room_width) {
+	} 
+	if (kr and x + width + scroll_speed < room_width) {
 		x += scroll_speed;
-	} else if (ku and y > 0) {
+	} 
+	if (ku and y > 0) {
 		y -= scroll_speed;
-	} else if (kd and y + height + scroll_speed < room_height) {
+	} 
+	if (kd and y + height + scroll_speed < room_height) {
 		y += scroll_speed;
 	}
 	if (held_direction == 0) {

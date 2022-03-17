@@ -1,3 +1,7 @@
+if (current_directory == "") {
+	exit;
+}
+
 with objFrame {
     event_user(0);
 }
@@ -8,4 +12,4 @@ if (current_index > ds_map_size(mapEmotions)) {
 	show_message("All done, starting from the beginning.")
 }
 current_filename = ds_map_find_value(mapEmotions, current_index);
-event_user(0);
+event_user(1);
