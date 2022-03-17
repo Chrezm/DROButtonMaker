@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"objButton_ChooseCharacter","path":"objects/objButton_ChooseCharacter/objButton_ChooseCharacter.yy",},"order":1,},
+    {"id":{"name":"objButton_GenerateButton","path":"objects/objButton_GenerateButton/objButton_GenerateButton.yy",},"order":2,},
     {"id":{"name":"objController","path":"objects/objController/objController.yy",},"order":2,},
     {"id":{"name":"objImageDisplay","path":"objects/objImageDisplay/objImageDisplay.yy",},"order":0,},
     {"id":{"name":"objButton","path":"objects/objButton/objButton.yy",},"order":0,},
