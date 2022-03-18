@@ -24,7 +24,6 @@
     {"id":{"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},"order":3,},
     {"id":{"name":"objMiniImage","path":"objects/objMiniImage/objMiniImage.yy",},"order":4,},
     {"id":{"name":"sh_better_scaling_5xbrc","path":"shaders/sh_better_scaling_5xbrc/sh_better_scaling_5xbrc.yy",},"order":2,},
-    {"id":{"name":"compatibility_report_170322_210517517","path":"notes/compatibility_report_170322_210517517/compatibility_report_170322_210517517.yy",},"order":0,},
     {"id":{"name":"sh_better_scaling_supersampling_2x2","path":"shaders/sh_better_scaling_supersampling_2x2/sh_better_scaling_supersampling_2x2.yy",},"order":5,},
     {"id":{"name":"sprButton_GenerateButton","path":"sprites/sprButton_GenerateButton/sprButton_GenerateButton.yy",},"order":1,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
