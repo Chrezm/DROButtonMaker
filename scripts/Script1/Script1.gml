@@ -76,3 +76,13 @@ function string_split(s, d) {
 function target_button(imageDisplay, suffix) {
 	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + "_off.png";
 }
+
+function draw_scaled(surface, filename) {
+	surface_set_target(surface);	
+	var character_sprite = sprite_add(filename, 1, 0, 0, 0, 0);
+	sprite_index = character_sprite;
+	var scale_for_40 = 40 / sprite_width;
+	better_scaling_draw_sprite(sprite_index, image_index, 0, 0, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
+	sprite_delete(character_sprite);
+	surface_reset_target();
+}

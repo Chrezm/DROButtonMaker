@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprButton_PreviousImage",
     "tags": [],
     "resourceType": "GMSequence",

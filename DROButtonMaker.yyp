@@ -22,6 +22,7 @@
     {"id":{"name":"sh_better_scaling_5xbra","path":"shaders/sh_better_scaling_5xbra/sh_better_scaling_5xbra.yy",},"order":0,},
     {"id":{"name":"sh_better_scaling_supersampling_4x4","path":"shaders/sh_better_scaling_supersampling_4x4/sh_better_scaling_supersampling_4x4.yy",},"order":7,},
     {"id":{"name":"sprButton_Preview","path":"sprites/sprButton_Preview/sprButton_Preview.yy",},"order":4,},
+    {"id":{"name":"objButton_ChooseBackground","path":"objects/objButton_ChooseBackground/objButton_ChooseBackground.yy",},"order":6,},
     {"id":{"name":"sh_better_scaling_supersampling_3x3","path":"shaders/sh_better_scaling_supersampling_3x3/sh_better_scaling_supersampling_3x3.yy",},"order":6,},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},"order":0,},
     {"id":{"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},"order":3,},
@@ -41,7 +42,6 @@
   ],
   "isDnDProject": false,
   "isEcma": false,
-  "tutorialPath": "",
   "configs": {
     "name": "Default",
     "children": [],
@@ -77,9 +77,9 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2.3.7.606",
+    "IDEVersion": "2022.2.1.618",
   },
-  "resourceVersion": "1.4",
+  "resourceVersion": "1.5",
   "name": "DROButtonMaker",
   "tags": [],
   "resourceType": "GMProject",

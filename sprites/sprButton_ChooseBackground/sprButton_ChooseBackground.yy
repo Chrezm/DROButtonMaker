@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprButton_ChooseBackground","path":"sprites/sprButton_ChooseBackground/sprButton_ChooseBackground.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprButton_ChooseBackground",
     "tags": [],
     "resourceType": "GMSequence",
