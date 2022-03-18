@@ -1,15 +1,8 @@
 /// @description Read directory
 // You can write your code in this editor
-fArray = ds_list_create();
-current_directory = find_files(fArray);
-if (current_directory == "") {
-	event_user(15);
-	exit;
-}
-
 mapEmotions = ds_map_create();
-ini_file_path = find_char_ini(mapEmotions);
-if (ini_file_path == "") {
+current_directory = find_char_ini_2(mapEmotions);
+if (current_directory == "") {
 	event_user(15);
 	exit;
 }

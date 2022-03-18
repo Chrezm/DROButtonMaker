@@ -1,36 +1,15 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function find_files(fArray){
-	var sample_file;
-	sample_file = get_open_filename("image file|*.png", "");
-	if sample_file == "" {
-	    return "";
-	}
 
-	var directory;
-	directory = filename_dir(sample_file);
-
-	var fileName;
-	fileName = file_find_first(directory + "\*.png", fa_directory);
-
-	while (fileName != "") {
-	    if (fileName != "char_icon.png") {
-	        ds_list_add(fArray, fileName);
-	    }
-	    fileName = file_find_next();
-	}
-
-	file_find_close();
-	return directory;
-}
-
-function find_char_ini(mapEmotions) {
+function find_char_ini_2(mapEmotions) {
 	var ini_file;
 	ini_file = get_open_filename("ini file|*.ini", "");
 	if ini_file == "" {
 	    return "";
 	}
 
+	var directory = filename_dir(ini_file);
+	
 	var file = file_text_open_read(ini_file);
 	var raw_text = "";
 	while (!file_text_eof(file)) {
@@ -49,14 +28,14 @@ function find_char_ini(mapEmotions) {
 	while (true) {
 	    full_emotion = ini_read_string("Emotions", string(i), "<NONE>")
 	    if (full_emotion == "<NONE>") {
-	        return ini_file;
+	        return directory;
 	    }
 	    emotion = string_split(full_emotion, "|")[2];
 	    ds_map_add(mapEmotions, i, emotion);
 	    i += 1;
 	}
 	
-	return ini_file;
+	return directory;
 }
 
 function string_split(s, d) {
