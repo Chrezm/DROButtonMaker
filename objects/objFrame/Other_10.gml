@@ -3,6 +3,3 @@ screen_save_part(filename, x-camera_get_view_x(view_camera[0]), y-camera_get_vie
 
 objPreviewGenerator.filename = filename;
 objPreviewGenerator.mode = 1;
-with (objPreviewGenerator) {
-	event_user(0);
-}

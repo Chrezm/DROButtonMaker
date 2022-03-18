@@ -26,6 +26,7 @@
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},"order":0,},
     {"id":{"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},"order":3,},
     {"id":{"name":"objPreviewGenerator","path":"objects/objPreviewGenerator/objPreviewGenerator.yy",},"order":3,},
+    {"id":{"name":"sprButton_ChooseBackground","path":"sprites/sprButton_ChooseBackground/sprButton_ChooseBackground.yy",},"order":5,},
     {"id":{"name":"sh_better_scaling_5xbrc","path":"shaders/sh_better_scaling_5xbrc/sh_better_scaling_5xbrc.yy",},"order":2,},
     {"id":{"name":"sh_better_scaling_supersampling_2x2","path":"shaders/sh_better_scaling_supersampling_2x2/sh_better_scaling_supersampling_2x2.yy",},"order":5,},
     {"id":{"name":"sprButton_GenerateButton","path":"sprites/sprButton_GenerateButton/sprButton_GenerateButton.yy",},"order":1,},
