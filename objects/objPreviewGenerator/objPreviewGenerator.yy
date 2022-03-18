@@ -33,7 +33,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objMiniImage",
+  "name": "objPreviewGenerator",
   "tags": [],
   "resourceType": "GMObject",
 }

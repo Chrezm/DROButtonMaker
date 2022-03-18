@@ -72,3 +72,7 @@ function string_split(s, d) {
 	array_push(r, s);
 	return r;
 }
+
+function target_button(imageDisplay, suffix) {
+	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + "_off.png";
+}

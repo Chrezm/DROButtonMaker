@@ -16,7 +16,6 @@ if (ini_file_path == "") {
 
 current_index = 1;
 current_filename = ds_map_find_value(mapEmotions, current_index);
-current_size = ds_map_size(mapEmotions);
 
 event_user(1);
 

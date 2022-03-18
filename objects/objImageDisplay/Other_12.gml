@@ -4,6 +4,9 @@ if (current_directory == "") {
 	exit;
 }
 
+with objPreview {
+	event_user(1);
+}
 with objFrame {
     event_user(0);
 }
