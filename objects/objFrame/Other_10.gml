@@ -1,2 +1,8 @@
 var filename = objImageDisplay.target_directory + "\\button" + string(objImageDisplay.current_index) + "_off.png";
 screen_save_part(filename, x-camera_get_view_x(view_camera[0]), y-camera_get_view_y(view_camera[0]), width, height);
+
+objMiniImage.filename = filename;
+objMiniImage.mode = 1;
+with (objMiniImage) {
+	event_user(0);
+}
