@@ -12,6 +12,7 @@
     {"id":{"name":"sprButton_ChooseCharacter","path":"sprites/sprButton_ChooseCharacter/sprButton_ChooseCharacter.yy",},"order":0,},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},"order":0,},
     {"id":{"name":"sprButton_PreviousImage","path":"sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",},"order":3,},
+    {"id":{"name":"objMiniImage","path":"objects/objMiniImage/objMiniImage.yy",},"order":4,},
     {"id":{"name":"sprButton_GenerateButton","path":"sprites/sprButton_GenerateButton/sprButton_GenerateButton.yy",},"order":1,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
