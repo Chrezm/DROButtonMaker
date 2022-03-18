@@ -1,6 +1,18 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if (selected) {
+	x = max(0, mouse_x - selected_x);
+	if (x + width >= room_width) {
+		x = room_width - width;
+	}
+	y = max(0, mouse_y - selected_y);
+	if (y + height >= room_height) {
+		y = room_height - height;
+	}
+	exit;
+}
+
 var kl, kr, ku, kd;
 kl = keyboard_check(vk_left);
 kr = keyboard_check(vk_right);
