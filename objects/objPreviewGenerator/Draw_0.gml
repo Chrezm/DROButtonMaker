@@ -7,7 +7,17 @@ if (mode == 1) {
 	surface_set_target(surface);
 	draw_clear_alpha(c_white, 0);
 	surface_reset_target();
-	draw_scaled(surface, filename);
+	
+	var background_sprite, character_sprite;
+	if (background_name != "") {
+		background_sprite = draw_scaled(surface, background_name);
+	} else {
+		background_sprite = -1;
+	}
+	character_sprite = draw_scaled(surface, filename);
+	sprite_delete(background_sprite);
+	sprite_delete(character_sprite);
+	
 	mode = 2;
 	alarm[0] = 1;
 	var _vx = camera_get_view_x(view_camera[0]);

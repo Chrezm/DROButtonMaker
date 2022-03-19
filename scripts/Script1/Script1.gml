@@ -1,7 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
-function find_char_ini_2(mapEmotions) {
+function find_char_ini(mapEmotions) {
 	var ini_file;
 	ini_file = get_open_filename("ini file|*.ini", "");
 	if ini_file == "" {
@@ -56,12 +56,15 @@ function target_button(imageDisplay, suffix) {
 	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + "_off.png";
 }
 
-function draw_scaled(surface, filename) {
+function draw_scaled(surface, source_file) {
 	surface_set_target(surface);	
-	var character_sprite = sprite_add(filename, 1, 0, 0, 0, 0);
-	sprite_index = character_sprite;
+	var file_sprite = sprite_add(source_file, 1, 0, 0, 0, 0);
+	sprite_index = file_sprite;
 	var scale_for_40 = 40 / sprite_width;
-	better_scaling_draw_sprite(sprite_index, image_index, 0, 0, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
-	sprite_delete(character_sprite);
+	if (scale_for_40 == 1)
+		draw_sprite(sprite_index, image_index, 0, 0);
+	else
+		better_scaling_draw_sprite(sprite_index, image_index, 0, 0, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
 	surface_reset_target();
+	return file_sprite;
 }
