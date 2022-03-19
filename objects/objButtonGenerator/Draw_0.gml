@@ -10,16 +10,16 @@ if (mode == 1 or mode == 3) {
 	
 	var background_sprite, character_sprite, foreground_sprite, selected_sprite;
 	if (background_name != "") {
-		background_sprite = draw_scaled_from_file(surface, background_name, 0, 0);
+		background_sprite = draw_scaled_from_file(surface, background_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	} else {
 		background_sprite = -1;
 	}
-	character_sprite = draw_scaled_from_file(surface, character_name, 0, 0);
+	character_sprite = draw_scaled_from_file(surface, character_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	if (mode == 3) {
-		selected_sprite = draw_scaled_from_file(surface, selected_name, 0, 0);
+		selected_sprite = draw_scaled_from_file(surface, selected_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	}
 	if (foreground_name != "") {
-		foreground_sprite = draw_scaled_from_file(surface, foreground_name, 0, 0);
+		foreground_sprite = draw_scaled_from_file(surface, foreground_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	} else {
 		foreground_sprite = -1;
 	}

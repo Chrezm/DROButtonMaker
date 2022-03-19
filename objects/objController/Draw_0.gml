@@ -21,8 +21,9 @@ if (objButtonGenerator.selected_name == "") {
 } else {
 	draw_text(_x, _y + _gap*3, "Current selected: " + filename_name(objButtonGenerator.selected_name));
 }
+draw_text(_x, _y + _gap*4, "Current target size: " + string(objButtonGenerator.target_size));
 
-draw_text(_x, _y +_gap*5, "Size of frame: " + string(objFrame.width));
-draw_text(_x, _y +_gap*6, "x coordinate of frame: " + string(objFrame.x));
-draw_text(_x, _y +_gap*7, "y coordinate of frame: " + string(objFrame.y));
+draw_text(_x, _y + _gap*5, "Size of frame: " + string(objFrame.width));
+draw_text(_x, _y + _gap*6, "Left coordinate of frame: " + string(objFrame.x));
+draw_text(_x, _y + _gap*7, "Right coordinate of frame: " + string(objFrame.y));
 

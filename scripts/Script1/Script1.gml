@@ -56,20 +56,21 @@ function target_button(imageDisplay, suffix) {
 	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + ".png";
 }
 
-function draw_scaled(surface, sprite, _x, _y) {
+function draw_scaled(surface, sprite, _x, _y, width, height) {
 	surface_set_target(surface);	
 	sprite_index = sprite;
-	var scale_for_40 = 40 / sprite_width;
-	if (scale_for_40 == 1)
+	var scale_for_width = width / sprite_width;
+	var scale_for_height = height / sprite_height;
+	if (scale_for_width == 1 && scale_for_height == 1)
 		draw_sprite(sprite_index, image_index, _x, _y);
 	else
-		better_scaling_draw_sprite(sprite_index, image_index, _x, _y, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
+		better_scaling_draw_sprite(sprite_index, image_index, _x, _y, scale_for_width, scale_for_height, image_angle, image_blend, image_alpha, 1);
 	surface_reset_target();
 	return;
 }
 
-function draw_scaled_from_file(surface, source_file, _x, _y) {
+function draw_scaled_from_file(surface, source_file, _x, _y, width, height) {
 	var file_sprite = sprite_add(source_file, 1, 0, 0, 0, 0);
-	draw_scaled(surface, file_sprite, _x, _y);
+	draw_scaled(surface, file_sprite, _x, _y, width, height);
 	return file_sprite;
 }

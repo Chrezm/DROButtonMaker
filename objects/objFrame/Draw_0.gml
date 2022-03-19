@@ -1,4 +1,4 @@
-draw_rectangle_color(x, y, x+width, y+height, color, color, color, color, 1);
+draw_rectangle_color(x-1, y-1, x+width, y+height, color, color, color, color, 1);
 if keyboard_check(vk_control) {
 	var guide_color = (current_second % 2 == 0) ? c_black : c_white;
 	draw_line_color(x+width/2, y, x+width/2, y+height, guide_color, guide_color);
