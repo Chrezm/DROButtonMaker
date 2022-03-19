@@ -1,18 +1,16 @@
 var _max_width = camera_get_view_width(view_camera[0]);
 var _max_height = camera_get_view_height(view_camera[0]);
-var _x = camera_get_view_x(view_camera[0]);
-var _y = camera_get_view_y(view_camera[0]);
 
 if (width < _max_width && height < _max_height) {
-	width += 1;
-	height += 1;
+	width = min(_max_width, width + scroll_speed);
+	height = min(_max_height, height + scroll_speed);
 
-	if (x + _x + width >= _max_width) {
+	if (x + width > room_width) {
 		// Set to a fixed number given that mouse wheel up may be called several times per step
-		x = max(0, x-1);
+		x = max(0, room_width - width);
 	}
 
-	if (y + _y + height >= _max_height) {
-		y = max(0, y-1);
+	if (y + height > room_height) {
+		y = max(0, room_height - height);
 	}
 }
