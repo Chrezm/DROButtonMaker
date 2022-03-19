@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-surface = -1;
-zoom_surface = -1;
+if (sprite_exists(sprite_index)) {
+	draw_zoom = true;
+	exit;
+}
 draw_zoom = false;

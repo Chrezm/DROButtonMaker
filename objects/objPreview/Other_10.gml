@@ -15,3 +15,5 @@ if (objButtonGenerator.foreground_name != "") {
 } else {
 	foreground_sprite = -1;
 }
+
+preview_size = objButtonGenerator.target_size;
