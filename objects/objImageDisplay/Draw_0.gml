@@ -12,6 +12,7 @@ surface_set_target(surface);
 draw_clear_alpha(c_white, 0);
 var _vx = camera_get_view_x(view_camera[0]);
 var _vy = camera_get_view_y(view_camera[0]);
+var _vw = camera_get_view_width(view_camera[0]);
 draw_sprite(sprite_index, image_index, x - _vx, y - _vy);
 surface_reset_target();
 draw_surface(surface, _vx, _vy);
@@ -26,7 +27,7 @@ if !surface_exists(zoom_surface) {
 surface_set_target(zoom_surface);
 draw_clear_alpha(c_white, 0);
 surface_reset_target();
-surface_copy_part(zoom_surface, 0, 0, surface, mouse_x-40, mouse_y-40, 80, 80);
+surface_copy_part(zoom_surface, 0, 0, surface, mouse_x-_vx-40, mouse_y-_vy-40, 80, 80);
 surface_copy_part(zoom_surface, 0, 0, objFrame.frame_surface, mouse_x-40, mouse_y-40, 80, 80);
-draw_surface_stretched(zoom_surface, room_width-200, 0, 200, 200);
+draw_surface_stretched(zoom_surface, _vx+_vw-200, _vy, 200, 200);
 //draw_surface(zoom_surface, room_width-80, 0);
