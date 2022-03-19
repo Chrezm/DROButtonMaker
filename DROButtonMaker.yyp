@@ -6,7 +6,6 @@
     {"id":{"name":"objButton_GenerateButton","path":"objects/objButton_GenerateButton/objButton_GenerateButton.yy",},"order":2,},
     {"id":{"name":"objController","path":"objects/objController/objController.yy",},"order":0,},
     {"id":{"name":"objButton_ChooseForeground","path":"objects/objButton_ChooseForeground/objButton_ChooseForeground.yy",},"order":7,},
-    {"id":{"name":"Sprite8","path":"sprites/Sprite8/Sprite8.yy",},"order":7,},
     {"id":{"name":"objImageDisplay","path":"objects/objImageDisplay/objImageDisplay.yy",},"order":1,},
     {"id":{"name":"objButton","path":"objects/objButton/objButton.yy",},"order":0,},
     {"id":{"name":"sh_better_scaling_hq4x","path":"shaders/sh_better_scaling_hq4x/sh_better_scaling_hq4x.yy",},"order":4,},

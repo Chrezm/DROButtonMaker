@@ -1,5 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-objFrame.to_draw = target_button(objImageDisplay, "_temp");
-alarm[0] = 3;
+character_sprite = -1;
+background_sprite = -1;
+foreground_sprite = -1;

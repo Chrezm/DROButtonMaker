@@ -7,3 +7,4 @@ objPreview.filename = target_button(objImageDisplay, "_temp");
 with objPreview {
 	event_user(0);
 }
+file_delete(objPreview.filename);
