@@ -11,6 +11,11 @@ if (objPreviewGenerator.background_name == "") {
 } else {
 	draw_text(_x, _y + _gap*1, "Current bg: " + filename_name(objPreviewGenerator.background_name));
 }
+if (objPreviewGenerator.foreground_name == "") {
+	draw_text(_x, _y + _gap*2, "Current fg: None");
+} else {
+	draw_text(_x, _y + _gap*2, "Current fg: " + filename_name(objPreviewGenerator.foreground_name));
+}
 
 draw_text(_x, _y +_gap*4, "Size of frame: " + string(objFrame.width));
 draw_text(_x, _y +_gap*5, "x coordinate of frame: " + string(objFrame.x));

@@ -8,15 +8,21 @@ if (mode == 1) {
 	draw_clear_alpha(c_white, 0);
 	surface_reset_target();
 	
-	var background_sprite, character_sprite;
+	var background_sprite, character_sprite, foreground_sprite;
 	if (background_name != "") {
 		background_sprite = draw_scaled(surface, background_name);
 	} else {
 		background_sprite = -1;
 	}
 	character_sprite = draw_scaled(surface, filename);
+	if (foreground_name != "") {
+		foreground_sprite = draw_scaled(surface, foreground_name);
+	} else {
+		foreground_sprite = -1;
+	}
 	sprite_delete(background_sprite);
 	sprite_delete(character_sprite);
+	sprite_delete(foreground_sprite);
 	
 	mode = 2;
 	alarm[0] = 1;
