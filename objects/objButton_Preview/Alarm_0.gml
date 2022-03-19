@@ -3,8 +3,8 @@
 with objPreview {
 	event_user(1);
 }
-objPreview.filename = target_button(objImageDisplay, "_temp");
+objPreview.character_name = target_button(objImageDisplay, "_off_temp");
 with objPreview {
 	event_user(0);
 }
-file_delete(objPreview.filename);
+file_delete(objPreview.character_name);

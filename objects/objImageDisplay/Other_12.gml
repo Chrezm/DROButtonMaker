@@ -8,5 +8,5 @@ with objPreview {
 	event_user(1);
 }
 
-objFrame.to_draw = target_button(self, "");
-alarm[0] = 2;
+objFrame.to_draw = target_button(self, "_off");
+alarm[0] = 10;

@@ -53,18 +53,23 @@ function string_split(s, d) {
 }
 
 function target_button(imageDisplay, suffix) {
-	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + "_off.png";
+	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + ".png";
 }
 
-function draw_scaled(surface, source_file) {
+function draw_scaled(surface, sprite, _x, _y) {
 	surface_set_target(surface);	
-	var file_sprite = sprite_add(source_file, 1, 0, 0, 0, 0);
-	sprite_index = file_sprite;
+	sprite_index = sprite;
 	var scale_for_40 = 40 / sprite_width;
 	if (scale_for_40 == 1)
-		draw_sprite(sprite_index, image_index, 0, 0);
+		draw_sprite(sprite_index, image_index, _x, _y);
 	else
-		better_scaling_draw_sprite(sprite_index, image_index, 0, 0, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
+		better_scaling_draw_sprite(sprite_index, image_index, _x, _y, scale_for_40, scale_for_40, image_angle, image_blend, image_alpha, 1);
 	surface_reset_target();
+	return;
+}
+
+function draw_scaled_from_file(surface, source_file, _x, _y) {
+	var file_sprite = sprite_add(source_file, 1, 0, 0, 0, 0);
+	draw_scaled(surface, file_sprite, _x, _y);
 	return file_sprite;
 }
