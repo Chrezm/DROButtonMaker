@@ -3,7 +3,7 @@
 with objPreview {
 	event_user(1);
 }
-objPreview.character_name = target_button(objImageDisplay, "_off_temp");
+objPreview.character_name = target_button(objImageDisplay, objButtonGenerator.target_name, "_temp");
 with objPreview {
 	event_user(0);
 }

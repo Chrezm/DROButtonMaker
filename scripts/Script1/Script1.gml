@@ -52,8 +52,9 @@ function string_split(s, d) {
 	return r;
 }
 
-function target_button(imageDisplay, suffix) {
-	return imageDisplay.target_directory + "\\button" + string(imageDisplay.current_index) + suffix + ".png";
+function target_button(imageDisplay, name, suffix) {
+	name = string_replace_all(name, "<num>", string(imageDisplay.current_index));
+	return imageDisplay.target_directory + "\\" + name + suffix + ".png";
 }
 
 function draw_scaled(surface, sprite, _x, _y, width, height) {

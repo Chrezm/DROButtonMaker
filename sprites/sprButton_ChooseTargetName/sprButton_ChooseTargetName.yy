@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"eadfb6fb-0563-485b-a049-72b55fcc5fc7","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"eadfb6fb-0563-485b-a049-72b55fcc5fc7","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"LayerId":{"name":"9e82ff6c-211d-4d74-b30a-e9617f50a3d0","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sprButton_ChooseForeground","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"resourceVersion":"1.0","name":"eadfb6fb-0563-485b-a049-72b55fcc5fc7","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"346c194d-ea46-4e40-baca-d4ee4f640cde","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"346c194d-ea46-4e40-baca-d4ee4f640cde","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},"LayerId":{"name":"990fc2c9-e414-4800-8f61-53b1c91e804c","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sprButton_ChooseTargetName","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},"resourceVersion":"1.0","name":"346c194d-ea46-4e40-baca-d4ee4f640cde","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sprButton_ChooseForeground","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},
+    "spriteId": {"name":"sprButton_ChooseTargetName","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"768f677e-a7a2-4ba7-886c-af6be3289e95","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"eadfb6fb-0563-485b-a049-72b55fcc5fc7","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"8bd9d599-505a-48b4-a7d4-de9d43ccb2a5","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"346c194d-ea46-4e40-baca-d4ee4f640cde","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sprButton_ChooseForeground","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},
+    "parent": {"name":"sprButton_ChooseTargetName","path":"sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",},
     "resourceVersion": "1.4",
-    "name": "sprButton_ChooseForeground",
+    "name": "sprButton_ChooseTargetName",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"9e82ff6c-211d-4d74-b30a-e9617f50a3d0","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"990fc2c9-e414-4800-8f61-53b1c91e804c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sprButton_ChooseForeground",
+  "name": "sprButton_ChooseTargetName",
   "tags": [],
   "resourceType": "GMSprite",
 }
