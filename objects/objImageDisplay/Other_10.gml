@@ -15,7 +15,7 @@ event_user(1);
 if !instance_exists(objFrame) {
 	frame = instance_create_depth(0, 0, depth-1, objFrame);
 }
-objFrame.x = (sprite_width - objFrame.width)/2;
+objFrame.x = round((sprite_width - objFrame.width)/2);
 
 camera_set_view_pos(view_camera[0], (sprite_width - camera_get_view_width(view_camera[0]))/2, 0);
 

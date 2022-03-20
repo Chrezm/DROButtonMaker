@@ -26,5 +26,5 @@ if (objButtonGenerator.selected_name == "") {
 
 draw_text(_x, _y + _gap*7, "Size of frame: " + string(objFrame.width));
 draw_text(_x, _y + _gap*8, "Left coordinate of frame: " + string(objFrame.x));
-draw_text(_x, _y + _gap*9, "Right coordinate of frame: " + string(objFrame.y));
+draw_text(_x, _y + _gap*9, "Top coordinate of frame: " + string(objFrame.y));
 

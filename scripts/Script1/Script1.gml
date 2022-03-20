@@ -17,6 +17,7 @@ function find_char_ini(mapEmotions) {
 	}
 	file_text_close(file);
 	var ini_text = string_replace_all(raw_text, "#", "|");
+	ini_text = string_replace_all(ini_text, "\r\n|", "\r\n#");
 	
 	ini_open_from_string(ini_text);
 
