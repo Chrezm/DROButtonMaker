@@ -4,5 +4,8 @@
 var target_size = 0;
 while (target_size < 1) {
 	target_size = get_integer("Choose target size of generated buttons.\nDefault is 40.", objButtonGenerator.target_size);
+	if (is_undefined(target_size)) {
+		exit;
+	}
 }
 objButtonGenerator.target_size = round(target_size);
