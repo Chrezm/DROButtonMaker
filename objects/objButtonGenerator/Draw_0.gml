@@ -15,20 +15,20 @@ if (mode == 1 or mode == 3) {
 		background_sprite = -1;
 	}
 	character_sprite = draw_scaled_from_file(surface, character_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
-	if (mode == 3) {
-		selected_sprite = draw_scaled_from_file(surface, selected_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
-	}
 	if (foreground_name != "") {
 		foreground_sprite = draw_scaled_from_file(surface, foreground_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	} else {
 		foreground_sprite = -1;
+	}	
+	if (mode == 3) {
+		selected_sprite = draw_scaled_from_file(surface, selected_name, 0, 0, objButtonGenerator.target_size, objButtonGenerator.target_size);
 	}
 	sprite_delete(background_sprite);
 	sprite_delete(character_sprite);
+	sprite_delete(foreground_sprite);
 	if (mode == 3) {
 		sprite_delete(selected_sprite);
 	}
-	sprite_delete(foreground_sprite);
 	
 	mode++;
 	alarm[0] = 1;

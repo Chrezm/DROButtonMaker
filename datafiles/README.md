@@ -13,7 +13,7 @@ This project is licensed under a modified MIT license. This license is identical
 1. Click "Choose character".
 2. On the first dialog screen, select the char.ini of your character.
 3. You'll see the first sprite listed in the char.ini appear, along with a white frame. 
-4. Click on the related buttons to the right of the screen to change the default background behind a generated button (by default nothing), the default foreground in front of a generated button (by default nothing), a "Selected" image to draw over the character sprite but behind the foreground to produce on buttons (by default nothing), and the intended size of the produced buttons (by default 40).
+4. Click on the related buttons to the right of the screen to change the default background behind a generated button (by default nothing), the default foreground in front of a generated button (by default nothing), a "Selected" image to draw over the character sprite *and* foreground to produce on buttons (by default nothing), and the intended size of the produced buttons (by default 40).
 4. Adjust the size position frame until it aligns with your intended button for the current image. Once ready, click "Generate Button" or push Space. It'll generate a button in the folder emotions (or emotions2 if the previous folder already existed), containing the image found *exactly within* the white box.
 5. The next image in the char.ini will appear. Proceed until done.
 6. If at any point you want to change the current image without generating a button, click "Previous Image" or "Skip Image"

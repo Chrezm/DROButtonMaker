@@ -8,12 +8,12 @@ if (character_name != "") {
 		draw_scaled(application_surface, background_sprite, _x, _y, preview_size, preview_size);
 	}
 	draw_scaled(application_surface, character_sprite, _x, _y, preview_size, preview_size);
+	if (sprite_exists(foreground_sprite)) {
+		draw_scaled(application_surface, foreground_sprite, _x, _y, preview_size, preview_size);
+	}
 	if (sprite_exists(selected_sprite)) {
 		if (current_second % 2 == 0) {
 			draw_scaled(application_surface, selected_sprite, _x, _y, preview_size, preview_size);
 		}
-	}
-	if (sprite_exists(foreground_sprite)) {
-		draw_scaled(application_surface, foreground_sprite, _x, _y, preview_size, preview_size);
 	}
 }
