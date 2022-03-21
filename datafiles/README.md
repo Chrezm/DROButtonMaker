@@ -1,6 +1,8 @@
 # DROButtonMaker
 Button Maker for Danganronpa Online, created with GameMaker Studio 2. The source code is available at https://github.com/Chrezm/DROButtonMaker
 
+** Only PNG images can currently be loaded to generate buttons. Sorry.**
+
 This project is licensed under a modified MIT license. This license is identical to the standard MIT license, with the exception that you are also required to follow all EULAs for all third-party extensions the project currently uses before you redistribute derivative work. The current third-party extensions in use are:
 * "Better Scaling" by Mytino at https://marketplace.yoyogames.com/assets/1911/better-scaling 
 
@@ -33,3 +35,4 @@ This project is licensed under a modified MIT license. This license is identical
 * "Choose Foreground: Choose the foreground to add to your buttons. If you select None, your current selection will be cleared.
 * "Choose 'Selected.png'": Choose the "Selected" image to add to your buttons to generate "on" buttons. If you select None, your current selection will be cleared.
 * "Choose Target Size": Choose the target size of your buttons. This must be a number greater than 1. Your input number will be rounded to the nearest integer if necessary.
+* "Choose Target Name: Choose the target name of your buttons. This must be a non-empty string. Any instances of "<num>" will be replaced by the current emote number. Buttons with "Selected" images will be generated when provided a Selected image only if the target name includes "_off" (which will be automatically replaced with "_on" when generated).
