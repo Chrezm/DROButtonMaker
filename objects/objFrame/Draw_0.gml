@@ -6,6 +6,13 @@ if (!surface_exists(frame_surface)) {
 }
 surface_set_target(frame_surface);
 draw_clear_alpha(c_white, 0);
+
+if (objController.color == 2 || objController.color >= 5) {
+	color = c_black;
+} else {
+	color = c_white;
+}
+
 draw_rectangle_color(x-1, y-1, x+width, y+height, color, color, color, color, 1);
 if keyboard_check(vk_control) {
 	var guide_color = (current_second % 2 == 0) ? c_black : c_white;

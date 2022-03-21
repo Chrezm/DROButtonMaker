@@ -1,9 +1,21 @@
+
+lay_id = layer_get_id("Background");
+back_id = layer_background_get_id(lay_id);
+layer_background_blend(back_id, colors[color]);
+
 if (objImageDisplay.current_directory == "") {
 	exit;
 }
 
 var _x = cam_x(0);
 var _y = cam_y(0);
+
+if (color == 2 || color >= 5) {
+	draw_set_color(c_black);
+} else {
+	draw_set_color(c_white);
+}
+
 var _gap = 32;
 draw_text(_x, _y +_gap*0, "Current file: " + string(objImageDisplay.current_index) + " " + objImageDisplay.current_filename);
 draw_text(_x, _y + _gap*1, "Current target name: " + objButtonGenerator.target_name);
