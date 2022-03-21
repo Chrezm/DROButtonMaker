@@ -76,3 +76,20 @@ function draw_scaled_from_file(surface, source_file, _x, _y, width, height) {
 	draw_scaled(surface, file_sprite, _x, _y, width, height);
 	return file_sprite;
 }
+
+function cam_x(num) {
+	return camera_get_view_x(view_camera[num]);
+}
+
+function cam_y(num) {
+	return camera_get_view_y(view_camera[num]);
+}
+
+function cam_h(num) {
+	return camera_get_view_height(view_camera[num]);
+}
+
+function cam_w(num) {
+	return camera_get_view_width(view_camera[num]);
+}
+

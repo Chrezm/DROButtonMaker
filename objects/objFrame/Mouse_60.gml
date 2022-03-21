@@ -1,5 +1,5 @@
-var _max_width = camera_get_view_width(view_camera[0]);
-var _max_height = camera_get_view_height(view_camera[0]);
+var _max_width = cam_w(0);
+var _max_height = cam_h(0);
 
 if (width < _max_width && height < _max_height) {
 	width = min(_max_width, width + scroll_speed);

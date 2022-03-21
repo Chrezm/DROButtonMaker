@@ -18,10 +18,10 @@ surface_reset_target();
 draw_surface(frame_surface, 0, 0);
 
 if (to_draw != "") {
-	surface_save_part(objImageDisplay.surface, to_draw, x-camera_get_view_x(view_camera[0]), y-camera_get_view_y(view_camera[0]), width, height);
+	surface_save_part(objImageDisplay.surface, to_draw, x-cam_x(0), y-cam_y(0), width, height);
 	if (objButtonGenerator.selected_name != "" and string_pos("_off", objButtonGenerator.target_name) > 0) {
 		var to_draw_on = target_button(objImageDisplay, string_replace(objButtonGenerator.target_name, "_off", "_on"), "");
-		surface_save_part(objImageDisplay.surface, to_draw_on, x-camera_get_view_x(view_camera[0]), y-camera_get_view_y(view_camera[0]), width, height);
+		surface_save_part(objImageDisplay.surface, to_draw_on, x-cam_x(0), y-cam_y(0), width, height);
 	}
 	objButtonGenerator.character_name = to_draw;
 	objButtonGenerator.mode = 1;

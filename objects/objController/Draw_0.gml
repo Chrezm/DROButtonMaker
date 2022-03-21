@@ -2,8 +2,8 @@ if (objImageDisplay.current_directory == "") {
 	exit;
 }
 
-var _x = camera_get_view_x(view_camera[0]);
-var _y = camera_get_view_y(view_camera[0]);
+var _x = cam_x(0);
+var _y = cam_y(0);
 var _gap = 32;
 draw_text(_x, _y +_gap*0, "Current file: " + string(objImageDisplay.current_index) + " " + objImageDisplay.current_filename);
 draw_text(_x, _y + _gap*1, "Current target name: " + objButtonGenerator.target_name);
