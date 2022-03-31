@@ -35,8 +35,13 @@ if (objButtonGenerator.selected_name == "") {
 } else {
 	draw_text(_x, _y + _gap*5, "Current selected: " + filename_name(objButtonGenerator.selected_name));
 }
+if (objButtonGenerator.mask_name == "") {
+	draw_text(_x, _y + _gap*6, "Current mask: None");
+} else {
+	draw_text(_x, _y + _gap*6, "Current mask: " + filename_name(objButtonGenerator.mask_name));
+}
 
-draw_text(_x, _y + _gap*7, "Size of frame: " + string(objFrame.width));
-draw_text(_x, _y + _gap*8, "Left coordinate of frame: " + string(objFrame.x));
-draw_text(_x, _y + _gap*9, "Top coordinate of frame: " + string(objFrame.y));
+draw_text(_x, _y + _gap*8, "Size of frame: " + string(objFrame.width));
+draw_text(_x, _y + _gap*9, "Left coordinate of frame: " + string(objFrame.x));
+draw_text(_x, _y + _gap*10, "Top coordinate of frame: " + string(objFrame.y));
 

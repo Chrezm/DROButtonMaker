@@ -15,5 +15,10 @@ if (objButtonGenerator.selected_name != "") {
 } else {
 	selected_sprite = -1;
 }
+if (objButtonGenerator.mask_name != "")  {
+	mask_sprite = sprite_add(objButtonGenerator.mask_name, 1, 0, 0, 0, 0);
+} else {
+	mask_sprite = -1;
+}
 
 preview_size = objButtonGenerator.target_size;
