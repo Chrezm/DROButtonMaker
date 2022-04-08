@@ -42,6 +42,6 @@ if (objButtonGenerator.mask_name == "") {
 }
 
 draw_text(_x, _y + _gap*8, "Size of frame: " + string(objFrame.width));
-draw_text(_x, _y + _gap*9, "Left coordinate of frame: " + string(objFrame.x));
-draw_text(_x, _y + _gap*10, "Top coordinate of frame: " + string(objFrame.y));
+draw_text(_x, _y + _gap*9, "x coordinate of frame: " + string(objFrame.x));
+draw_text(_x, _y + _gap*10, "y coordinate of frame: " + string(objFrame.y));
 

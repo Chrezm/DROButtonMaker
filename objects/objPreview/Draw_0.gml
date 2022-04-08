@@ -5,13 +5,12 @@ if (character_name != "") {
 	if !surface_exists(preview_surface) {
 		preview_surface = surface_create(cam_w(0), cam_h(0));
 	}
-	surface_set_target(preview_surface);
-	draw_clear_alpha(c_white, 0);
-	surface_reset_target();
-	
 	var _x = cam_x(0) + cam_w(0) - preview_size;
 	var _y = cam_y(0);	
-		
+	surface_set_target(preview_surface);
+	draw_clear_alpha(c_black, 0);
+	surface_reset_target();
+			
 	if (sprite_exists(background_sprite)) {
 		draw_scaled(preview_surface, background_sprite, _x, _y, preview_size, preview_size);
 	}
@@ -46,5 +45,12 @@ if (character_name != "") {
 	
 	var _vx = cam_x(0);
 	var _vy = cam_y(0);
+	
+	//lay_id = layer_get_id("Background");
+	//back_id = layer_background_get_id(lay_id);
+	//layer_background_blend(back_id, );
+
+	gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 	draw_surface(preview_surface, _vx, _vy);
+	gpu_set_blendmode(bm_normal);
 }

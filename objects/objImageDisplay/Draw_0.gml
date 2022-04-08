@@ -9,7 +9,7 @@ if !surface_exists(surface) {
 	surface = surface_create(cam_w(0), cam_h(0))
 }
 surface_set_target(surface);
-draw_clear_alpha(c_white, 0);
+draw_clear_alpha(c_black, 0);
 var _vx = cam_x(0);
 var _vy = cam_y(0);
 var _vw = cam_w(0);
@@ -24,7 +24,9 @@ if (sprite_height < _vh) {
 }
 draw_sprite(sprite_index, image_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset);
 surface_reset_target();
+gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 draw_surface(surface, _vx, _vy);
+gpu_set_blendmode(bm_normal);
 
 // Surface for zoom
 if (!draw_zoom) {
@@ -38,4 +40,6 @@ draw_clear_alpha(c_white, 0);
 surface_reset_target();
 surface_copy_part(zoom_surface, 0, 0, surface, mouse_x-_vx-40, mouse_y-_vy-40, 80, 80);
 surface_copy_part(zoom_surface, 0, 0, objFrame.frame_surface, mouse_x-40, mouse_y-40, 80, 80);
+gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 draw_surface_stretched(zoom_surface, _vx+_vw-200, _vy, 200, 200);
+gpu_set_blendmode(bm_normal);

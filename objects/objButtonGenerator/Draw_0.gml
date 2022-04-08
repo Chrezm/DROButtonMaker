@@ -5,7 +5,7 @@ if (mode == 1 or mode == 3) {
 		surface = surface_create(cam_w(0), cam_h(0))
 	}
 	surface_set_target(surface);
-	draw_clear_alpha(c_white, 0);
+	draw_clear_alpha(c_black, 0);
 	surface_reset_target();
 	
 	var size = objButtonGenerator.target_size;
@@ -60,5 +60,7 @@ if (mode == 1 or mode == 3) {
 	alarm[0] = 1;
 	var _vx = cam_x(0);
 	var _vy = cam_y(0);
+	gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 	draw_surface(surface, _vx, _vy);
+	gpu_set_blendmode(bm_normal);
 }
