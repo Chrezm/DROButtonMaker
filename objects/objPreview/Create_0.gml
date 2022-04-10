@@ -7,3 +7,4 @@ selected_sprite = -1;
 preview_size = objButtonGenerator.target_size;
 preview_surface = -1;
 mask_surface = -1;
+depth = objImageDisplay.depth-1;
