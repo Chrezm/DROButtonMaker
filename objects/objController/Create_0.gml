@@ -4,6 +4,7 @@ window_set_caption("DRO Button Maker");
 instance_create_depth(x, y, depth, objImageDisplay);
 instance_create_depth(x, y, depth, objButtonGenerator);
 instance_create_depth(x, y, depth, objPreview);
+instance_create_depth(x, y, depth, objFileConverter);
 
 colors[0] = $000000;
 colors[1] = $FF0000;
