@@ -12,6 +12,7 @@ if (file_exists(target_filename)) {
 zeroth_filename = string_replace(target_filename, ".png", "-0.png")
 if (file_exists(zeroth_filename)) {
 	// Multiple frame conversions
+	objImageDisplay.multiple_frames = true;
 	objImageDisplay.current_full_filename = zeroth_filename;
 	with objImageDisplay {
 		event_user(2);

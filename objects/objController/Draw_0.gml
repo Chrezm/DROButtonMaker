@@ -52,7 +52,9 @@ if (objButtonGenerator.mask_name == "") {
 	draw_text(_x, _y + _gap*7, "Current mask: " + filename_name(objButtonGenerator.mask_name));
 }
 
-draw_text(_x, _y + _gap*9, "Size of frame: " + string(objFrame.width));
-draw_text(_x, _y + _gap*10, "x coordinate of frame: " + string(objFrame.x));
-draw_text(_x, _y + _gap*11, "y coordinate of frame: " + string(objFrame.y));
+draw_text(_x, _y + _gap*9, "Size of cutter: " + string(objCutter.width));
+draw_text(_x, _y + _gap*10, "x coordinate of cutter: " + string(objCutter.x));
+draw_text(_x, _y + _gap*11, "y coordinate of cutter: " + string(objCutter.y));
 
+if (objImageDisplay.multiple_frames) {
+	draw_text(_x + 100, _y + 330, "Frame: ");

@@ -5,5 +5,5 @@ if (objImageDisplay.current_directory == "") {
 	exit;
 }
 
-objFrame.to_draw = target_button(objImageDisplay, objButtonGenerator.target_name, "_temp");
+objCutter.to_draw = target_button(objImageDisplay, objButtonGenerator.target_name, "_temp");
 alarm[0] = 3;

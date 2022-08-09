@@ -8,5 +8,5 @@ with objPreview {
 	event_user(1);
 }
 
-objFrame.to_draw = target_button(self, objButtonGenerator.target_name, "");
+objCutter.to_draw = target_button(self, objButtonGenerator.target_name, "");
 alarm[0] = 10;

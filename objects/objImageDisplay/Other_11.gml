@@ -1,6 +1,7 @@
 /// @description Prepare new image
 // You can write your code in this editor
 sprite_delete(sprite_index);
+multiple_frames = false;
 
 var file;
 var is_png = false;

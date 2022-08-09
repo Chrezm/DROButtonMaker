@@ -12,10 +12,10 @@ current_filename = ds_map_find_value(mapEmotions, current_index);
 
 event_user(1);
 
-if !instance_exists(objFrame) {
-	frame = instance_create_depth(0, 0, depth-1, objFrame);
+if !instance_exists(objCutter) {
+	instance_create_depth(0, 0, depth-1, objCutter);
 }
-objFrame.x = round((sprite_width - objFrame.width)/2);
+objCutter.x = round((sprite_width - objCutter.width)/2);
 
 camera_set_view_pos(view_camera[0], (sprite_width - cam_w(0))/2, 0);
 

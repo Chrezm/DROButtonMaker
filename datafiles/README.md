@@ -14,18 +14,18 @@ This project is licensed under a modified MIT license. This license is identical
 
 1. Click "Choose character".
 2. On the first dialog screen, select the char.ini of your character.
-3. You'll see the first sprite listed in the char.ini appear, along with a white frame. 
+3. You'll see the first sprite listed in the char.ini appear, along with a white cutter. 
 4. Click on the related buttons to the right of the screen to change the default background behind a generated button (by default nothing), the default foreground in front of a generated button (by default nothing), a "Selected" image to draw over the character sprite *and* foreground to produce on buttons (by default nothing), a "mask" image that will determine the shape and fading of the overall produced buttons (by default a fully opaque square mask), and the intended name and size of the produced buttons (by default button<num>_off.png and 40).
-4. Adjust the size position frame until it aligns with your intended button for the current image. Once ready, click "Generate Button" or push Space. It'll generate a button in the folder emotions (or emotions2 if the previous folder already existed), containing the image found *exactly within* the white box.
+4. Adjust the size position cutter until it aligns with your intended button for the current image. Once ready, click "Generate Button" or push Space. It'll generate a button in the folder emotions (or emotions2 if the previous folder already existed), containing the image found *exactly within* the white box.
 5. The next image in the char.ini will appear. Proceed until done.
 6. If at any point you want to change the current image without generating a button, click "Previous Image" or "Skip Image".
 
 ### Controls
 
-* You control the frame by Left Clicking in an area within the box, and dragging the frame while hoding the Mouse Button. You can also control the frame with the up, down, left, right arrow keys (for more precise controls), and make it move faster by holding Shift while pressing the arrow keys.  
-* You increase the size of the frame by scrolling the mouse wheel up, and decrease it by scrolling it down. You can also do adjust the size with Alt+Up or Alt+Right to increase the size, and Alt+Left or Alt+Down to decrease the size. In either case, you can adjust the size faster if you hold Shift while doing either method.
-* You display guidelines on top of the frame by holding Control. The guidelines will draw a vertical and horizontal line both passing through the center of the frame. The width of the line is 1 if the size of the frame is odd and size if the size of the frame is even.
-* You display a zoomed version of the image, frame, and guidelines if visible, near the cursor by holding Right Click. If you hold Right Click and move the cursor, the zoomed version will change reflecting the new cursor position. This is useful if you want to get super precise with your frame location.
+* You control the cutter by Left Clicking in an area within the box, and dragging the cutter while hoding the Mouse Button. You can also control the cutter with the up, down, left, right arrow keys (for more precise controls), and make it move faster by holding Shift while pressing the arrow keys.  
+* You increase the size of the cutter by scrolling the mouse wheel up, and decrease it by scrolling it down. You can also do adjust the size with Alt+Up or Alt+Right to increase the size, and Alt+Left or Alt+Down to decrease the size. In either case, you can adjust the size faster if you hold Shift while doing either method.
+* You display guidelines on top of the cutter by holding Control. The guidelines will draw a vertical and horizontal line both passing through the center of the cutter. The width of the line is 1 if the size of the cutter is odd and 2 if the size of the cutter is even.
+* You display a zoomed version of the image, cutter, and guidelines if visible, near the cursor by holding Right Click. If you hold Right Click and move the cursor, the zoomed version will change reflecting the new cursor position. This is useful if you want to get super precise with your cutter location.
 
 ### Buttons
 * "Previous Image": Go back one image without generating a button file.

@@ -9,4 +9,4 @@ to_draw = "";
 selected = false;
 selected_x = 0;
 selected_y = 0;
-frame_surface = -1;
+cutter_surface = -1;

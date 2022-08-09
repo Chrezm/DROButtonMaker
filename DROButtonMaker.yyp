@@ -16,7 +16,7 @@
     {"id":{"name":"sprButton_ChooseTargetSize","path":"sprites/sprButton_ChooseTargetSize/sprButton_ChooseTargetSize.yy",},"order":8,},
     {"id":{"name":"objButton_SkipImage","path":"objects/objButton_SkipImage/objButton_SkipImage.yy",},"order":3,},
     {"id":{"name":"objPreview","path":"objects/objPreview/objPreview.yy",},"order":4,},
-    {"id":{"name":"objFrame","path":"objects/objFrame/objFrame.yy",},"order":2,},
+    {"id":{"name":"objCutter","path":"objects/objCutter/objCutter.yy",},"order":2,},
     {"id":{"name":"objButton_PreviousImage","path":"objects/objButton_PreviousImage/objButton_PreviousImage.yy",},"order":4,},
     {"id":{"name":"objButton_ChooseMask","path":"objects/objButton_ChooseMask/objButton_ChooseMask.yy",},"order":11,},
     {"id":{"name":"sprButton_ArrowLeft","path":"sprites/sprButton_ArrowLeft/sprButton_ArrowLeft.yy",},"order":14,},
