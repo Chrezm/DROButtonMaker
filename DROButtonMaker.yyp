@@ -23,6 +23,7 @@
     {"id":{"name":"sh_better_scaling_bicubic","path":"shaders/sh_better_scaling_bicubic/sh_better_scaling_bicubic.yy",},"order":3,},
     {"id":{"name":"sh_better_scaling_5xbrb","path":"shaders/sh_better_scaling_5xbrb/sh_better_scaling_5xbrb.yy",},"order":1,},
     {"id":{"name":"objFileConverter","path":"objects/objFileConverter/objFileConverter.yy",},"order":5,},
+    {"id":{"name":"sprLoading","path":"sprites/sprLoading/sprLoading.yy",},"order":11,},
     {"id":{"name":"Better_Scaling","path":"extensions/Better_Scaling/Better_Scaling.yy",},"order":0,},
     {"id":{"name":"sprButton_ChooseCharacter","path":"sprites/sprButton_ChooseCharacter/sprButton_ChooseCharacter.yy",},"order":0,},
     {"id":{"name":"better_scaling_draw_sprite","path":"scripts/better_scaling_draw_sprite/better_scaling_draw_sprite.yy",},"order":0,},
@@ -123,6 +124,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/ImageMagick","resourceVersion":"1.0","name":"thresholds.xml","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/ImageMagick","resourceVersion":"1.0","name":"type-ghostscript.xml","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/ImageMagick","resourceVersion":"1.0","name":"type.xml","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/ImageMagick","resourceVersion":"1.0","name":"info","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.6.1.26",

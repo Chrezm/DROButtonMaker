@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+
 if (!sprite_exists(sprite_index)) {
 	exit;
 }
@@ -20,7 +21,11 @@ if (sprite_width < _vw) {
 	_small_x_offset = (_vw - sprite_width)/2;
 }
 if (sprite_height < _vh) {
-	_small_y_offset = (_vh - sprite_height);
+	if (preparing_frames) {
+		_small_y_offset = (_vh - sprite_height)/2;
+	} else {
+		_small_y_offset = (_vh - sprite_height);
+	}
 }
 draw_sprite(sprite_index, image_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset);
 surface_reset_target();

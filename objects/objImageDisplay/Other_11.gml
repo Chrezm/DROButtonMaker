@@ -22,3 +22,11 @@ if (is_png) {
 	event_user(2);
 	exit;
 }
+
+preparing_frames = true;
+sprite_index = sprLoading;
+
+objFileConverter.source_filename = file;
+with objFileConverter {
+	event_user(0);
+}
