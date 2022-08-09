@@ -1,6 +1,0 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-surface = -1;
-zoom_surface = -1;
-draw_zoom = false;
