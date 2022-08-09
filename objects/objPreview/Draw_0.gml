@@ -5,8 +5,8 @@ if (character_name != "") {
 	if !surface_exists(preview_surface) {
 		preview_surface = surface_create(cam_w(0), cam_h(0));
 	}
-	var _x = cam_x(0) + cam_w(0) - preview_size;
-	var _y = cam_y(0);	
+	var _x = cam_w(0) - preview_size;
+	var _y = 0;	
 	surface_set_target(preview_surface);
 	draw_clear_alpha(c_black, 0);
 	surface_reset_target();

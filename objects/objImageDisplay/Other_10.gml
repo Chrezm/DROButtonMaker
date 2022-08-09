@@ -15,13 +15,8 @@ event_user(1);
 if !instance_exists(objCutter) {
 	instance_create_depth(0, 0, depth-1, objCutter);
 }
-if (sprite_index == sprLoading) {
-	objCutter.x = round((960 - objCutter.width)/2);
-	camera_set_view_pos(view_camera[0], (960 - cam_w(0))/2, 0);
-} else {
-	objCutter.x = round((sprite_width - objCutter.width)/2);
-	camera_set_view_pos(view_camera[0], (sprite_width - cam_w(0))/2, 0);
-}
+objCutter.x = round((max(room_width, sprite_width) - objCutter.width)/2);
+camera_set_view_pos(view_camera[0], (max(room_width, sprite_width) - cam_w(0))/2, 0);
 
 if !directory_exists(current_directory + "\\emotions") {
 	target_directory = current_directory + "\\emotions";
