@@ -8,14 +8,26 @@ available_frames = 1;
 var file;
 var is_png = false;
 
-file = current_directory + "\\" + current_filename + ".webp";
+file = current_directory + "\\(a)" + current_filename + ".webp";
 if (!file_exists(file)) {
-	file = current_directory + "\\" + current_filename + ".apng";
+	file = current_directory + "\\" + current_filename + ".webp";
 	if (!file_exists(file)) {
-		file = current_directory + "\\" + current_filename + ".gif";
+		file = current_directory + "\\(a)" + current_filename + ".apng";
 		if (!file_exists(file)) {
-			file = current_directory + "\\" + current_filename + ".png";
-			is_png = true;
+			file = current_directory + "\\" + current_filename + ".apng";
+			if (!file_exists(file)) {
+				file = current_directory + "\\(a)" + current_filename + ".gif";
+				if (!file_exists(file)) {
+					file = current_directory + "\\" + current_filename + ".gif";
+					if (!file_exists(file)) {
+						is_png = true;
+						file = current_directory + "\\(a)" + current_filename + ".png";
+						if (!file_exists(file)) {
+							file = current_directory + "\\" + current_filename + ".png";
+						}
+					}
+				}
+			}
 		}
 	}
 }

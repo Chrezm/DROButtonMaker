@@ -96,7 +96,10 @@ function cam_w(num) {
 function pngify(filename) {
 	var dir = filename_path(filename);
 	
-	var converted_file = string_replace(filename, ".webp", ".png");
+	var converted_file = filename;
+	converted_file = string_replace(converted_file, ".webp", ".png");
+	converted_file = string_replace(converted_file, ".apng", ".png");
+	converted_file = string_replace(converted_file, ".gif", ".png");
 	converted_file = string_replace(converted_file, dir, dir + "temp\\");
 	return converted_file;	
 }
@@ -106,7 +109,12 @@ function split_frames(source_filename, target_filename) {
 	directory_create(dir + "temp");
 	
 	var prog = "ImageMagick\\magick.exe";
-	var arg = "\"" + source_filename + "\" -coalesce \"" + target_filename + "\"";
+	
+	var arg = "";
+	if (string_count(".apng", source_filename)) {
+		arg = "APNG:"
+	}
+	arg += "\"" + source_filename + "\" -coalesce \"" + target_filename + "\"";
 	process = execute_shell(prog, arg);
 	return process;
 }
