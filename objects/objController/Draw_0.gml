@@ -57,4 +57,5 @@ draw_text(_x, _y + _gap*10, "x coordinate of cutter: " + string(objCutter.x));
 draw_text(_x, _y + _gap*11, "y coordinate of cutter: " + string(objCutter.y));
 
 if (objImageDisplay.multiple_frames) {
-	draw_text(_x + 100, _y + 330, "Frame: ");
+	draw_text(_x + 100, _y + 325, "Frame: " + string(objImageDisplay.current_frame) + "/" + string(objImageDisplay.available_frames - 1));
+}

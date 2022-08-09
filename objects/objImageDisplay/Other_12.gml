@@ -1,6 +1,7 @@
 /// @description Display new image
 // You can write your code in this editor
 
+sprite_delete(sprite_index);
 preparing_frames = false;
 
 var spr;

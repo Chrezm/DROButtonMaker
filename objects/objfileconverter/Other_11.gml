@@ -9,7 +9,7 @@ if (file_exists(target_filename)) {
 	exit;
 }
 
-zeroth_filename = string_replace(target_filename, ".png", "-0.png")
+zeroth_filename = string_replace(target_filename, ".png", "-0.png");
 if (file_exists(zeroth_filename)) {
 	// Multiple frame conversions
 	objImageDisplay.multiple_frames = true;
@@ -17,6 +17,23 @@ if (file_exists(zeroth_filename)) {
 	with objImageDisplay {
 		event_user(2);
 	}
+	
+	// Decide how many images exist
+	var i = 0;
+	var new_filename;
+	while (true) {
+		new_filename = string_replace(target_filename, ".png", "-" + string(i) + ".png");
+		if (!file_exists(new_filename)) {
+			break;
+		}
+		i++;
+	}
+	// The last frame file imagemagick generates is garbage, so delete it
+	var garbage_file;
+	garbage_file = string_replace(target_filename, ".png", "-" + string(i-1) + ".png");
+	file_delete(garbage_file);
+	
+	objImageDisplay.available_frames = i-1;
 	exit;
 }
 

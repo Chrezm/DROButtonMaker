@@ -1,7 +1,9 @@
 /// @description Prepare new image
 // You can write your code in this editor
-sprite_delete(sprite_index);
+
 multiple_frames = false;
+current_frame = 0;
+available_frames = 1;
 
 var file;
 var is_png = false;
@@ -24,6 +26,8 @@ if (is_png) {
 	exit;
 }
 
+// Prepare for multiple frame image
+sprite_delete(sprite_index);
 preparing_frames = true;
 sprite_index = sprLoading;
 
