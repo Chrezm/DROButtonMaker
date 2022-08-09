@@ -1,13 +1,13 @@
-/// @description Previous image
+/// @description Skip Image
 
 if (current_directory == "") {
 	exit;
 }
 
-current_index--;
-if (current_index < 1) {
-    current_index = ds_map_size(mapEmotions);
-	show_message("That was the first image, going to the last image.")
+current_index++;
+if (current_index > ds_map_size(mapEmotions)) {
+    current_index = 1;
+	show_message("That was the last image, going back to the first image.")
 }
 
 current_filename = ds_map_find_value(mapEmotions, current_index);

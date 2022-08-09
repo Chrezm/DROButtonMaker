@@ -29,7 +29,7 @@ function find_char_ini(mapEmotions) {
 	while (true) {
 	    full_emotion = ini_read_string("Emotions", string(i), "<NONE>")
 	    if (full_emotion == "<NONE>") {
-	        return directory;
+	        break;
 	    }
 	    emotion = string_split(full_emotion, "|")[2];
 	    ds_map_add(mapEmotions, i, emotion);
@@ -93,3 +93,20 @@ function cam_w(num) {
 	return camera_get_view_width(view_camera[num]);
 }
 
+function pngify(filename) {
+	var dir = filename_path(filename);
+	
+	var converted_file = string_replace(filename, ".webp", ".png");
+	converted_file = string_replace(converted_file, dir, dir + "a\\");
+	return converted_file;	
+}
+
+function split_frames(source_filename, target_filename) {
+	var dir = filename_path(source_filename);
+	directory_create(dir + "a");
+	
+	var prog = "ImageMagick\\magick.exe";
+	var arg = "\"" + source_filename + "\" -coalesce \"" + target_filename + "\"";
+	process = execute_shell(prog, arg);
+	return process;
+}

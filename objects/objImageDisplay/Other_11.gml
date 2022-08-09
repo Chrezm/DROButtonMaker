@@ -1,9 +1,24 @@
-/// @description Display new image
-var file, spr;
-
-file = current_directory + "\\" + current_filename + ".png";
+/// @description Prepare new image
+// You can write your code in this editor
 sprite_delete(sprite_index);
-spr = sprite_add(file, 1, 0, 0, 0, 0);
-sprite_index = spr;
-room_width = max(cam_w(0), sprite_width);
-room_height = max(cam_h(0), sprite_height);
+
+var file;
+var is_png = false;
+
+file = current_directory + "\\" + current_filename + ".webp";
+if (!file_exists(file)) {
+	file = current_directory + "\\" + current_filename + ".apng";
+	if (!file_exists(file)) {
+		file = current_directory + "\\" + current_filename + ".gif";
+		if (!file_exists(file)) {
+			file = current_directory + "\\" + current_filename + ".png";
+			is_png = true;
+		}
+	}
+}
+
+if (is_png) {
+	current_full_filename = file;
+	event_user(2);
+	exit;
+}

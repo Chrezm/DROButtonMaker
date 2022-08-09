@@ -1,12 +1,9 @@
-/// @description Generate button
+/// @description Display new image
+// You can write your code in this editor
 
-if (current_directory == "") {
-	exit;
-}
+var spr;
 
-with objPreview {
-	event_user(1);
-}
-
-objFrame.to_draw = target_button(self, objButtonGenerator.target_name, "");
-alarm[0] = 10;
+spr = sprite_add(current_full_filename, 1, 0, 0, 0, 0);
+sprite_index = spr;
+room_width = max(cam_w(0), sprite_width);
+room_height = max(cam_h(0), sprite_height);
