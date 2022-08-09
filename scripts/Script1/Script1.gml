@@ -97,13 +97,13 @@ function pngify(filename) {
 	var dir = filename_path(filename);
 	
 	var converted_file = string_replace(filename, ".webp", ".png");
-	converted_file = string_replace(converted_file, dir, dir + "a\\");
+	converted_file = string_replace(converted_file, dir, dir + "temp\\");
 	return converted_file;	
 }
 
 function split_frames(source_filename, target_filename) {
 	var dir = filename_path(source_filename);
-	directory_create(dir + "a");
+	directory_create(dir + "temp");
 	
 	var prog = "ImageMagick\\magick.exe";
 	var arg = "\"" + source_filename + "\" -coalesce \"" + target_filename + "\"";

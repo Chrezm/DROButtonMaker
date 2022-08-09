@@ -6,11 +6,7 @@ if (file_exists(target_filename)) {
 	with objImageDisplay {
 		event_user(2);
 	}
-	exit;
-}
-
-zeroth_filename = string_replace(target_filename, ".png", "-0.png");
-if (file_exists(zeroth_filename)) {
+} else if (file_exists(zeroth_filename)) {
 	// Multiple frame conversions
 	objImageDisplay.multiple_frames = true;
 	objImageDisplay.current_full_filename = zeroth_filename;
@@ -34,9 +30,7 @@ if (file_exists(zeroth_filename)) {
 	file_delete(garbage_file);
 	
 	objImageDisplay.available_frames = i-1;
-	exit;
+} else {
+	show_message("Failed to generate frames for file");
+	show_message(target_filename);
 }
-
-show_message("Failed to generate frames for file");
-show_message(target_filename);
-	

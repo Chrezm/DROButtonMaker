@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Check if ImageMagick is done
 
 var fd = file_text_open_read_stdout(process);
 var output = file_text_read_string_stdout(fd);
