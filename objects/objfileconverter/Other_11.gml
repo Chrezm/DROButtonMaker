@@ -24,10 +24,6 @@ if (file_exists(target_filename)) {
 		}
 		i++;
 	}
-	// The last frame file imagemagick generates is garbage, so delete it
-	var garbage_file;
-	garbage_file = string_replace(target_filename, ".png", "-" + string(i-1) + ".png");
-	file_delete(garbage_file);
 	
 	objImageDisplay.available_frames = i-1;
 } else {
