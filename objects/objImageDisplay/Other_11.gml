@@ -6,33 +6,28 @@ current_frame = 0;
 available_frames = 1;
 
 var file;
-var is_png = false;
+var use_magick = true;
 
-file = current_directory + "\\(a)" + current_filename + ".webp";
-if (!file_exists(file)) {
-	file = current_directory + "\\" + current_filename + ".webp";
-	if (!file_exists(file)) {
-		file = current_directory + "\\(a)" + current_filename + ".apng";
-		if (!file_exists(file)) {
-			file = current_directory + "\\" + current_filename + ".apng";
-			if (!file_exists(file)) {
-				file = current_directory + "\\(a)" + current_filename + ".gif";
-				if (!file_exists(file)) {
-					file = current_directory + "\\" + current_filename + ".gif";
-					if (!file_exists(file)) {
-						is_png = true;
-						file = current_directory + "\\(a)" + current_filename + ".png";
-						if (!file_exists(file)) {
-							file = current_directory + "\\" + current_filename + ".png";
-						}
-					}
-				}
-			}
+var i, j;
+var found = false;
+
+for (i = 0; i < array_length(lookup_prefixes); i++) {
+	lookup_prefix = lookup_prefixes[i];
+	for (j = 0; j < array_length(lookup_suffixes); j++) {
+		lookup_suffix = lookup_suffixes[j];
+		file = current_directory + lookup_prefix + current_filename + lookup_suffix;
+		if (file_exists(file)) {
+			found = true;
+			use_magick = (lookup_suffix == ".png");
+			break;
 		}
+	}
+	if (found) {
+		break;
 	}
 }
 
-if (is_png) {
+if (use_magick) {
 	current_full_filename = file;
 	event_user(2);
 	exit;

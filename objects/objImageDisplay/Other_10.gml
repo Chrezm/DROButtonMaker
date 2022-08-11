@@ -15,8 +15,8 @@ event_user(1);
 if !instance_exists(objCutter) {
 	instance_create_depth(0, 0, depth-1, objCutter);
 }
-objCutter.x = round((max(room_width, sprite_width) - objCutter.width)/2);
-camera_set_view_pos(view_camera[0], (max(room_width, sprite_width) - cam_w(0))/2, 0);
+objCutter.x = round((room_width - objCutter.width)/2);
+camera_set_view_pos(view_camera[0], (room_width - cam_w(0))/2, 0);
 
 if !directory_exists(current_directory + "\\emotions") {
 	target_directory = current_directory + "\\emotions";
