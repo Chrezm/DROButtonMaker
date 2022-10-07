@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+widget_set_owner(hwnd_main);
 window_set_caption("DRO Button Maker");
 instance_create_depth(x, y, depth, objImageDisplay);
 instance_create_depth(x, y, depth, objButtonGenerator);

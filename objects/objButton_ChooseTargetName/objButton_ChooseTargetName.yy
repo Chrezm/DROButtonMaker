@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "objButton_ChooseTargetName",
   "spriteId": {
     "name": "sprButton_ChooseTargetName",
     "path": "sprites/sprButton_ChooseTargetName/sprButton_ChooseTargetName.yy",
@@ -25,7 +28,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -33,8 +36,4 @@
     "name": "Buttons",
     "path": "folders/Objects/Buttons.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "objButton_ChooseTargetName",
-  "tags": [],
-  "resourceType": "GMObject",
 }

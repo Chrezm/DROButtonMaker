@@ -16,7 +16,7 @@ if (color == 2 || color >= 5) {
 	draw_set_color(c_white);
 }
 
-var _gap = 24;
+var _gap = 20;
 
 draw_text(_x, _y +_gap*0, "Current basic file: " + string(objImageDisplay.current_index) + " " + objImageDisplay.current_filename);
 if (objImageDisplay.preparing_frames) {
@@ -57,5 +57,5 @@ draw_text(_x, _y + _gap*10, "x coordinate of cutter: " + string(objCutter.x));
 draw_text(_x, _y + _gap*11, "y coordinate of cutter: " + string(objCutter.y));
 
 if (objImageDisplay.multiple_frames) {
-	draw_text(_x + 100, _y + 325, "Frame: " + string(objImageDisplay.current_frame) + "/" + string(objImageDisplay.available_frames - 1));
+	draw_text(_x + 100, _y + 300, "Frame: " + string(objImageDisplay.current_frame) + "/" + string(objImageDisplay.available_frames - 1));
 }

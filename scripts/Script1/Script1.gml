@@ -100,13 +100,13 @@ function pngify(filename) {
 	converted_file = string_replace(converted_file, ".webp", ".png");
 	converted_file = string_replace(converted_file, ".apng", ".png");
 	converted_file = string_replace(converted_file, ".gif", ".png");
-	converted_file = string_replace(converted_file, dir, dir + "temp\\");
+	converted_file = string_replace(converted_file, dir, dir + "bmtemp\\");
 	return converted_file;	
 }
 
 function split_frames(source_filename, target_filename) {
 	var dir = filename_path(source_filename);
-	directory_create(dir + "temp");
+	directory_create(dir + "bmtemp");
 	
 	var prog = "ImageMagick\\magick.exe";
 	
