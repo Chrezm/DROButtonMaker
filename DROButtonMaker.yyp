@@ -39,7 +39,6 @@
     {"id":{"name":"objButton_ChooseTargetName","path":"objects/objButton_ChooseTargetName/objButton_ChooseTargetName.yy",},"order":10,},
     {"id":{"name":"sprButton_Preview","path":"sprites/sprButton_Preview/sprButton_Preview.yy",},"order":4,},
     {"id":{"name":"objButton_ClearTemp","path":"objects/objButton_ClearTemp/objButton_ClearTemp.yy",},"order":14,},
-    {"id":{"name":"libdlgmodule","path":"extensions/libdlgmodule/libdlgmodule.yy",},"order":1,},
     {"id":{"name":"objButton_ChooseBackground","path":"objects/objButton_ChooseBackground/objButton_ChooseBackground.yy",},"order":6,},
     {"id":{"name":"sh_better_scaling_supersampling_3x3","path":"shaders/sh_better_scaling_supersampling_3x3/sh_better_scaling_supersampling_3x3.yy",},"order":6,},
     {"id":{"name":"objButton_ChooseSelected","path":"objects/objButton_ChooseSelected/objButton_ChooseSelected.yy",},"order":8,},
@@ -98,7 +97,7 @@
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
   ],
   "TextureGroups": [
-    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","loadType":"default","directory":"","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LICENSE.txt","CopyToMask":3035461389054378222,"filePath":"datafiles",},
@@ -136,6 +135,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"info","CopyToMask":-1,"filePath":"datafiles/ImageMagick",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.8.1.37",
+    "IDEVersion": "2022.9.0.49",
   },
 }
