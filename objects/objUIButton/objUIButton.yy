@@ -1,19 +1,16 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objButton_Preview",
-  "spriteId": {
-    "name": "sprButton_Preview",
-    "path": "sprites/sprButton_Preview/sprButton_Preview.yy",
-  },
+  "name": "objUIButton",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objUIButton",
-    "path": "objects/objUIButton/objUIButton.yy",
+    "name": "objButton",
+    "path": "objects/objButton/objButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,10 +24,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

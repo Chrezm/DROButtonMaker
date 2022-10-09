@@ -1,19 +1,16 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objButton_PreviousImage",
-  "spriteId": {
-    "name": "sprButton_PreviousImage",
-    "path": "sprites/sprButton_PreviousImage/sprButton_PreviousImage.yy",
-  },
+  "name": "objDialogButton",
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objUIButton",
-    "path": "objects/objUIButton/objUIButton.yy",
+    "name": "objButton",
+    "path": "objects/objButton/objButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,13 +24,11 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "UI Buttons",
-    "path": "folders/Objects/UI Buttons.yy",
+    "name": "Dialog Boxes",
+    "path": "folders/Objects/Dialog Boxes.yy",
   },
 }

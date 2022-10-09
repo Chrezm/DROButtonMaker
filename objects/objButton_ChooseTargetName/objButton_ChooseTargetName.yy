@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objButton",
-    "path": "objects/objButton/objButton.yy",
+    "name": "objUIButton",
+    "path": "objects/objUIButton/objUIButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -33,7 +33,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Buttons",
-    "path": "folders/Objects/Buttons.yy",
+    "name": "UI Buttons",
+    "path": "folders/Objects/UI Buttons.yy",
   },
 }

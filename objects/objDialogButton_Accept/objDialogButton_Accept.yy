@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objButton_Preview",
+  "name": "objDialogButton_Accept",
   "spriteId": {
-    "name": "sprButton_Preview",
-    "path": "sprites/sprButton_Preview/sprButton_Preview.yy",
+    "name": "sprButton_Accept",
+    "path": "sprites/sprButton_Accept/sprButton_Accept.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objUIButton",
-    "path": "objects/objUIButton/objUIButton.yy",
+    "name": "objDialogButton",
+    "path": "objects/objDialogButton/objDialogButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,14 +27,11 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "UI Buttons",
-    "path": "folders/Objects/UI Buttons.yy",
+    "name": "Dialog Boxes",
+    "path": "folders/Objects/Dialog Boxes.yy",
   },
 }
