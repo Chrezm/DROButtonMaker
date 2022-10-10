@@ -3,7 +3,7 @@
 event_inherited();
 
 text = "Choose target size of generated buttons.\nDefault is 40";
-keyboard_string = objButtonGenerator.target_size;
+keyboard_string = string(objButtonGenerator.target_size);
 has_input_box = true;
 
 btn1 = instance_create_depth(x, y, depth-1, objDialogButton_Accept);

@@ -4,8 +4,8 @@
   "name": "DROButtonMaker",
   "resources": [
     {"id":{"name":"better_scaling_draw_surface","path":"scripts/better_scaling_draw_surface/better_scaling_draw_surface.yy",},"order":1,},
-    {"id":{"name":"objDialogBox_ChooseTargetSize","path":"objects/objDialogBox_ChooseTargetSize/objDialogBox_ChooseTargetSize.yy",},"order":4,},
-    {"id":{"name":"objDialogBox_ChooseTargetName","path":"objects/objDialogBox_ChooseTargetName/objDialogBox_ChooseTargetName.yy",},"order":3,},
+    {"id":{"name":"objDialogBox_ChooseTargetSize","path":"objects/objDialogBox_ChooseTargetSize/objDialogBox_ChooseTargetSize.yy",},"order":3,},
+    {"id":{"name":"objDialogBox_ChooseTargetName","path":"objects/objDialogBox_ChooseTargetName/objDialogBox_ChooseTargetName.yy",},"order":4,},
     {"id":{"name":"objButton_ChooseCharacter","path":"objects/objButton_ChooseCharacter/objButton_ChooseCharacter.yy",},"order":1,},
     {"id":{"name":"sprButton_ChooseForeground","path":"sprites/sprButton_ChooseForeground/sprButton_ChooseForeground.yy",},"order":6,},
     {"id":{"name":"objButton_GenerateButton","path":"objects/objButton_GenerateButton/objButton_GenerateButton.yy",},"order":2,},

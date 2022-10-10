@@ -12,4 +12,6 @@ switch (clicked) {
 	default:
 		throw("Unknown button clicked: " + string(clicked));
 }
-instance_destroy();
+if (accept_user_input) {
+	instance_destroy();
+}
