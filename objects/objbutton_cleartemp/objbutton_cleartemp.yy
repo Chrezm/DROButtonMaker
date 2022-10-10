@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objButton",
-    "path": "objects/objButton/objButton.yy",
+    "name": "objUIButton",
+    "path": "objects/objUIButton/objUIButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
