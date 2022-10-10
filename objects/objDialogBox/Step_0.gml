@@ -1,4 +1,12 @@
 /// @description Place items in correct position
+var _keyboard_string = keyboard_string;
+var _keyboard_string_limit = 30;
+if (string_length(_keyboard_string) > _keyboard_string_limit) {
+	_keyboard_string = string_copy(_keyboard_string, 1, _keyboard_string_limit);
+}
+keyboard_string = _keyboard_string;
+user_text = _keyboard_string;
+
 var _rows;
 var _num_buttons = ds_list_size(buttons);
 

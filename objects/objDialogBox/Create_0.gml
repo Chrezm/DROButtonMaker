@@ -7,3 +7,4 @@ buttons = ds_list_create();
 
 obj_dialogtext = instance_create_depth(x, y, depth-1, objDialogText);
 obj_dialoginput = instance_create_depth(x, y, depth-1, objDialogInput);
+keyboard_string = "";
