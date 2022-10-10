@@ -118,3 +118,18 @@ function split_frames(source_filename, target_filename) {
 	process = execute_shell(prog, arg);
 	return process;
 }
+
+function show_dialogbox(dialogbox_type, message) {
+	obj = instance_create_depth(x, y, objController.depth-10, dialogbox_type);
+	obj.text = message;
+	obj.has_input_box = false;
+	return obj;	
+}
+
+function show_inputbox(inputbox_type, message, default_value) {
+	obj = instance_create_depth(x, y, objController.depth=10, inputbox_type);
+	obj.text = message;
+	obj.has_input_box = true;
+	keyboard_string = string(default_value);
+	return obj;
+}

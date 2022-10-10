@@ -14,4 +14,8 @@ switch (clicked) {
 }
 if (accept_user_input) {
 	instance_destroy();
+} else {
+	with (obj_dialoginput) {
+		event_user(0);
+	}
 }

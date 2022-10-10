@@ -7,7 +7,7 @@ if (current_directory == "") {
 current_index--;
 if (current_index < 1) {
     current_index = ds_map_size(mapEmotions);
-	show_message("That was the first image, going to the last image.")
+	show_dialogbox(objDialogBox_Accept, "That was the first image,\ngoing to the last image.")
 }
 
 current_filename = ds_map_find_value(mapEmotions, current_index);
