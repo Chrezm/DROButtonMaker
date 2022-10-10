@@ -119,8 +119,8 @@ function split_frames(source_filename, target_filename) {
 	return process;
 }
 
-function show_dialogbox(dialogbox_type, message) {
-	obj = instance_create_depth(x, y, objController.depth-10, dialogbox_type);
+function show_messagebox(messagebox_type, message) {
+	obj = instance_create_depth(x, y, objController.depth-10, messagebox_type);
 	obj.text = message;
 	obj.has_input_box = false;
 	return obj;	

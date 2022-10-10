@@ -45,7 +45,7 @@
     {"id":{"name":"sprDialogInputbox","path":"sprites/sprDialogInputbox/sprDialogInputbox.yy",},"order":3,},
     {"id":{"name":"sh_better_scaling_supersampling_4x4","path":"shaders/sh_better_scaling_supersampling_4x4/sh_better_scaling_supersampling_4x4.yy",},"order":7,},
     {"id":{"name":"objButton_ChooseTargetName","path":"objects/objButton_ChooseTargetName/objButton_ChooseTargetName.yy",},"order":10,},
-    {"id":{"name":"objDialogBox_Accept","path":"objects/objDialogBox_Accept/objDialogBox_Accept.yy",},"order":3,},
+    {"id":{"name":"objMessageBox_Accept","path":"objects/objMessageBox_Accept/objMessageBox_Accept.yy",},"order":3,},
     {"id":{"name":"objDialogButton_Reject","path":"objects/objDialogButton_Reject/objDialogButton_Reject.yy",},"order":2,},
     {"id":{"name":"sprButton_Preview","path":"sprites/sprButton_Preview/sprButton_Preview.yy",},"order":4,},
     {"id":{"name":"objButton_ClearTemp","path":"objects/objButton_ClearTemp/objButton_ClearTemp.yy",},"order":14,},

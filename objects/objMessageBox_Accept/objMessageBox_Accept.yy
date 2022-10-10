@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objDialogBox_Accept",
+  "name": "objMessageBox_Accept",
   "spriteId": {
     "name": "sprDialogBox",
     "path": "sprites/sprDialogBox/sprDialogBox.yy",
