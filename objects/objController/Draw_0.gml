@@ -15,7 +15,6 @@ if (color == 2 || color >= 5) {
 } else {
 	draw_set_color(c_white);
 }
-draw_set_font(fntDefault);
 
 var _gap = 20;
 

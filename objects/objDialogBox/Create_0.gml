@@ -5,4 +5,5 @@ y = cam_y(0) + (cam_h(0) - sprite_height)/2;
 
 buttons = ds_list_create();
 
-obj_dialogboxtext = instance_create_depth(x, y, depth-1, objDialogBoxText);
+obj_dialogtext = instance_create_depth(x, y, depth-1, objDialogText);
+obj_dialoginput = instance_create_depth(x, y, depth-1, objDialogInput);

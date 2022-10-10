@@ -1,6 +1,7 @@
 /// @description
 
-instance_destroy(obj_dialogboxtext);
+instance_destroy(obj_dialogtext);
+instance_destroy(obj_dialoginput);
 
 for (var i = 0; i < ds_list_size(buttons); i++) {
 	var obj = ds_list_find_value(buttons, i);

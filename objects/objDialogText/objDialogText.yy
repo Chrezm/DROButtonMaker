@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objDialogBoxText",
+  "name": "objDialogText",
   "spriteId": null,
   "solid": false,
   "visible": true,
@@ -29,7 +29,7 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Dialog Boxes",
-    "path": "folders/Objects/Dialog Boxes.yy",
+    "name": "Do not manually instantiate",
+    "path": "folders/Objects/Dialog Boxes/Do not manually instantiate.yy",
   },
 }
