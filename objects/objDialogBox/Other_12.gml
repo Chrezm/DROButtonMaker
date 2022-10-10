@@ -1,2 +1,2 @@
-/// @description Clicked Accept
+/// @description Clicked Reject
 
