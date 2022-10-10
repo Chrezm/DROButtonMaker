@@ -127,7 +127,7 @@ function show_dialogbox(dialogbox_type, message) {
 }
 
 function show_inputbox(inputbox_type, message, default_value) {
-	obj = instance_create_depth(x, y, objController.depth=10, inputbox_type);
+	obj = instance_create_depth(x, y, objController.depth-10, inputbox_type);
 	obj.text = message;
 	obj.has_input_box = true;
 	keyboard_string = string(default_value);
