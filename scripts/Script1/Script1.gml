@@ -100,13 +100,13 @@ function pngify(filename) {
 	converted_file = string_replace(converted_file, ".webp", ".png");
 	converted_file = string_replace(converted_file, ".apng", ".png");
 	converted_file = string_replace(converted_file, ".gif", ".png");
-	converted_file = string_replace(converted_file, dir, dir + "temp\\");
+	converted_file = string_replace(converted_file, dir, dir + "bmtemp\\");
 	return converted_file;	
 }
 
 function split_frames(source_filename, target_filename) {
 	var dir = filename_path(source_filename);
-	directory_create(dir + "temp");
+	directory_create(dir + "bmtemp");
 	
 	var prog = "ImageMagick\\magick.exe";
 	
@@ -117,4 +117,19 @@ function split_frames(source_filename, target_filename) {
 	arg += "\"" + source_filename + "\" -coalesce \"" + target_filename + "\"";
 	process = execute_shell(prog, arg);
 	return process;
+}
+
+function show_messagebox(messagebox_type, message) {
+	obj = instance_create_depth(x, y, objController.depth-10, messagebox_type);
+	obj.text = message;
+	obj.has_input_box = false;
+	return obj;	
+}
+
+function show_inputbox(inputbox_type, message, default_value) {
+	obj = instance_create_depth(x, y, objController.depth-10, inputbox_type);
+	obj.text = message;
+	obj.has_input_box = true;
+	keyboard_string = string(default_value);
+	return obj;
 }

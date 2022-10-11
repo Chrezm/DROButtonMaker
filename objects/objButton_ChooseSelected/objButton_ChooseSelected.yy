@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "objButton_ChooseSelected",
   "spriteId": {
     "name": "sprButton_ChooseSelected",
     "path": "sprites/sprButton_ChooseSelected/sprButton_ChooseSelected.yy",
@@ -9,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objButton",
-    "path": "objects/objButton/objButton.yy",
+    "name": "objUIButton",
+    "path": "objects/objUIButton/objUIButton.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -25,16 +28,12 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Buttons",
-    "path": "folders/Objects/Buttons.yy",
+    "name": "UI Buttons",
+    "path": "folders/Objects/UI Buttons.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "objButton_ChooseSelected",
-  "tags": [],
-  "resourceType": "GMObject",
 }

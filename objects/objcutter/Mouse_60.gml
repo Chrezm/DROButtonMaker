@@ -1,3 +1,7 @@
+if (instance_exists(objDialogBox)) {
+	exit;
+} 
+
 var _max_width = cam_w(0);
 var _max_height = cam_h(0);
 

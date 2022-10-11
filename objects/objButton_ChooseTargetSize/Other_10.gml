@@ -1,11 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-var target_size = 0;
-while (target_size < 1) {
-	target_size = get_integer("Choose target size of generated buttons.\nDefault is 40.", objButtonGenerator.target_size);
-	if (is_undefined(target_size)) {
-		exit;
-	}
-}
-objButtonGenerator.target_size = round(target_size);
+show_inputbox(
+	objInputBox_ChooseTargetSize,
+	"Choose target size of generated buttons.\nDefault is 40",
+	string(objButtonGenerator.target_size),
+);
