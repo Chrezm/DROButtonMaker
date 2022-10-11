@@ -6,10 +6,10 @@ text = "Inputbox. Accept, reject.";
 keyboard_string = "";
 has_input_box = true;
 
-btn1 = instance_create_depth(x, y, depth-1, objDialogButton_Accept);
-btn1.dialog_box = self;
-ds_list_add(buttons, btn1);
+obj_button_accept = instance_create_depth(x, y, depth-1, objDialogButton_Accept);
+obj_button_accept.dialog_box = self;
+ds_list_add(buttons, obj_button_accept);
 
-btn2 = instance_create_depth(x, y, depth-1, objDialogButton_Reject);
-btn2.dialog_box = self;
-ds_list_add(buttons, btn2);
+obj_button_reject = instance_create_depth(x, y, depth-1, objDialogButton_Reject);
+obj_button_reject.dialog_box = self;
+ds_list_add(buttons, obj_button_reject);
