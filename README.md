@@ -39,6 +39,7 @@ This project is licensed under a modified MIT license. This license is identical
 * You display a zoomed version of the image, cutter, and guidelines if visible, near the cursor by holding Right Click. If you hold Right Click and move the cursor, the zoomed version will change reflecting the new cursor position. This is useful if you want to get super precise with your cutter location.
 * If a dialog box appears, you activate the dialog box buttons by clicking on them, or pushing Enter to trigger the "Accept" check button (if it exists), or pushing Escape to trigger the "Escape" cross button (if it exists).
 * If a dialog box appears with an input box, the contents of the input box can be modified with the keyboard keys.
+* If a dialog box appears, and after attempting to click a button the dialog box flashes red, that means that the button (or the text in the input box) was not accepted. Try again with a different button (or different text if applicable).
 
 ### Buttons
 * "Previous Image": Go back one image without generating a button file. If the currently displayed image was the first one in the `char.ini`, the last image in the character file will be displayed.

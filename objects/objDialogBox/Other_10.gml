@@ -15,7 +15,11 @@ switch (clicked) {
 if (accept_user_input) {
 	instance_destroy();
 } else {
-	with (obj_dialoginput) {
-		event_user(0);
+	image_index = 1;
+	alarm[0] = room_speed;
+	if (has_input_box) {
+		with (obj_dialoginput) {
+			event_user(0);
+		}
 	}
 }
