@@ -1,12 +1,25 @@
 /// @description Read directory
 // You can write your code in this editor
 mapEmotions = ds_map_create();
-current_directory = find_char_ini(mapEmotions);
-if (current_directory == "") {
-	event_user(15);
+var _current_directory;
+
+_current_directory = find_char_ini(mapEmotions);
+if (_current_directory == "") {
+	show_messagebox_async(
+		objMessageBox_ChariniFail,
+		"No char.ini selected.\nTry again?"
+	);
+	exit;
+}
+if (string_startswith(program_directory, _current_directory)) {
+	show_messagebox_async(
+		objMessageBox_ChariniFail,
+		"Character folder may not be located\nwithin the application folder.\nTry again?"
+	);
 	exit;
 }
 
+current_directory = _current_directory;
 current_index = 1;
 current_filename = ds_map_find_value(mapEmotions, current_index);
 

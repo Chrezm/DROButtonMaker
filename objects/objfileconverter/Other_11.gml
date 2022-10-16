@@ -27,5 +27,5 @@ if (file_exists(target_filename)) {
 	
 	objImageDisplay.available_frames = i-1;
 } else {
-	show_messagebox(objMessageBox_Accept, "Failed to generate frames for file\n" + target_filename);
+	show_messagebox_async(objMessageBox_Accept, "Failed to generate frames for file\n" + target_filename);
 }

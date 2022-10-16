@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "objInputBox_ChooseTargetSize",
+  "name": "objMessageBox_ChariniFail",
   "spriteId": {
     "name": "sprDialogBox",
     "path": "sprites/sprDialogBox/sprDialogBox.yy",
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objInputBox_AcceptReject",
-    "path": "objects/objInputBox_AcceptReject/objInputBox_AcceptReject.yy",
+    "name": "objMessageBox_AcceptReject",
+    "path": "objects/objMessageBox_AcceptReject/objMessageBox_AcceptReject.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -29,11 +29,12 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":11,"eventType":7,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":12,"eventType":7,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Input Boxes",
-    "path": "folders/Objects/Dialog Boxes/Input Boxes.yy",
+    "name": "Message Boxes",
+    "path": "folders/Objects/Dialog Boxes/Message Boxes.yy",
   },
 }

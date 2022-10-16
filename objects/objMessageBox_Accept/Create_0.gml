@@ -2,7 +2,7 @@
 
 event_inherited();
 
-text = "Dialog box. Accept.";
+text = "Message box. Accept.";
 has_input_box = false;
 
 obj_button_accept = instance_create_depth(x, y, depth-1, objDialogButton_Accept);

@@ -5,7 +5,7 @@ var output = file_text_read_string_stdout(fd);
 
 if (CompletionStatusFromExecutedProcess(process)) {
 	if (output != "") {
-		show_messagebox(objMessageBox_Accept, output);
+		show_messagebox_async(objMessageBox_Accept, output);
 	}
 	event_user(1);
 	

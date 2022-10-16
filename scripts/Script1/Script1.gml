@@ -53,6 +53,10 @@ function string_split(s, d) {
 	return r;
 }
 
+function string_startswith(substr, str) {
+	return string_pos(substr, str) == 1;
+}
+
 function target_button(imageDisplay, name, suffix) {
 	name = string_replace_all(name, "<num>", string(imageDisplay.current_index));
 	return imageDisplay.target_directory + "\\" + name + suffix + ".png";
@@ -119,14 +123,14 @@ function split_frames(source_filename, target_filename) {
 	return process;
 }
 
-function show_messagebox(messagebox_type, message) {
+function show_messagebox_async(messagebox_type, message) {
 	obj = instance_create_depth(x, y, objController.depth-10, messagebox_type);
 	obj.text = message;
 	obj.has_input_box = false;
 	return obj;	
 }
 
-function show_inputbox(inputbox_type, message, default_value) {
+function show_inputbox_async(inputbox_type, message, default_value) {
 	obj = instance_create_depth(x, y, objController.depth-10, inputbox_type);
 	obj.text = message;
 	obj.has_input_box = true;

@@ -38,7 +38,7 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Dialog Boxes",
-    "path": "folders/Objects/Dialog Boxes.yy",
+    "name": "Input Boxes",
+    "path": "folders/Objects/Dialog Boxes/Input Boxes.yy",
   },
 }

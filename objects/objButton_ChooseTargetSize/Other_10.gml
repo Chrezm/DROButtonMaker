@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-show_inputbox(
+show_inputbox_async(
 	objInputBox_ChooseTargetSize,
 	"Choose target size of generated buttons.\nDefault is 40",
 	string(objButtonGenerator.target_size),
