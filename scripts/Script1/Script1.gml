@@ -12,8 +12,14 @@ function find_char_ini(mapEmotions) {
 	
 	var file = file_text_open_read(ini_file);
 	var raw_text = "";
+	var line = "";
 	while (!file_text_eof(file)) {
-		raw_text = raw_text + file_text_readln(file);
+		line = file_text_readln(file);
+		if (string_lower(line) == "[emotions]\r\n") {
+			// Ini does not specify if section names are case sensitive. GMS currently does.
+			line = "[Emotions]\r\n";	
+		}
+		raw_text = raw_text + line;
 	}
 	file_text_close(file);
 	var ini_text = string_replace_all(raw_text, "#", "|");
