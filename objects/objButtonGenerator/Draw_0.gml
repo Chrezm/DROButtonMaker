@@ -24,6 +24,8 @@ if (mode == 1 or mode == 3) {
 	}	
 	if (mode == 3) {
 		selected_sprite = draw_scaled_from_file(surface, selected_name, 0, 0, size, size);
+	} else {
+		selected_sprite = -1;
 	}
 	if (mask_name != "") {
 		if !surface_exists(mask_surface) {
@@ -47,14 +49,24 @@ if (mode == 1 or mode == 3) {
 		negative_mask_sprite = -1;
 	}
 		
-	sprite_delete(background_sprite);
-	sprite_delete(character_sprite);
-	sprite_delete(foreground_sprite);
-	if (mode == 3) {
+	if (background_sprite >= 0) {
+		sprite_delete(background_sprite);
+	}
+	if (character_sprite >= 0) {
+		sprite_delete(character_sprite);
+	}
+	if (foreground_sprite >= 0) {
+		sprite_delete(foreground_sprite);
+	}
+	if (selected_sprite >= 0 and mode == 3) {
 		sprite_delete(selected_sprite);
 	}
-	sprite_delete(mask_sprite);
-	sprite_delete(negative_mask_sprite);
+	if (mask_sprite >= 0) {
+		sprite_delete(mask_sprite);
+	}
+	if (negative_mask_sprite >= 0) {
+		sprite_delete(negative_mask_sprite);
+	}
 	
 	mode++;
 	alarm[0] = 1;

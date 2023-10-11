@@ -34,7 +34,9 @@ if (use_magick) {
 }
 
 // Prepare for multiple frame image
-sprite_delete(sprite_index);
+if (sprite_index >= 0) {
+	sprite_delete(sprite_index);
+}
 preparing_frames = true;
 sprite_index = sprLoading;
 
