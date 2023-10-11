@@ -1,15 +1,10 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 
-function find_char_ini(mapEmotions) {
-	var ini_file;
-	ini_file = get_open_filename("ini file|*.ini", "");
-	if ini_file == "" {
-	    return "";
-	}
-
-	var directory = filename_dir(ini_file);
-	
+function _get_adapted_ini_contents(ini_file) {
+	/* The ini parser of GMS is more strict than the one DRO uses.
+	 * Therefore, we need to do some magic tricks to get it to work and be read properly.	
+	 */
 	var file = file_text_open_read(ini_file);
 	var raw_text = "";
 	var line = "";
@@ -22,9 +17,26 @@ function find_char_ini(mapEmotions) {
 		raw_text = raw_text + line;
 	}
 	file_text_close(file);
-	var ini_text = string_replace_all(raw_text, "#", "|");
-	ini_text = string_replace_all(ini_text, "\r\n|", "\r\n#");
 	
+	// GMS treats # as newline...
+	var ini_text = string_replace_all(raw_text, "#", "<num>");
+	// ...but make sure to not escape the actual end of lines.
+	ini_text = string_replace_all(ini_text, "\r\n<num>", "\r\n#");
+	// GMS does not like double quoted strings.
+	ini_text = string_replace_all(ini_text, "\"", "<doublequote>");
+	
+	return ini_text;	
+}
+
+function find_char_ini(mapEmotions) {
+	var ini_file;
+	ini_file = get_open_filename("ini file|*.ini", "");
+	if ini_file == "" {
+	    return "";
+	}
+
+	var directory = filename_dir(ini_file);
+	var ini_text = _get_adapted_ini_contents(ini_file);
 	ini_open_from_string(ini_text);
 
 	var i;
@@ -37,7 +49,8 @@ function find_char_ini(mapEmotions) {
 	    if (full_emotion == "<NONE>") {
 	        break;
 	    }
-	    emotion = string_split(full_emotion, "|")[2];
+		full_emotion = string_replace_all(full_emotion, "<doublequote>", "\"");
+	    emotion = string_split(full_emotion, "<num>")[2];
 	    ds_map_add(mapEmotions, i, emotion);
 	    i += 1;
 	}
