@@ -4,5 +4,5 @@
 show_inputbox_async(
 	objInputBox_ChooseTargetSize,
 	"Choose target size of generated buttons.\nDefault is 40",
-	string(objButtonGenerator.target_size),
+	string(objButtonGenerator.target_size)
 );

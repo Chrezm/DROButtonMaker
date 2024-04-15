@@ -7,7 +7,7 @@ if (!sprite_exists(sprite_index)) {
 
 // Main surface for character images
 if !surface_exists(surface) {
-	surface = surface_create(cam_w(0), cam_h(0))
+	surface = surface_create_based_on_camera(0);
 }
 surface_set_target(surface);
 draw_clear_alpha(c_black, 0);

@@ -28,7 +28,7 @@ function _get_adapted_ini_contents(ini_file) {
 	return ini_text;	
 }
 
-function find_char_ini(mapEmotions) {
+function find_char_ini(emotions) {
 	var ini_file;
 	ini_file = get_open_filename("ini file|*.ini", "");
 	if ini_file == "" {
@@ -51,7 +51,7 @@ function find_char_ini(mapEmotions) {
 	    }
 		full_emotion = string_replace_all(full_emotion, "<doublequote>", "\"");
 	    emotion = string_split(full_emotion, "<num>")[2];
-	    ds_map_add(mapEmotions, i, emotion);
+	    ds_map_add(emotions, i, emotion);
 	    i += 1;
 	}
 	
@@ -155,4 +155,17 @@ function show_inputbox_async(inputbox_type, message, default_value) {
 	obj.has_input_box = true;
 	keyboard_string = string(default_value);
 	return obj;
+}
+
+function surface_create_based_on_camera(_camera_index) {
+	var _cam_w = cam_w(_camera_index);
+	var _cam_h = cam_h(_camera_index);
+	var _surface = surface_create(_cam_w, _cam_h);
+	return _surface;
+}
+
+function sprite_delete_if_valid(_index) {
+	if (_index >= 0) {
+		sprite_delete(_index);
+	}
 }

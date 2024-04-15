@@ -1,16 +1,8 @@
 /// @description Unload preview
 if (character_name != "") {
 	character_name = "";
-	if (background_sprite >= 0) {
-		sprite_delete(background_sprite);
-	}
-	if (character_sprite >= 0) {
-		sprite_delete(character_sprite);
-	}
-	if (foreground_sprite >= 0) {
-		sprite_delete(foreground_sprite);
-	}
-	if (selected_sprite >= 0) {
-		sprite_delete(selected_sprite);
-	}
+	sprite_delete_if_valid(background_sprite);
+	sprite_delete_if_valid(character_sprite);
+	sprite_delete_if_valid(foreground_sprite);
+	sprite_delete_if_valid(selected_sprite);
 }

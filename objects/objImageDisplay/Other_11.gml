@@ -12,13 +12,13 @@ var i, j;
 var found = false;
 
 for (i = 0; i < array_length(lookup_prefixes); i++) {
-	lookup_prefix = lookup_prefixes[i];
+	var _lookup_prefix = lookup_prefixes[i];
 	for (j = 0; j < array_length(lookup_suffixes); j++) {
-		lookup_suffix = lookup_suffixes[j];
-		file = current_directory + lookup_prefix + current_filename + lookup_suffix;
+		var _lookup_suffix = lookup_suffixes[j];
+		file = current_directory + _lookup_prefix + current_filename + _lookup_suffix;
 		if (file_exists(file)) {
 			found = true;
-			use_magick = (lookup_suffix == ".png");
+			use_magick = (_lookup_suffix == ".png");
 			break;
 		}
 	}
@@ -34,9 +34,7 @@ if (use_magick) {
 }
 
 // Prepare for multiple frame image
-if (sprite_index >= 0) {
-	sprite_delete(sprite_index);
-}
+sprite_delete_if_valid(sprite_index);
 preparing_frames = true;
 sprite_index = sprLoading;
 

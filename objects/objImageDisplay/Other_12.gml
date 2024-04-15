@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 if (sprite_index != sprLoading) {
-	sprite_delete(sprite_index);
+	sprite_delete_if_valid(sprite_index);
 }
 preparing_frames = false;
 

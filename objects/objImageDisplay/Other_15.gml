@@ -6,9 +6,9 @@ if (current_directory == "") {
 
 current_index--;
 if (current_index < 1) {
-    current_index = ds_map_size(mapEmotions);
+    current_index = ds_map_size(emotions);
 	show_messagebox_async(objMessageBox_Accept, "That was the first image,\ngoing to the last image.")
 }
 
-current_filename = ds_map_find_value(mapEmotions, current_index);
+current_filename = ds_map_find_value(emotions, current_index);
 event_user(1);

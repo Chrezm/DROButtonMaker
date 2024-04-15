@@ -2,7 +2,7 @@
 // You can write your code in this editor
 if (mode == 1 or mode == 3) {
 	if !surface_exists(surface) {
-		surface = surface_create(cam_w(0), cam_h(0))
+		surface = surface_create_based_on_camera(0);
 	}
 	surface_set_target(surface);
 	draw_clear_alpha(c_black, 0);
@@ -29,7 +29,7 @@ if (mode == 1 or mode == 3) {
 	}
 	if (mask_name != "") {
 		if !surface_exists(mask_surface) {
-			mask_surface = surface_create(cam_w(0), cam_h(0));
+			mask_surface = surface_create_based_on_camera(0);
 		}
 		surface_set_target(mask_surface);
 		draw_clear_alpha(c_white, 0);
@@ -49,24 +49,14 @@ if (mode == 1 or mode == 3) {
 		negative_mask_sprite = -1;
 	}
 		
-	if (background_sprite >= 0) {
-		sprite_delete(background_sprite);
+	sprite_delete_if_valid(background_sprite);
+	sprite_delete_if_valid(character_sprite);
+	sprite_delete_if_valid(foreground_sprite);
+	if (mode == 3) {
+		sprite_delete_if_valid(selected_sprite);
 	}
-	if (character_sprite >= 0) {
-		sprite_delete(character_sprite);
-	}
-	if (foreground_sprite >= 0) {
-		sprite_delete(foreground_sprite);
-	}
-	if (selected_sprite >= 0 and mode == 3) {
-		sprite_delete(selected_sprite);
-	}
-	if (mask_sprite >= 0) {
-		sprite_delete(mask_sprite);
-	}
-	if (negative_mask_sprite >= 0) {
-		sprite_delete(negative_mask_sprite);
-	}
+	sprite_delete_if_valid(mask_sprite);
+	sprite_delete_if_valid(negative_mask_sprite);
 	
 	mode++;
 	alarm[0] = 1;

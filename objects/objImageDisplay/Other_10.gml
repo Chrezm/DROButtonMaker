@@ -1,9 +1,10 @@
 /// @description Read directory
 // You can write your code in this editor
-mapEmotions = ds_map_create();
+ds_map_destroy(emotions);
+emotions = ds_map_create();
 var _current_directory;
 
-_current_directory = find_char_ini(mapEmotions);
+_current_directory = find_char_ini(emotions);
 if (_current_directory == "") {
 	show_messagebox_async(
 		objMessageBox_ChariniFail,
@@ -21,7 +22,7 @@ if (string_startswith(program_directory, _current_directory)) {
 
 current_directory = _current_directory;
 current_index = 1;
-current_filename = ds_map_find_value(mapEmotions, current_index);
+current_filename = ds_map_find_value(emotions, current_index);
 
 event_user(1);
 

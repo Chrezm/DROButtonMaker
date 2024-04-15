@@ -16,7 +16,7 @@ if (accept_user_input) {
 	instance_destroy();
 } else {
 	image_index = 1;
-	alarm[0] = room_speed;
+	alarm[0] = game_get_speed(gamespeed_fps);
 	if (has_input_box) {
 		with (obj_dialoginput) {
 			event_user(0);
