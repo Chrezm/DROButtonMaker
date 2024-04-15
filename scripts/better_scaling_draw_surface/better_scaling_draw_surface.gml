@@ -19,9 +19,9 @@ function better_scaling_draw_surface() {
 	// Bicubic interpolation looks at the 16 surrounding pixels to mathematically determine a smooth transition between pixels that are being scaled.
 	// Supersampling is a downscaling technique that takes the average color over regions of the original image. So downscaling by n, will average a portion of nxn pixels from the original image into 1 for the render target.
 
-	var scale_up = ((argument[3] > 1 || argument[4] > 1) && argument[8] != 0), scale_down = (argument[3] < 1 || argument[4] < 1);
+	var _scale_up = ((argument[3] > 1 || argument[4] > 1) && argument[8] != 0), _scale_down = (argument[3] < 1 || argument[4] < 1);
 
-	if (scale_up) {
+	if (_scale_up) {
 	    switch (argument[8]) {
 	        case 1:
 	            shader_set(sh_better_scaling_bicubic);
@@ -62,30 +62,30 @@ function better_scaling_draw_surface() {
 	            texture_set_interpolation(false);
 	            break;
 	    }
-	} else if (scale_down) {
-	    var width, height, samples_x, samples_y, max_samples, offset_x, offset_y;
-	    width = surface_get_width(argument[0]); height = surface_get_height(argument[0]);
-	    if (argument[3] == 0) samples_x = width; else samples_x = min(width, 1 / argument[3]);
-	    if (argument[4] == 0) samples_y = height; else samples_y = min(height, 1 / argument[4]);
-	    max_samples = max(samples_x, samples_y);
-	    offset_x = (1 / width) * samples_x * 0.5; offset_y = (1 / height) * samples_y * 0.5;
-	    if (max_samples <= 2) {
+	} else if (_scale_down) {
+	    var _width, _height, _samples_x, _samples_y, _max_samples, _offset_x, _offset_y;
+	    _width = surface_get_width(argument[0]); _height = surface_get_height(argument[0]);
+	    if (argument[3] == 0) _samples_x = _width; else _samples_x = min(_width, 1 / argument[3]);
+	    if (argument[4] == 0) _samples_y = _height; else _samples_y = min(_height, 1 / argument[4]);
+	    _max_samples = max(_samples_x, _samples_y);
+	    _offset_x = (1 / _width) * _samples_x * 0.5; _offset_y = (1 / _height) * _samples_y * 0.5;
+	    if (_max_samples <= 2) {
 	        shader_set(sh_better_scaling_supersampling_2x2);
-	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_2x2, "offset"), offset_x, offset_y);
-	    } else if (max_samples <= 3) {
+	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_2x2, "offset"), _offset_x, _offset_y);
+	    } else if (_max_samples <= 3) {
 	        shader_set(sh_better_scaling_supersampling_3x3);
-	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_3x3, "offset"), offset_x, offset_y);
+	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_3x3, "offset"), _offset_x, _offset_y);
 	    } else {
 	        shader_set(sh_better_scaling_supersampling_4x4);
-	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_4x4, "offset"), offset_x, offset_y);
+	        shader_set_uniform_f(shader_get_uniform(sh_better_scaling_supersampling_4x4, "offset"), _offset_x, _offset_y);
 	    }
 	    texture_set_interpolation(true);
 	}
 
 	draw_surface_ext(argument[0], argument[1], argument[2], argument[3], argument[4], argument[5], argument[6], argument[7]);
 
-	if (scale_up || scale_down) {
-	    if (scale_up) texture_set_interpolation(true);
+	if (_scale_up || _scale_down) {
+	    if (_scale_up) texture_set_interpolation(true);
 	    shader_reset();
 	}
 
