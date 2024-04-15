@@ -74,7 +74,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.106",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"better_scaling_draw_surface","path":"scripts/better_scaling_draw_surface/better_scaling_draw_surface.yy",},},
