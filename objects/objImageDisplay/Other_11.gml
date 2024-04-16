@@ -5,30 +5,28 @@ multiple_frames = false;
 current_frame = 0;
 available_frames = 1;
 
-var file;
-var use_magick = true;
+var _file;
+var _use_magick = true;
+var _found = false;
 
-var i, j;
-var found = false;
-
-for (i = 0; i < array_length(lookup_prefixes); i++) {
-	var _lookup_prefix = lookup_prefixes[i];
-	for (j = 0; j < array_length(lookup_suffixes); j++) {
-		var _lookup_suffix = lookup_suffixes[j];
-		file = current_directory + _lookup_prefix + current_filename + _lookup_suffix;
-		if (file_exists(file)) {
-			found = true;
-			use_magick = (_lookup_suffix == ".png");
+for (var _i = 0; _i < array_length(lookup_prefixes); _i++) {
+	var _lookup_prefix = lookup_prefixes[_i];
+	for (var _j = 0; _j < array_length(lookup_suffixes); _j++) {
+		var _lookup_suffix = lookup_suffixes[_j];
+		_file = current_directory + _lookup_prefix + current_filename + _lookup_suffix;
+		if (file_exists(_file)) {
+			_found = true;
+			_use_magick = (_lookup_suffix == ".png");
 			break;
 		}
 	}
-	if (found) {
+	if (_found) {
 		break;
 	}
 }
 
-if (use_magick) {
-	current_full_filename = file;
+if (_use_magick) {
+	current_full_filename = _file;
 	event_user(2);
 	exit;
 }
@@ -38,7 +36,7 @@ sprite_delete_if_valid(sprite_index);
 preparing_frames = true;
 sprite_index = sprLoading;
 
-objFileConverter.source_filename = file;
+objFileConverter.source_filename = _file;
 with objFileConverter {
 	event_user(0);
 }

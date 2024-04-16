@@ -15,17 +15,17 @@ if (file_exists(target_filename)) {
 	}
 	
 	// Decide how many images exist
-	var i = 0;
-	var new_filename;
+	var _i = 0;
+	var _new_filename;
 	while (true) {
-		new_filename = string_replace(target_filename, ".png", "-" + string(i) + ".png");
-		if (!file_exists(new_filename)) {
+		_new_filename = string_replace(target_filename, ".png", "-" + string(_i) + ".png");
+		if (!file_exists(_new_filename)) {
 			break;
 		}
-		i++;
+		_i++;
 	}
 	
-	objImageDisplay.available_frames = i-1;
+	objImageDisplay.available_frames = _i-1;
 } else {
 	show_messagebox_async(objMessageBox_Accept, "Failed to generate frames for file\n" + target_filename);
 }

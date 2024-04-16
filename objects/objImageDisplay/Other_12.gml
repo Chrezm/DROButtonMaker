@@ -6,9 +6,9 @@ if (sprite_index != sprLoading) {
 }
 preparing_frames = false;
 
-var spr;
+var _spr;
 
-spr = sprite_add(current_full_filename, 1, 0, 0, 0, 0);
-sprite_index = spr;
+_spr = sprite_add(current_full_filename, 1, 0, 0, 0, 0);
+sprite_index = _spr;
 room_width = cam_w(0);
 room_height = cam_h(0);

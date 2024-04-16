@@ -50,9 +50,9 @@ if (_num_buttons > 0) {
 	var _y_button_offset = sprite_height/(_rows+1)*_rows - _button_size/2;
 	_y_button_offset = clamp(_y_button_offset, base_offset, sprite_height);
 
-	for (var i=0; i<_num_buttons; i++) {
-		var _button = ds_list_find_value(buttons, i);
-		_button.x = x + _x_button_offset*(i+1);
+	for (var _i = 0; _i<_num_buttons; _i++) {
+		var _button = ds_list_find_value(buttons, _i);
+		_button.x = x + _x_button_offset*(_i+1);
 		_button.y = y + _y_button_offset;
 	}
 }

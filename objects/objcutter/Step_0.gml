@@ -13,13 +13,13 @@ if (selected) {
 	exit;
 }
 
-var kl, kr, ku, kd;
-kl = keyboard_check(vk_left);
-kr = keyboard_check(vk_right);
-ku = keyboard_check(vk_up);
-kd = keyboard_check(vk_down);
+var _kl, _kr, _ku, _kd;
+_kl = keyboard_check(vk_left);
+_kr = keyboard_check(vk_right);
+_ku = keyboard_check(vk_up);
+_kd = keyboard_check(vk_down);
 
-if not (kl or kr or ku or kd) {
+if not (_kl or _kr or _ku or _kd) {
 	held_direction = 0;
 	exit;
 }
@@ -29,22 +29,22 @@ if (held_direction == held_direction_max || held_direction == 0) {
 		held_direction++;
 	}
 	if (keyboard_check(vk_alt)) {
-		if (ku or kr) {
+		if (_ku or _kr) {
 			event_perform(ev_mouse, ev_mouse_wheel_up);
-		} else if (kd or kl) {
+		} else if (_kd or _kl) {
 			event_perform(ev_mouse, ev_mouse_wheel_down);
 		}
 	} else {
-		if (kl and x > 0) {
+		if (_kl and x > 0) {
 			x -= scroll_speed;
 		} 
-		if (kr and x + width + scroll_speed < room_width) {
+		if (_kr and x + width + scroll_speed < room_width) {
 			x += scroll_speed;
 		} 
-		if (ku and y > 0) {
+		if (_ku and y > 0) {
 			y -= scroll_speed;
 		} 
-		if (kd and y + height + scroll_speed < room_height) {
+		if (_kd and y + height + scroll_speed < room_height) {
 			y += scroll_speed;
 		}
 	}
