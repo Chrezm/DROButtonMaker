@@ -28,14 +28,7 @@ function _get_adapted_ini_contents(_ini_file) {
 	return _ini_text;
 }
 
-function find_char_ini(_emotions) {
-	var _ini_file;
-	_ini_file = get_open_filename("ini file|*.ini", "");
-	if _ini_file == "" {
-	    return "";
-	}
-
-	var _directory = filename_dir(_ini_file);
+function parse_char_ini(_emotions, _ini_file) {
 	var _ini_text = _get_adapted_ini_contents(_ini_file);
 	ini_open_from_string(_ini_text);
 
@@ -54,8 +47,40 @@ function find_char_ini(_emotions) {
 	    ds_map_add(_emotions, _i, _emotion);
 	    _i += 1;
 	}
-	
-	return _directory;
+}
+
+function parse_char_json(_emotions, _json_file) {
+	var _char_json = json_load(_json_file);
+	if (is_undefined(_char_json)) {
+		return;
+	}
+	var _outfits = _char_json.outfit_order;
+	if (array_length(_outfits) == 0) {
+		return;
+	}
+	var _directory = filename_dir(_json_file);
+	for (var _i = 0; _i < array_length(_outfits); _i++) {
+		var _outfit = array_get(_outfits, _i);
+		show_debug_message(_outfit);
+		var _outfit_file_path = _directory + "\\outfits\\" + _outfit + "\\outfit.json";
+		var _outfit_json = json_load(_outfit_file_path);
+		if (is_undefined(_outfit_json)) {
+			continue;	
+		}
+		show_debug_message(_outfit_json);
+		var _emotes = _outfit_json.emotes;
+		if (array_length(_emotes) == 0) {
+			return;
+		}
+		var _starting_size = ds_map_size(_emotions);
+		for (var _j = 0; _j < array_length(_emotes); _j++) {
+			var _emote = array_get(_emotes, _j);
+			var _emote_name = _emote.name;
+			var _final_emote_index = _starting_size + _j + 1;
+			var _final_emote_name = "outfits\\" + _outfit + "\\" + _emote_name;
+			ds_map_add(_emotions, _final_emote_index, _final_emote_name);		
+		}
+	}
 }
 
 function string_split(_s, _d) {

@@ -2,16 +2,17 @@
 // You can write your code in this editor
 ds_map_destroy(emotions);
 emotions = ds_map_create();
-var _current_directory;
 
-_current_directory = find_char_ini(emotions);
-if (_current_directory == "") {
+var _character_registry_file = get_open_filename("character registry files|char.ini;char.json", "");
+if (_character_registry_file == "") {
 	show_messagebox_async(
 		objMessageBox_ChariniFail,
-		"No char.ini selected.\nTry again?"
+		"No character registry file selected.\nTry again?"
 	);
 	exit;
 }
+
+var _current_directory = filename_dir(_character_registry_file);
 if (string_startswith(program_directory, _current_directory)) {
 	show_messagebox_async(
 		objMessageBox_ChariniFail,
@@ -20,10 +21,30 @@ if (string_startswith(program_directory, _current_directory)) {
 	exit;
 }
 
+if (string_ends_with(_character_registry_file, ".ini")) {
+	parse_char_ini(emotions, _character_registry_file);
+} else if (string_ends_with(_character_registry_file, ".json")) {
+	parse_char_json(emotions, _character_registry_file);
+} else {
+	show_messagebox_async(
+		objMessageBox_ChariniFail,
+		"Unrecognized kind of character registry file selected.\nTry again?"
+	);
+	exit;
+}
+if (ds_map_empty(emotions)) {
+	// Shouldn't happen unless this character registry literally defines 
+	// no sprites.
+	show_messagebox_async(
+		objMessageBox_ChariniFail,
+		"Character registry defines no sprites.\nTry again?"
+	);	
+	exit;
+}
+
 current_directory = _current_directory;
 current_index = 1;
 current_filename = ds_map_find_value(emotions, current_index);
-
 event_user(1);
 
 if !instance_exists(objCutter) {
