@@ -49,20 +49,56 @@ function parse_char_ini(_emotions, _ini_file) {
 	}
 }
 
+function _get_outfits(_directory, _char_json) {
+	var _system_outfits = [];
+	
+	// The output of this function is a sublist of all the outfits in the outfits directory
+	var _folder_name = file_find_first(_directory + "\\outfits\\*", fa_directory);
+	while (_folder_name != "") {
+		array_push(_system_outfits, _folder_name);
+		_folder_name = file_find_next();
+	}
+	file_find_close();
+	if (array_length(_system_outfits) == 0) {
+		return _system_outfits;
+	}
+	
+	// We then look for a specific ordering of the outfits, defaulting to what we have
+	// if not given a specific ordering
+	if (!struct_exists(_char_json, "outfit_order")) {
+		return _system_outfits;
+	}
+	
+	// If we have outfits, we return an array containing,
+	// 1. _outfit_order, followed by
+	// 2. The outfits in _system_outfits not in _outfit_order, in alphabetical order
+	var _outfit_order = _char_json.outfit_order;
+	var _other_outfits = [];
+	
+	for (var _i = 0; _i < array_length(_outfit_order); _i++) {
+		var _ordered_outfit = array_get(_outfit_order, _i);
+		if (array_contains(_system_outfits, _ordered_outfit)) {
+			continue;
+		}
+		array_push(_other_outfits, _ordered_outfit);
+	}
+	return array_concat(_outfit_order, _other_outfits);
+}
+
 function parse_char_json(_emotions, _json_file) {
 	var _char_json = json_load(_json_file);
 	if (is_undefined(_char_json)) {
 		return;
 	}
-	var _outfits = _char_json.outfit_order;
+	var _directory = filename_dir(_json_file);
+	var _outfits = _get_outfits(_directory, _char_json);
 	if (array_length(_outfits) == 0) {
 		return;
 	}
-	var _directory = filename_dir(_json_file);
 	for (var _i = 0; _i < array_length(_outfits); _i++) {
 		var _outfit = array_get(_outfits, _i);
 		show_debug_message(_outfit);
-		var _outfit_file_path = _directory + "\\outfits\\" + _outfit + "\\outfit.json";
+		var _outfit_file_path = _directory + "/outfits/" + _outfit + "/outfit.json";
 		var _outfit_json = json_load(_outfit_file_path);
 		if (is_undefined(_outfit_json)) {
 			continue;	
@@ -77,7 +113,7 @@ function parse_char_json(_emotions, _json_file) {
 			var _emote = array_get(_emotes, _j);
 			var _emote_name = _emote.name;
 			var _final_emote_index = _starting_size + _j + 1;
-			var _final_emote_name = "outfits\\" + _outfit + "\\" + _emote_name;
+			var _final_emote_name = "outfits/" + _outfit + "/" + _emote_name;
 			ds_map_add(_emotions, _final_emote_index, _final_emote_name);		
 		}
 	}
