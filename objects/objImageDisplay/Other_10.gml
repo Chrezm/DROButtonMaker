@@ -44,7 +44,7 @@ if (ds_map_empty(emotions)) {
 
 current_directory = _current_directory;
 current_index = 1;
-current_filename = ds_map_find_value(emotions, current_index);
+current_emote = ds_map_find_value(emotions, current_index);
 event_user(1);
 
 if !instance_exists(objCutter) {

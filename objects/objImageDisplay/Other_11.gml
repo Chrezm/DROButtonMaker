@@ -13,7 +13,7 @@ for (var _i = 0; _i < array_length(lookup_prefixes); _i++) {
 	var _lookup_prefix = lookup_prefixes[_i];
 	for (var _j = 0; _j < array_length(lookup_suffixes); _j++) {
 		var _lookup_suffix = lookup_suffixes[_j];
-		_file = current_directory + _lookup_prefix + current_filename + _lookup_suffix;
+		_file = current_directory + _lookup_prefix + current_emote.path_minus_extension + _lookup_suffix;
 		if (file_exists(_file)) {
 			_found = true;
 			_use_magick = (_lookup_suffix == ".png");

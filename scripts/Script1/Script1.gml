@@ -33,18 +33,34 @@ function parse_char_ini(_emotions, _ini_file) {
 	ini_open_from_string(_ini_text);
 
 	var _i;
-	var _emotion, _full_emotion;
 	_i = 1;
-	_emotion = "";
-	_full_emotion = "";
 	while (true) {
-	    _full_emotion = ini_read_string("Emotions", string(_i), "<NONE>")
-	    if (_full_emotion == "<NONE>") {
+	    var _emotion_line = ini_read_string("Emotions", string(_i), "<NONE>")
+	    if (_emotion_line == "<NONE>") {
 	        break;
 	    }
-		_full_emotion = string_replace_all(_full_emotion, "<doublequote>", "\"");
-	    _emotion = string_split(_full_emotion, "<num>")[2];
-	    ds_map_add(_emotions, _i, _emotion);
+		_emotion_line = string_replace_all(_emotion_line, "<doublequote>", "\"");
+		_emotion_line = string_replace_all(_emotion_line, "\\", "/");
+		var _emote_name = string_split(_emotion_line, "<num>")[0];
+	    var _path_minus_extension = string_split(_emotion_line, "<num>")[2];
+		var _parent_directory = "";
+		var _emote_stem = "";
+		var _parent_directory_delimiter_index = string_last_pos("/", _path_minus_extension);
+		if (_parent_directory_delimiter_index != 0) {
+			_parent_directory = string_copy(_path_minus_extension, 1, _parent_directory_delimiter_index - 1);
+			_emote_stem = string_copy(_path_minus_extension, _parent_directory_delimiter_index + 1, 
+			  string_length(_path_minus_extension) - _parent_directory_delimiter_index);
+		} else {
+			_parent_directory = "";
+			_emote_stem = _path_minus_extension;
+		}		
+		var _emote = {
+			name: _emote_name,
+			stem: _emote_stem,
+			parent_directory: _parent_directory,
+			path_minus_extension: _path_minus_extension,
+		};
+	    ds_map_add(_emotions, _i, _emote);
 	    _i += 1;
 	}
 }
@@ -110,11 +126,18 @@ function parse_char_json(_emotions, _json_file) {
 		}
 		var _starting_size = ds_map_size(_emotions);
 		for (var _j = 0; _j < array_length(_emotes); _j++) {
-			var _emote = array_get(_emotes, _j);
-			var _emote_name = _emote.name;
+			var _json_emote = array_get(_emotes, _j);
+			var _emote_name = _json_emote.name;
+			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote .image : _emote_name;
 			var _final_emote_index = _starting_size + _j + 1;
-			var _final_emote_name = "outfits/" + _outfit + "/" + _emote_name;
-			ds_map_add(_emotions, _final_emote_index, _final_emote_name);		
+			var _parent_directory = "outfits/" + _outfit;
+			var _emote = {
+				name: _emote_name,
+				stem: _emote_stem,
+				parent_directory: _parent_directory,
+				path_minus_extension: _parent_directory + "/" + _emote_stem
+			};
+			ds_map_add(_emotions, _final_emote_index, _emote);		
 		}
 	}
 }
