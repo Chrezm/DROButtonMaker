@@ -26,8 +26,15 @@ draw_surface(cutter_surface, 0, 0);
 
 if (to_draw != "") {
 	surface_save_part(objImageDisplay.surface, to_draw, x-cam_x(0), y-cam_y(0), width, height);
-	if (objButtonGenerator.selected_name != "" and string_pos("_off", objButtonGenerator.target_name) > 0) {
-		var _to_draw_on = target_button(objImageDisplay, string_replace(objButtonGenerator.target_name, "_off", "_on"), "");
+	if (objButtonGenerator.selected_name != "") {
+		var _off_index = string_last_pos("_off", objButtonGenerator.target_name);
+		var _on_name = "";
+		if (string_ends_with(objButtonGenerator.target_name, "_off")) {
+			_on_name = string_copy(objButtonGenerator.target_name, 1, _off_index-1) + "_on";
+		} else {
+			_on_name = objButtonGenerator.target_name + "_on";
+		}
+		var _to_draw_on = target_button(objImageDisplay, _on_name, "");
 		surface_save_part(objImageDisplay.surface, _to_draw_on, x-cam_x(0), y-cam_y(0), width, height);
 	}
 	objButtonGenerator.character_name = to_draw;
