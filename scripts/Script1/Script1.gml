@@ -59,6 +59,7 @@ function parse_char_ini(_emotions, _ini_file) {
 			stem: _emote_stem,
 			parent_directory: _parent_directory,
 			path_minus_extension: _path_minus_extension,
+			target_button_directory: "emotions"
 		};
 	    ds_map_add(_emotions, _i, _emote);
 	    _i += 1;
@@ -131,15 +132,34 @@ function parse_char_json(_emotions, _json_file) {
 			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote .image : _emote_name;
 			var _final_emote_index = _starting_size + _j + 1;
 			var _parent_directory = "outfits/" + _outfit;
+			var _target_button_directory = _parent_directory + "/emotions";
 			var _emote = {
 				name: _emote_name,
 				stem: _emote_stem,
 				parent_directory: _parent_directory,
-				path_minus_extension: _parent_directory + "/" + _emote_stem
+				path_minus_extension: _parent_directory + "/" + _emote_stem,
+				target_button_directory: _target_button_directory
 			};
 			ds_map_add(_emotions, _final_emote_index, _emote);		
 		}
 	}
+}
+
+function create_target_button_directories(_emotions, _current_directory) {
+	var _target_button_directories_created = ds_map_create();
+	for (var _i = 1; _i <= ds_map_size(_emotions); _i++) {
+		var _emote = ds_map_find_value(_emotions, _i);
+		var _candidate_target_button_directory = _current_directory + "/" + _emote.target_button_directory;
+		if (ds_map_exists(_target_button_directories_created, _candidate_target_button_directory)) {
+			continue;
+		}
+		if (directory_exists(_candidate_target_button_directory)) {
+			_candidate_target_button_directory += "2";
+		}
+		directory_create(_candidate_target_button_directory);
+		ds_map_set(_target_button_directories_created, _candidate_target_button_directory, true);
+	}
+	ds_map_destroy(_target_button_directories_created);
 }
 
 function string_split(_s, _d) {
@@ -162,7 +182,7 @@ function string_startswith(_substr, _str) {
 
 function target_button(_obj_image_display, _name, _suffix) {
 	_name = string_replace_all(_name, "<num>", string(_obj_image_display.current_index));
-	return _obj_image_display.target_directory + "\\" + _name + _suffix + ".png";
+	return obj_image_display.current_emote.parent_directory + "\\" + _name + _suffix + ".png";
 }
 
 function draw_scaled(_surface, _sprite, _x, _y, _width, _height) {

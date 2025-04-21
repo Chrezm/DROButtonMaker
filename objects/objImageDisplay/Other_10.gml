@@ -45,6 +45,7 @@ if (ds_map_empty(emotions)) {
 current_directory = _current_directory;
 current_index = 1;
 current_emote = ds_map_find_value(emotions, current_index);
+create_target_button_directories(emotions, current_directory);
 event_user(1);
 
 if !instance_exists(objCutter) {
@@ -53,12 +54,3 @@ if !instance_exists(objCutter) {
 objCutter.x = round((room_width - objCutter.width)/2);
 camera_set_view_pos(view_camera[0], (room_width - cam_w(0))/2, 0);
 
-if !directory_exists(current_directory + "\\emotions") {
-	target_directory = current_directory + "\\emotions";
-	directory_create(target_directory);
-} else {
-	target_directory = current_directory + "\\emotions2";
-	if !directory_exists(current_directory + "\\emotions2") {
-		directory_create(target_directory);
-	}
-}
