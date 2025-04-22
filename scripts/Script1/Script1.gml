@@ -145,6 +145,16 @@ function parse_char_json(_emotions, _json_file) {
 	}
 }
 
+function directory_nonempty(_path) {
+	if (!directory_exists(_path)) {
+		return false;
+	}
+	var _file = file_find_first(_path + "/*", fa_none);
+	var _output = (_file != "");
+	file_find_close();
+	return _output;
+}
+
 function create_target_button_directories(_emotions, _current_directory) {
 	var _target_button_directories_created = ds_map_create();
 	for (var _i = 1; _i <= ds_map_size(_emotions); _i++) {
@@ -153,7 +163,7 @@ function create_target_button_directories(_emotions, _current_directory) {
 		if (ds_map_exists(_target_button_directories_created, _candidate_target_button_directory)) {
 			continue;
 		}
-		if (directory_exists(_candidate_target_button_directory)) {
+		if (directory_nonempty(_candidate_target_button_directory)) {
 			_candidate_target_button_directory += "2";
 			_emote.target_button_directory += "2";
 		}
