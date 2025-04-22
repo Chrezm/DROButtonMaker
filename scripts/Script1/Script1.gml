@@ -155,6 +155,7 @@ function create_target_button_directories(_emotions, _current_directory) {
 		}
 		if (directory_exists(_candidate_target_button_directory)) {
 			_candidate_target_button_directory += "2";
+			_emote.target_button_directory += "2";
 		}
 		directory_create(_candidate_target_button_directory);
 		ds_map_set(_target_button_directories_created, _candidate_target_button_directory, true);
@@ -181,8 +182,10 @@ function string_startswith(_substr, _str) {
 }
 
 function target_button(_obj_image_display, _name, _suffix) {
+	var _emote = ds_map_find_value(_obj_image_display.emotions, _obj_image_display.current_index);
 	_name = string_replace_all(_name, "<num>", string(_obj_image_display.current_index));
-	return obj_image_display.current_emote.parent_directory + "\\" + _name + _suffix + ".png";
+	_name = string_replace_all(_name, "<name>", string(_emote.name));
+	return _obj_image_display.current_directory + "/" + _emote.target_button_directory + "/" + _name + _suffix + ".png";
 }
 
 function draw_scaled(_surface, _sprite, _x, _y, _width, _height) {

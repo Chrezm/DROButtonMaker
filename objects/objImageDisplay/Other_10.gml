@@ -23,8 +23,12 @@ if (string_startswith(program_directory, _current_directory)) {
 
 if (string_ends_with(_character_registry_file, ".ini")) {
 	parse_char_ini(emotions, _character_registry_file);
+	objButtonGenerator.default_target_name = "button<num>_off";
+	objButtonGenerator.target_name = "button<num>_off";
 } else if (string_ends_with(_character_registry_file, ".json")) {
 	parse_char_json(emotions, _character_registry_file);
+	objButtonGenerator.default_target_name = "<name>";
+	objButtonGenerator.target_name = "<name>";
 } else {
 	show_messagebox_async(
 		objMessageBox_ChariniFail,
