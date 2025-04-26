@@ -92,12 +92,12 @@ function _get_outfits(_directory, _char_json) {
 	var _outfit_order = _char_json.outfit_order;
 	var _other_outfits = [];
 	
-	for (var _i = 0; _i < array_length(_outfit_order); _i++) {
-		var _ordered_outfit = array_get(_outfit_order, _i);
-		if (array_contains(_system_outfits, _ordered_outfit)) {
+	for (var _i = 0; _i < array_length(_system_outfits); _i++) {
+		var _system_outfit = array_get(_system_outfits, _i);
+		if (array_contains(_outfit_order, _system_outfit)) {
 			continue;
 		}
-		array_push(_other_outfits, _ordered_outfit);
+		array_push(_other_outfits, _system_outfit);
 	}
 	return array_concat(_outfit_order, _other_outfits);
 }
