@@ -55,6 +55,7 @@
     {"name":"objMessageBox_ChariniFail","order":2,"path":"objects/objMessageBox_ChariniFail/objMessageBox_ChariniFail.yy",},
     {"name":"objPreview","order":4,"path":"objects/objPreview/objPreview.yy",},
     {"name":"better_scaling_draw_surface","order":1,"path":"scripts/better_scaling_draw_surface/better_scaling_draw_surface.yy",},
+    {"name":"scrJsonUtilities","order":3,"path":"scripts/scrJsonUtilities/scrJsonUtilities.yy",},
     {"name":"sh_better_scaling_5xbrb","order":1,"path":"shaders/sh_better_scaling_5xbrb/sh_better_scaling_5xbrb.yy",},
     {"name":"sh_better_scaling_5xbrc","order":2,"path":"shaders/sh_better_scaling_5xbrc/sh_better_scaling_5xbrc.yy",},
     {"name":"sh_better_scaling_bicubic","order":3,"path":"shaders/sh_better_scaling_bicubic/sh_better_scaling_bicubic.yy",},

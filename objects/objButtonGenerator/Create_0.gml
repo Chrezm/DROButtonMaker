@@ -7,4 +7,5 @@ foreground_name = "";
 selected_name = "";
 mask_name = "";
 target_size = 40;
-target_name = "button<num>_off";
+default_target_name = "button<num>_off";
+target_name = default_target_name;

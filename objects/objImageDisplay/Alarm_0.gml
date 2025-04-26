@@ -7,5 +7,5 @@ if (current_index > ds_map_size(emotions)) {
 	show_messagebox_async(objMessageBox_Accept, "That was the last image,\ngoing back to the first image.")
 }
 
-current_filename = ds_map_find_value(emotions, current_index);
+current_emote = ds_map_find_value(emotions, current_index);
 event_user(1);
