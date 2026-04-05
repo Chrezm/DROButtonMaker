@@ -18,7 +18,10 @@ if (color == 2 || color >= 5) {
 
 var _gap = 20;
 
-draw_text(_x, _y +_gap*0, "Current basic file: " + string(objImageDisplay.current_index) + " " + objImageDisplay.current_filename);
+var _basic_file = string(objImageDisplay.current_index) + " - " + 
+  objImageDisplay.current_emote.path_minus_extension + " - " +
+  objImageDisplay.current_emote.name;
+draw_text(_x, _y +_gap*0, "Current basic file: " + _basic_file);
 if (objImageDisplay.preparing_frames) {
 	draw_text(_x, _y + _gap*1, "Current shown file: None");
 } else {

@@ -28,34 +28,149 @@ function _get_adapted_ini_contents(_ini_file) {
 	return _ini_text;
 }
 
-function find_char_ini(_emotions) {
-	var _ini_file;
-	_ini_file = get_open_filename("ini file|*.ini", "");
-	if _ini_file == "" {
-	    return "";
-	}
-
-	var _directory = filename_dir(_ini_file);
+function parse_char_ini(_emotions, _ini_file) {
 	var _ini_text = _get_adapted_ini_contents(_ini_file);
 	ini_open_from_string(_ini_text);
 
 	var _i;
-	var _emotion, _full_emotion;
 	_i = 1;
-	_emotion = "";
-	_full_emotion = "";
 	while (true) {
-	    _full_emotion = ini_read_string("Emotions", string(_i), "<NONE>")
-	    if (_full_emotion == "<NONE>") {
+	    var _emotion_line = ini_read_string("Emotions", string(_i), "<NONE>")
+	    if (_emotion_line == "<NONE>") {
 	        break;
 	    }
-		_full_emotion = string_replace_all(_full_emotion, "<doublequote>", "\"");
-	    _emotion = string_split(_full_emotion, "<num>")[2];
-	    ds_map_add(_emotions, _i, _emotion);
+		_emotion_line = string_replace_all(_emotion_line, "<doublequote>", "\"");
+		_emotion_line = string_replace_all(_emotion_line, "\\", "/");
+		var _emote_name = string_split(_emotion_line, "<num>")[0];
+	    var _path_minus_extension = string_split(_emotion_line, "<num>")[2];
+		var _parent_directory = "";
+		var _emote_stem = "";
+		var _parent_directory_delimiter_index = string_last_pos("/", _path_minus_extension);
+		if (_parent_directory_delimiter_index != 0) {
+			_parent_directory = string_copy(_path_minus_extension, 1, _parent_directory_delimiter_index - 1);
+			_emote_stem = string_copy(_path_minus_extension, _parent_directory_delimiter_index + 1, 
+			  string_length(_path_minus_extension) - _parent_directory_delimiter_index);
+		} else {
+			_parent_directory = "";
+			_emote_stem = _path_minus_extension;
+		}		
+		var _emote = {
+			name: _emote_name,
+			stem: _emote_stem,
+			parent_directory: _parent_directory,
+			path_minus_extension: _path_minus_extension,
+			target_button_directory: "emotions"
+		};
+	    ds_map_add(_emotions, _i, _emote);
 	    _i += 1;
 	}
+}
+
+function _get_outfits(_directory, _char_json) {
+	var _system_outfits = [];
 	
-	return _directory;
+	// The output of this function is a sublist of all the outfits in the outfits directory
+	var _folder_name = file_find_first(_directory + "\\outfits\\*", fa_directory);
+	while (_folder_name != "") {
+		array_push(_system_outfits, _folder_name);
+		_folder_name = file_find_next();
+	}
+	file_find_close();
+	if (array_length(_system_outfits) == 0) {
+		return _system_outfits;
+	}
+	
+	// We then look for a specific ordering of the outfits, defaulting to what we have
+	// if not given a specific ordering
+	if (!struct_exists(_char_json, "outfit_order")) {
+		return _system_outfits;
+	}
+	
+	// If we have outfits, we return an array containing,
+	// 1. _outfit_order, followed by
+	// 2. The outfits in _system_outfits not in _outfit_order, in alphabetical order
+	var _outfit_order = _char_json.outfit_order;
+	var _other_outfits = [];
+	
+	for (var _i = 0; _i < array_length(_system_outfits); _i++) {
+		var _system_outfit = array_get(_system_outfits, _i);
+		if (array_contains(_outfit_order, _system_outfit)) {
+			continue;
+		}
+		array_push(_other_outfits, _system_outfit);
+	}
+	return array_concat(_outfit_order, _other_outfits);
+}
+
+function parse_char_json(_emotions, _json_file) {
+	var _char_json = json_load(_json_file);
+	if (is_undefined(_char_json)) {
+		return;
+	}
+	var _directory = filename_dir(_json_file);
+	var _outfits = _get_outfits(_directory, _char_json);
+	if (array_length(_outfits) == 0) {
+		return;
+	}
+	for (var _i = 0; _i < array_length(_outfits); _i++) {
+		var _outfit = array_get(_outfits, _i);
+		show_debug_message(_outfit);
+		var _outfit_file_path = _directory + "/outfits/" + _outfit + "/outfit.json";
+		var _outfit_json = json_load(_outfit_file_path);
+		if (is_undefined(_outfit_json)) {
+			continue;	
+		}
+		show_debug_message(_outfit_json);
+		var _emotes = _outfit_json.emotes;
+		if (array_length(_emotes) == 0) {
+			return;
+		}
+		var _starting_size = ds_map_size(_emotions);
+		for (var _j = 0; _j < array_length(_emotes); _j++) {
+			var _json_emote = array_get(_emotes, _j);
+			var _emote_name = _json_emote.name;
+			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote .image : _emote_name;
+			var _final_emote_index = _starting_size + _j + 1;
+			var _parent_directory = "outfits/" + _outfit;
+			var _target_button_directory = _parent_directory + "/emotions";
+			var _emote = {
+				name: _emote_name,
+				stem: _emote_stem,
+				parent_directory: _parent_directory,
+				path_minus_extension: _parent_directory + "/" + _emote_stem,
+				target_button_directory: _target_button_directory
+			};
+			ds_map_add(_emotions, _final_emote_index, _emote);		
+		}
+	}
+}
+
+function directory_nonempty(_path) {
+	if (!directory_exists(_path)) {
+		return false;
+	}
+	var _file = file_find_first(_path + "/*", fa_none);
+	var _output = (_file != "");
+	file_find_close();
+	return _output;
+}
+
+function create_target_button_directories(_emotions, _current_directory) {
+	var _target_button_directories_created = ds_map_create();
+	for (var _i = 1; _i <= ds_map_size(_emotions); _i++) {
+		var _emote = ds_map_find_value(_emotions, _i);
+		var _candidate_target_button_directory = _current_directory + "/" + _emote.target_button_directory;
+		if (ds_map_exists(_target_button_directories_created, _candidate_target_button_directory)) {
+			continue;
+		}
+		if (directory_nonempty(_candidate_target_button_directory)) {
+			_candidate_target_button_directory += "2";
+			_emote.target_button_directory += "2";
+		}
+		directory_create(_candidate_target_button_directory);
+		ds_map_set(_target_button_directories_created, _candidate_target_button_directory, true);
+	}
+	ds_map_destroy(_target_button_directories_created);
 }
 
 function string_split(_s, _d) {
@@ -77,8 +192,10 @@ function string_startswith(_substr, _str) {
 }
 
 function target_button(_obj_image_display, _name, _suffix) {
+	var _emote = ds_map_find_value(_obj_image_display.emotions, _obj_image_display.current_index);
 	_name = string_replace_all(_name, "<num>", string(_obj_image_display.current_index));
-	return _obj_image_display.target_directory + "\\" + _name + _suffix + ".png";
+	_name = string_replace_all(_name, "<name>", string(_emote.name));
+	return _obj_image_display.current_directory + "/" + _emote.target_button_directory + "/" + _name + _suffix + ".png";
 }
 
 function draw_scaled(_surface, _sprite, _x, _y, _width, _height) {
