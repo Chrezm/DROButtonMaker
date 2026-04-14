@@ -70,6 +70,6 @@ draw_surface_part_clipped(objCutter.cutter_surface, mouse_x-40, mouse_y-40, 80, 
 surface_reset_target();
 gpu_set_texfilter(false);
 gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
-draw_surface_stretched(zoom_surface, _vx + _vw - 200, _vy, 200, 200);
+draw_surface_stretched(zoom_surface, _vx+_vw-200, _vy, 200, 200);
 gpu_set_blendmode(bm_normal);
 gpu_set_texfilter(true);
