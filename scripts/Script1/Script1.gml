@@ -217,6 +217,28 @@ function draw_scaled_from_file(_surface, _source_file, _x, _y, _width, _height) 
 	return _file_sprite;
 }
 
+function draw_surface_part_clipped(_surf, _src_x, _src_y, _w, _h, _dst_x, _dst_y) {
+	if (!surface_exists(_surf)) return;
+
+	var _sw = surface_get_width(_surf);
+	var _sh = surface_get_height(_surf);
+
+	var _clip_x1 = max(0, _src_x);
+	var _clip_y1 = max(0, _src_y);
+	var _clip_x2 = min(_sw, _src_x + _w);
+	var _clip_y2 = min(_sh, _src_y + _h);
+
+	var _clip_w = _clip_x2 - _clip_x1;
+	var _clip_h = _clip_y2 - _clip_y1;
+
+	if (_clip_w <= 0 || _clip_h <= 0) return;
+
+	var _draw_x = _dst_x + (_clip_x1 - _src_x);
+	var _draw_y = _dst_y + (_clip_y1 - _src_y);
+
+	draw_surface_part(_surf, _clip_x1, _clip_y1, _clip_w, _clip_h, _draw_x, _draw_y);
+}
+
 function cam_x(_num) {
 	return camera_get_view_x(view_camera[_num]);
 }
