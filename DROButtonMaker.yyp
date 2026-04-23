@@ -118,6 +118,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"better_scaling_draw_sprite","path":"scripts/better_scaling_draw_sprite/better_scaling_draw_sprite.yy",},},
     {"id":{"name":"better_scaling_draw_surface","path":"scripts/better_scaling_draw_surface/better_scaling_draw_surface.yy",},},
+    {"id":{"name":"scrGMHelpers","path":"scripts/scrGMHelpers/scrGMHelpers.yy",},},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
     {"id":{"name":"scrJsonUtilities","path":"scripts/scrJsonUtilities/scrJsonUtilities.yy",},},
     {"id":{"name":"texture_set_interpolation","path":"scripts/texture_set_interpolation/texture_set_interpolation.yy",},},

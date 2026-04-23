@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (!sprite_exists(sprite_index)) {
+if (!sprite_exists(sprite_index) && array_length(current_full_filenames) == 0) {
 	exit;
 }
 
@@ -20,8 +20,9 @@ var _vh = cam_h(0);
 var _small_x_offset = 0;
 var _small_y_offset = 0;
 
-var _sprite_width = sprite_width;
-var _sprite_height = sprite_height;
+var _reference_sprite = preparing_frames ? sprite_index : current_sprites[0];
+var _sprite_width = sprite_get_width(_reference_sprite);
+var _sprite_height = sprite_get_height(_reference_sprite);
 
 if (_sprite_width > _vw || _sprite_height > _vh) {
 	// Rescale to fit
@@ -46,9 +47,9 @@ if (_sprite_height < _vh) {
 		_small_y_offset = (_vh - _sprite_height);
 	}
 }
-//draw_sprite(sprite_index, image_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset);
-draw_scaled(surface, sprite_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset, _sprite_width, _sprite_height);
-//surface_reset_target();
+for (var _i = 0; _i < array_length(current_sprites); _i++) {
+	draw_scaled(surface, current_sprites[_i], x - _vx + _small_x_offset, y - _vy + _small_y_offset, _sprite_width, _sprite_height);
+}
 gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 draw_surface(surface, _vx, _vy);
 gpu_set_blendmode(bm_normal);

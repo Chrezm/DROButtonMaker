@@ -1,10 +1,11 @@
 /// @description
 emotions = ds_map_create();
-lookup_prefixes = ["\\(a)", "\\(a)\\", "\\"];
-lookup_suffixes = [".webp", ".apng", ".gif", ".png"];
 current_emote = {
 	name: "",
-	stem: "",
 	parent_directory: "",
-	path_minus_extension: ""
+	outfit_directory: "",
+	components: array_create(0),
+	target_directory: "",
 };
+current_full_filenames = array_create(0);
+current_sprites = array_create(0);

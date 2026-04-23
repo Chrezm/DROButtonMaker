@@ -18,14 +18,22 @@ if (color == 2 || color >= 5) {
 
 var _gap = 20;
 
-var _basic_file = string(objImageDisplay.current_index) + " - " + 
-  objImageDisplay.current_emote.path_minus_extension + " - " +
+var _basic_file = string(objImageDisplay.current_index) + ". " + 
   objImageDisplay.current_emote.name;
+if (array_length(objImageDisplay.current_emote.components) > 0) {
+	_basic_file = _basic_file + ": " + objImageDisplay.current_emote.components[0].stem;
+	for (var _i = 1; _i < array_length(objImageDisplay.current_emote.components); _i++) {
+		_basic_file = _basic_file + " + " + objImageDisplay.current_emote.components[_i].stem;
+	}
+}
+
 draw_text(_x, _y +_gap*0, "Current basic file: " + _basic_file);
-if (objImageDisplay.preparing_frames) {
+if (objImageDisplay.preparing_frames || array_length(objImageDisplay.current_full_filenames) == 0) {
 	draw_text(_x, _y + _gap*1, "Current shown file: None");
 } else {
-	var _shown_file = string_replace(objImageDisplay.current_full_filename, objImageDisplay.current_directory, "");
+	// TODO: Figure out how to display multiple files here
+	var _current_full_filename = objImageDisplay.current_full_filenames[0];
+	var _shown_file = string_replace(_current_full_filename, objImageDisplay.current_directory, "");
 	_shown_file = string_delete(_shown_file, 1, 1);
 	_shown_file = string_replace_all(_shown_file, "\\", "/");
 	draw_text(_x, _y + _gap*1, "Current shown file: " + _shown_file);

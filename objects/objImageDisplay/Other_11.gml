@@ -4,39 +4,46 @@
 multiple_frames = false;
 current_frame = 0;
 available_frames = 1;
+current_full_filenames = array_create(0);
 
-var _file;
-var _use_magick = true;
-var _found = false;
-
-for (var _i = 0; _i < array_length(lookup_prefixes); _i++) {
-	var _lookup_prefix = lookup_prefixes[_i];
-	for (var _j = 0; _j < array_length(lookup_suffixes); _j++) {
-		var _lookup_suffix = lookup_suffixes[_j];
-		_file = current_directory + _lookup_prefix + current_emote.path_minus_extension + _lookup_suffix;
-		if (file_exists(_file)) {
-			_found = true;
-			_use_magick = (_lookup_suffix == ".png");
-			break;
-		}
-	}
-	if (_found) {
-		break;
-	}
+if (array_length(current_emote.components) == 0) {
+	exit;
 }
 
-if (_use_magick) {
-	current_full_filename = _file;
+var _full_filenames = array_create(0);
+var _full_filenames_to_convert = array_create(0);
+for (var _i = 0; _i < array_length(current_emote.components); _i++) {
+	var _result = find_path_2(
+		current_directory, 
+		current_emote.outfit_directory,
+		current_emote.components[_i]
+	);
+	var _file = _result[0];
+	array_push(_full_filenames, _file);
+	var _needs_conversion = _result[1];
+	if (_needs_conversion) {
+		array_push(_full_filenames, _file);
+	}
+}
+	
+
+if (array_length(_full_filenames_to_convert) == 0) {
+	current_full_filenames = _full_filenames;
 	event_user(2);
 	exit;
 }
 
 // Prepare for multiple frame image
-sprite_delete_if_valid(sprite_index);
+while (array_length(current_sprites) > 0) {
+	var _current_sprite = array_pop(current_sprites);
+	sprite_delete_if_valid(_current_sprite);
+}
 preparing_frames = true;
 sprite_index = sprLoading;
 
-objFileConverter.source_filename = _file;
+// TODO: Only convert the first one for now, should support arbitrary ones later on
+objFileConverter.full_filenames = _full_filenames;
+objFileConverter.source_filename = _full_filenames_to_convert[0];
 with objFileConverter {
 	event_user(0);
 }
