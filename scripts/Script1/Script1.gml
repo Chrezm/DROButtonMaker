@@ -123,23 +123,21 @@ function parse_char_json(_emotions, _json_file) {
 	}
 	for (var _i = 0; _i < array_length(_outfits); _i++) {
 		var _outfit = array_get(_outfits, _i);
-		show_debug_message(_outfit);
 		var _outfit_file_path = _directory + "/outfits/" + _outfit + "/outfit.json";
 		var _outfit_json = json_load(_outfit_file_path);
 		if (is_undefined(_outfit_json)) {
 			continue;	
 		}
-		show_debug_message(_outfit_json);
-		var _emotes = _outfit_json.emotes;
+		var _emotes = struct_exists(_outfit_json, "emotes") ? _outfit_json.emotes : array_create(0);
 		if (array_length(_emotes) == 0) {
 			return;
 		}
-		var _layers = _outfit_json.layers;
+		var _layers = struct_exists(_outfit_json, "layers") ? _outfit_json.layers : array_create(0);
 		var _starting_size = ds_map_size(_emotions);
 		for (var _j = 0; _j < array_length(_emotes); _j++) {
 			var _json_emote = array_get(_emotes, _j);
-			var _emote_name = _json_emote.name;
-			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote .image : _emote_name;
+			var _emote_name = struct_exists(_json_emote, "name") ? _json_emote.name : "";
+			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote.image : _emote_name;
 			var _final_emote_index = _starting_size + _j + 1;
 			var _outfit_directory = "outfits/" + _outfit;
 			var _target_button_directory = _outfit_directory + "/emotions";
@@ -160,9 +158,9 @@ function parse_char_json(_emotions, _json_file) {
 			}
 			array_push(_emote.components, _component);
 			for (var _k = 0; _k < array_length(_layers); _k++) {
-				var _layer_name = _layers[_k].name;
+				var _layer_name = struct_exists(_layers[_k], "name") ? _layers[_k].name : "";
 				if (struct_exists(_json_emote, _layer_name)) {
-					var _emote_offsets = _layers[_k].offset;
+					var _emote_offsets = struct_exists(_layers[_k], "offset") ? _layers[_k].offset : undefined;
 					if (is_undefined(_emote_offsets)) {
 						_emote_offsets = {
 							cx: undefined,
@@ -172,13 +170,17 @@ function parse_char_json(_emotions, _json_file) {
 						}
 					}
 					_emote_stem = struct_get(_json_emote, _layer_name);
+					var _cx = struct_exists(_emote_offsets, "x") ? _emote_offsets.x : undefined;
+					var _cy = struct_exists(_emote_offsets, "y") ? _emote_offsets.y : undefined;
+					var _cw = struct_exists(_emote_offsets, "width") ? _emote_offsets.width : undefined;
+					var _ch = struct_exists(_emote_offsets, "height") ? _emote_offsets.height : undefined;
 					_component = {
 						stem: _emote_stem,
 						layer_name: _layer_name,
-						cx: _emote_offsets.x,
-						cy: _emote_offsets.y,
-						cw: _emote_offsets.width,
-						ch: _emote_offsets.height,
+						cx: _cx,
+						cy: _cy,
+						cw: _cw,
+						ch: _ch,
 					}
 					array_push(_emote.components, _component)
 				}
@@ -186,7 +188,6 @@ function parse_char_json(_emotions, _json_file) {
 			ds_map_add(_emotions, _final_emote_index, _emote);		
 		}
 	}
-	show_debug_message(_emotions);
 }
 
 function directory_nonempty(_path) {
