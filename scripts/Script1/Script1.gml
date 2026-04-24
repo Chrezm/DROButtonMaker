@@ -64,6 +64,10 @@ function parse_char_ini(_emotions, _ini_file) {
 		var _component = {
 			stem: _emote_stem,
 			layer_name: "",
+			cx: undefined,
+			cy: undefined,
+			cw: undefined,
+			ch: undefined,
 		};
 		array_push(_emote.components, _component);
 	    ds_map_add(_emotions, _i, _emote);
@@ -149,15 +153,32 @@ function parse_char_json(_emotions, _json_file) {
 			var _component = {
 				stem: _emote_stem,
 				layer_name: "",
+				cx: undefined,
+				cy: undefined,
+				cw: undefined,
+				ch: undefined,
 			}
 			array_push(_emote.components, _component);
 			for (var _k = 0; _k < array_length(_layers); _k++) {
 				var _layer_name = _layers[_k].name;
 				if (struct_exists(_json_emote, _layer_name)) {
+					var _emote_offsets = _layers[_k].offset;
+					if (is_undefined(_emote_offsets)) {
+						_emote_offsets = {
+							cx: undefined,
+							cy: undefined,
+							cw: undefined,
+							ch: undefined,
+						}
+					}
 					_emote_stem = struct_get(_json_emote, _layer_name);
 					_component = {
 						stem: _emote_stem,
 						layer_name: _layer_name,
+						cx: _emote_offsets.x,
+						cy: _emote_offsets.y,
+						cw: _emote_offsets.width,
+						ch: _emote_offsets.height,
 					}
 					array_push(_emote.components, _component)
 				}

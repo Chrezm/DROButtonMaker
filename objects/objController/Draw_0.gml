@@ -33,10 +33,14 @@ if (objImageDisplay.preparing_frames || array_length(objImageDisplay.current_ful
 } else {
 	// TODO: Figure out how to display multiple files here
 	var _current_full_filename = objImageDisplay.current_full_filenames[0];
-	var _shown_file = string_replace(_current_full_filename, objImageDisplay.current_directory, "");
-	_shown_file = string_delete(_shown_file, 1, 1);
-	_shown_file = string_replace_all(_shown_file, "\\", "/");
-	draw_text(_x, _y + _gap*1, "Current shown file: " + _shown_file);
+	if (is_undefined(_current_full_filename)) {
+		draw_text(_x, _y + _gap*1, "Current shown file: None");
+	} else {
+		var _shown_file = string_replace(_current_full_filename, objImageDisplay.current_directory, "");
+		_shown_file = string_delete(_shown_file, 1, 1);
+		_shown_file = string_replace_all(_shown_file, "\\", "/");
+		draw_text(_x, _y + _gap*1, "Current shown file: " + _shown_file);
+	}
 }
 
 draw_text(_x, _y + _gap*2, "Current target name: " + objButtonGenerator.target_name);
