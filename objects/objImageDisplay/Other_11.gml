@@ -41,9 +41,9 @@ while (array_length(current_sprites) > 0) {
 preparing_frames = true;
 sprite_index = sprLoading;
 
-// TODO: Only convert the first one for now, should support arbitrary ones later on
 objFileConverter.full_filenames = _full_filenames;
-objFileConverter.source_filename = _full_filenames_to_convert[0];
+objFileConverter.full_filenames_to_convert = array_create(0);
+array_copy(objFileConverter.full_filenames_to_convert, 0, _full_filenames_to_convert, 0, array_length(_full_filenames_to_convert));
 with objFileConverter {
 	event_user(0);
 }

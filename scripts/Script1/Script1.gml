@@ -302,3 +302,27 @@ function find_path_2(_current_directory, _outfit_directory, _current_emote_compo
 	var _file_paths = build_paths(_current_directory, _outfit_directory, _current_emote_component.layer_name, _current_emote_component.stem);
 	return find_file(_file_paths);
 }
+
+
+function clear_temp_folders(_directory) {
+	show_debug_message(_directory);
+	if (_directory == "") {
+		return;
+	}
+	if (directory_exists(_directory + "/bmtemp")) {
+		directory_destroy(_directory + "/bmtemp");
+	}
+	var _candidate_subfolder = file_find_first(_directory + "/*", fa_directory);
+	var _subfolders = array_create(0);
+	while (_candidate_subfolder != "") {
+		var _candidate_directory = _directory + "/" + _candidate_subfolder;
+		if (file_attributes(_candidate_directory, fa_directory)) {
+			array_push(_subfolders, _candidate_directory);
+		}
+		_candidate_subfolder = file_find_next();
+	}
+	file_find_close();
+	for (var _i = 0; _i < array_length(_subfolders); _i++) {
+		clear_temp_folders( _subfolders[_i]);
+	}
+}

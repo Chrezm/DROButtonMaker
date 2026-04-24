@@ -1,11 +1,9 @@
 /// @description Display new image
 // You can write your code in this editor
 
-if (sprite_index != sprLoading) {
-	while (array_length(current_sprites) > 0) {
-		var _current_sprite = array_pop(current_sprites);
-		sprite_delete_if_valid(_current_sprite);
-	}
+while (array_length(current_sprites) > 0) {
+	var _current_sprite = array_pop(current_sprites);
+	sprite_delete_if_valid(_current_sprite);
 }
 preparing_frames = false;
 

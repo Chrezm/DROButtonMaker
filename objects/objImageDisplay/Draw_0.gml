@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (!sprite_exists(sprite_index) && array_length(current_full_filenames) == 0) {
+if (!preparing_frames && array_length(current_sprites) == 0) {
 	exit;
 }
 
@@ -53,22 +53,30 @@ if (_rh < _vh) {
 	}
 }
 
-for (var _i = 0; _i < array_length(current_sprites); _i++) {
-	if (current_sprites[_i] == -1) {
-		continue;
-	}
-	var _component_info = current_emote.components[_i]
-	var _sx = (x - _vx) + (is_undefined(_component_info.cx) ? 0 : _component_info.cx);
-	var _sy = (y - _vy) + (is_undefined(_component_info.cy) ? 0 : _component_info.cy);
-	var _sw = 0 + (is_undefined(_component_info.cw) ? _rw : _component_info.cw);
-	var _sh = 0 + (is_undefined(_component_info.ch) ? _rh : _component_info.ch);	
+if (preparing_frames) {
+	var _ax = (x - _vx) * _general_x_multiplier + _general_x_offset;
+	var _ay = (y - _vy) * _general_y_multiplier + _general_y_offset;
+	var _aw = sprite_width * _general_width_multiplier + _general_width_offset;
+	var _ah = sprite_height * _general_height_multiplier + _general_height_offset;
+	draw_scaled(surface, sprite_index, _ax, _ay, _aw, _ah);
+} else {
+	for (var _i = 0; _i < array_length(current_sprites); _i++) {
+		if (current_sprites[_i] == -1) {
+			continue;
+		}
+		var _component_info = current_emote.components[_i]
+		var _sx = (x - _vx) + (is_undefined(_component_info.cx) ? 0 : _component_info.cx);
+		var _sy = (y - _vy) + (is_undefined(_component_info.cy) ? 0 : _component_info.cy);
+		var _sw = 0 + (is_undefined(_component_info.cw) ? _rw : _component_info.cw);
+		var _sh = 0 + (is_undefined(_component_info.ch) ? _rh : _component_info.ch);	
 	
-	var _ax = _sx * _general_x_multiplier + _general_x_offset;
-	var _ay = _sy * _general_y_multiplier + _general_y_offset;
-	var _aw = _sw * _general_width_multiplier + _general_width_offset;
-	var _ah = _sh * _general_height_multiplier + _general_height_offset;
+		var _ax = _sx * _general_x_multiplier + _general_x_offset;
+		var _ay = _sy * _general_y_multiplier + _general_y_offset;
+		var _aw = _sw * _general_width_multiplier + _general_width_offset;
+		var _ah = _sh * _general_height_multiplier + _general_height_offset;
 		
-	draw_scaled(surface, current_sprites[_i], _ax, _ay, _aw, _ah);
+		draw_scaled(surface, current_sprites[_i], _ax, _ay, _aw, _ah);
+	}
 }
 gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 draw_surface(surface, _vx, _vy);

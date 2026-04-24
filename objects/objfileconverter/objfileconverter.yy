@@ -29,10 +29,9 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"source_filename","filters":[],"listItems":[],"multiselect":false,"name":"source_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
-    {"$GMObjectProperty":"v2","%Name":"target_filename","filters":[],"listItems":[],"multiselect":false,"name":"target_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"current_target_filename","filters":[],"listItems":[],"multiselect":false,"name":"current_target_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
     {"$GMObjectProperty":"v2","%Name":"process","filters":[],"listItems":[],"multiselect":false,"name":"process","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v2","%Name":"zeroth_filename","filters":[],"listItems":[],"multiselect":false,"name":"zeroth_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"current_zeroth_filename","filters":[],"listItems":[],"multiselect":false,"name":"current_zeroth_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
