@@ -4,11 +4,11 @@
 // conversion
 if (file_exists(target_filename)) {
 	// Single frame conversion
-	objImageDisplay.current_full_filenames = full_filenames;
 	var _target_filename_index = array_find_index(full_filenames, function(_full_filename) {
-		return _full_filename == target_filename
+		return pngify(_full_filename) == target_filename;
 	});
-	full_filenames[_target_filename_index] = zeroth_filename;
+	full_filenames[_target_filename_index] = pngify(full_filenames[_target_filename_index]);
+	objImageDisplay.current_full_filenames = full_filenames;
 	with objImageDisplay {
 		event_user(2);
 	}

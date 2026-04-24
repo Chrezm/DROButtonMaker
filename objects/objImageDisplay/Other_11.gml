@@ -22,7 +22,7 @@ for (var _i = 0; _i < array_length(current_emote.components); _i++) {
 	array_push(_full_filenames, _file);
 	var _needs_conversion = _result[1];
 	if (_needs_conversion) {
-		array_push(_full_filenames, _file);
+		array_push(_full_filenames_to_convert, _file);
 	}
 }
 	
