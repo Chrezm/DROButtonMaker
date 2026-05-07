@@ -1,17 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"objDialogButton_Reject",
-  "eventList":[],
+  "%Name":"objMultiSelectBox_ChooseLayers",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"objDialogButton_Reject",
+  "name":"objMultiSelectBox_ChooseLayers",
   "overriddenProperties":[],
   "parent":{
-    "name":"Do not manually instantiate",
-    "path":"folders/Objects/Dialog Boxes/Do not manually instantiate.yy",
+    "name":"Multiselect Boxes",
+    "path":"folders/Objects/Dialog Boxes/Multiselect Boxes.yy",
   },
   "parentObjectId":{
-    "name":"objDialogButton",
-    "path":"objects/objDialogButton/objDialogButton.yy",
+    "name":"objMultiselectBox_AcceptReject",
+    "path":"objects/objMultiselectBox_AcceptReject/objMultiselectBox_AcceptReject.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -31,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprButton_Reject",
-    "path":"sprites/sprButton_Reject/sprButton_Reject.yy",
+    "name":"sprDialogBox",
+    "path":"sprites/sprDialogBox/sprDialogBox.yy",
   },
   "spriteMaskId":null,
   "visible":true,

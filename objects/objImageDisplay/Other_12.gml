@@ -12,6 +12,10 @@ if (array_length(current_full_filenames) == 0) {
 	throw ("Empty current full filenames detected when trying to display image");	
 }
 for (var _i = 0; _i < array_length(current_full_filenames); _i++) {
+	if (!array_contains(current_visible_component_indices, _i)) {
+		array_push(current_sprites, -1);
+		continue;
+	}
 	var _spr = sprite_add(current_full_filenames[_i], 1, 0, 0, 0, 0);
 	array_push(current_sprites, _spr);
 }

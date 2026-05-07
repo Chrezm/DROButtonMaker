@@ -19,6 +19,7 @@
   "height":30,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"30bf803b-c499-4a4d-a73c-dbded26c611f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"30bf803b-c499-4a4d-a73c-dbded26c611f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"2977e939-5afc-4bdf-bb11-9a2efd74b176","blendMode":0,"displayName":"default","isLocked":false,"name":"2977e939-5afc-4bdf-bb11-9a2efd74b176","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sprButton_ChooseBackground",
@@ -70,7 +71,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"0d8d95bc-833f-4aa7-831e-6c82aa68aae5","path":"sprites/sprButton_ChooseBackground/sprButton_ChooseBackground.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4e98196d-331d-41f5-86be-d8d713b7e53e","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0d8d95bc-833f-4aa7-831e-6c82aa68aae5","path":"sprites/sprButton_ChooseBackground/sprButton_ChooseBackground.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"4e98196d-331d-41f5-86be-d8d713b7e53e","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

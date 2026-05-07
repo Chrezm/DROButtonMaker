@@ -88,6 +88,14 @@ function show_inputbox_async(_inputbox_type, _message, _default_value) {
 	return obj;
 }
 
+function show_multiselectbox_async(_multiselectbox_type, _message, _options, _default_selected_indices) {
+	obj = instance_create_depth(x, y, objController.depth-10, _multiselectbox_type);
+	obj.text = _message;
+	obj.multiselect_options = array_clone(_options);
+	obj.multiselect_options_selected = array_clone(_default_selected_indices);
+	return obj;
+}
+
 function surface_create_based_on_camera(_camera_index) {
 	var _cam_w = cam_w(_camera_index);
 	var _cam_h = cam_h(_camera_index);
@@ -99,4 +107,10 @@ function sprite_delete_if_valid(_index) {
 	if (_index >= 0) {
 		sprite_delete(_index);
 	}
+}
+
+function array_clone(_array) {
+	var _array_clone = array_create(0);
+	array_copy(_array_clone, 0, _array, 0, array_length(_array));
+	return _array_clone;
 }

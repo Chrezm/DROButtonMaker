@@ -49,6 +49,11 @@ if (ds_map_empty(emotions)) {
 current_directory = _current_directory;
 current_index = 1;
 current_emote = ds_map_find_value(emotions, current_index);
+current_available_layers = compute_available_layers(emotions);
+current_visible_component_indices = array_create(0);
+for (var _i = 0; _i < array_length(current_available_layers); _i++) {
+	array_push(current_visible_component_indices, _i);
+}
 create_target_button_directories(emotions, current_directory);
 event_user(1);
 

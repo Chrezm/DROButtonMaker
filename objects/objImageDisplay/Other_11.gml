@@ -42,8 +42,7 @@ preparing_frames = true;
 sprite_index = sprLoading;
 
 objFileConverter.full_filenames = _full_filenames;
-objFileConverter.full_filenames_to_convert = array_create(0);
-array_copy(objFileConverter.full_filenames_to_convert, 0, _full_filenames_to_convert, 0, array_length(_full_filenames_to_convert));
+objFileConverter.full_filenames_to_convert = array_clone(_full_filenames_to_convert);
 with objFileConverter {
 	event_user(0);
 }
