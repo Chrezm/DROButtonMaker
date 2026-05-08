@@ -6,6 +6,8 @@ function compute_available_layers(_emotions_map) {
 	if (ds_map_empty(_emotions_map)) {
 		return _output;
 	}
+	// We manually treat empty layer first
+	array_push(_output, "");
 	
 	var _output_map_helper = ds_map_create();
 	var _emotions_key = ds_map_find_first(_emotions_map);
@@ -19,7 +21,7 @@ function compute_available_layers(_emotions_map) {
 		for (var _i = 0; _i < array_length(_components); _i++) {
 			var _component = _components[_i];
 			var _layer_name = struct_get(_component, "layer_name");
-			if (is_undefined(_layer_name)) {
+			if (is_undefined(_layer_name) || _layer_name == "") {
 				continue;
 			}
 			ds_map_add(_output_map_helper, _layer_name, true);

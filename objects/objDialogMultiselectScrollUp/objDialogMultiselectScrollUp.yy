@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"objButton_ArrowRight",
+  "%Name":"objDialogMultiselectScrollUp",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objButton_ArrowRight",
+  "name":"objDialogMultiselectScrollUp",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI Buttons",
-    "path":"folders/Objects/UI Buttons.yy",
+    "name":"Do not manually instantiate",
+    "path":"folders/Objects/Dialog Boxes/Do not manually instantiate.yy",
   },
   "parentObjectId":{
-    "name":"objUIButton",
-    "path":"objects/objUIButton/objUIButton.yy",
+    "name":"objDialogButton",
+    "path":"objects/objDialogButton/objDialogButton.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -34,9 +34,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprButton_ArrowRight",
-    "path":"sprites/sprButton_ArrowRight/sprButton_ArrowRight.yy",
+    "name":"sprButton_ArrowUp",
+    "path":"sprites/sprButton_ArrowUp/sprButton_ArrowUp.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

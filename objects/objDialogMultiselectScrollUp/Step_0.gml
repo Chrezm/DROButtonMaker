@@ -1,6 +1,4 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (!visible) {
-	exit;
-}
-selected = !selected;
+event_inherited();
+visible = objDialogMultiselectContainer.page != 0;
