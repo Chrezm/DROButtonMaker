@@ -37,3 +37,29 @@ function compute_available_layers(_emotions_map) {
 	ds_map_destroy(_output_map_helper);
 	return _output;
 }
+
+function get_visible_full_filenames() {
+	// There's gotta be a better way of doing this
+	var _output = [];
+	with objImageDisplay {
+		for (var _i = 0; _i < array_length(current_emote.components); _i++) {
+			var _layer = struct_get(current_emote.components[_i], "layer_name");
+			if (is_undefined(_layer)) {
+				throw("Unexpected component " + string(current_emote.components[_i]) + 
+				  + " without a layer name.")
+			}
+			var _is_component_visible = false;
+			for (var _j = 0; _j < array_length(current_visible_component_indices); _j++) {
+				var _layer_index = current_visible_component_indices[_j];
+				if (current_available_layers[_layer_index] == _layer) {
+					_is_component_visible = true;
+					break;
+				}
+			}
+			
+			array_push(_output, _is_component_visible ? current_full_filenames[_i] : undefined);
+		}
+	}
+	return _output;
+}
+

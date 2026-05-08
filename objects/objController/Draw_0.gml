@@ -18,8 +18,10 @@ if (color == 2 || color >= 5) {
 
 var _gap = 20;
 
-var _basic_file = string(objImageDisplay.current_index) + ". " + 
-  objImageDisplay.current_emote.name;
+var _basic_file = string(objImageDisplay.current_index);
+if (objImageDisplay.current_emote.name != "") {
+	_basic_file = _basic_file + ". " + objImageDisplay.current_emote.name;
+}
 if (array_length(objImageDisplay.current_emote.components) > 0) {
 	_basic_file = _basic_file + ": " + objImageDisplay.current_emote.components[0].stem;
 	for (var _i = 1; _i < array_length(objImageDisplay.current_emote.components); _i++) {
@@ -31,16 +33,33 @@ draw_text(_x, _y +_gap*0, "Current basic file: " + _basic_file);
 if (objImageDisplay.preparing_frames || array_length(objImageDisplay.current_full_filenames) == 0) {
 	draw_text(_x, _y + _gap*1, "Current shown file: None");
 } else {
-	// TODO: Figure out how to display multiple files here
-	var _current_full_filename = objImageDisplay.current_full_filenames[0];
-	if (is_undefined(_current_full_filename)) {
-		draw_text(_x, _y + _gap*1, "Current shown file: None");
-	} else {
-		var _shown_file = string_replace(_current_full_filename, objImageDisplay.current_directory, "");
-		_shown_file = string_delete(_shown_file, 1, 1);
-		_shown_file = string_replace_all(_shown_file, "\\", "/");
-		draw_text(_x, _y + _gap*1, "Current shown file: " + _shown_file);
+	var _shown_file_text = "";
+	var _outfit_directory = objImageDisplay.current_emote.outfit_directory;
+	if (_outfit_directory != "") {
+		_outfit_directory = format_path(objImageDisplay.current_emote.outfit_directory);
+		_shown_file_text = $"[{string_replace(_outfit_directory, "outfits/", "")}] ";
 	}
+	
+	var _shown_files = [];
+	var _visible_full_filenames = get_visible_full_filenames();
+	for (var _i = 0; _i < array_length(_visible_full_filenames); _i++) {
+		var _shown_file = _visible_full_filenames[_i];
+		if (is_undefined(_shown_file)) {
+			continue;
+		}
+		_shown_file = string_replace(_shown_file, objImageDisplay.current_directory, "");
+		_shown_file = format_path(string_replace(format_path(_shown_file), _outfit_directory, ""));
+		array_push(_shown_files, _shown_file);
+	}
+	if (array_length(_shown_files) == 0) {
+		_shown_file_text = _shown_file_text + "None";	
+	} else {
+		for (var _i = 0; _i < array_length(_shown_files); _i++) {
+			_shown_file_text = 	_shown_file_text + $"{_shown_files[_i]} + "
+		}
+		_shown_file_text = string_copy(_shown_file_text, 0, string_length(_shown_file_text)-3);
+	}
+	draw_text(_x, _y + _gap*1, "Current shown file: " + _shown_file_text);
 }
 
 draw_text(_x, _y + _gap*2, "Current target name: " + objButtonGenerator.target_name);

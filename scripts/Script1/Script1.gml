@@ -43,21 +43,17 @@ function parse_char_ini(_emotions, _ini_file) {
 		_emotion_line = string_replace_all(_emotion_line, "\\", "/");
 		var _emote_name = string_split(_emotion_line, "<num>")[0];
 	    var _path_minus_extension = string_split(_emotion_line, "<num>")[2];
-		var _parent_directory = "";
 		var _emote_stem = "";
 		var _parent_directory_delimiter_index = string_last_pos("/", _path_minus_extension);
 		if (_parent_directory_delimiter_index != 0) {
-			_parent_directory = string_copy(_path_minus_extension, 1, _parent_directory_delimiter_index - 1);
 			_emote_stem = string_copy(_path_minus_extension, _parent_directory_delimiter_index + 1, 
 			  string_length(_path_minus_extension) - _parent_directory_delimiter_index);
 		} else {
-			_parent_directory = "";
 			_emote_stem = _path_minus_extension;
 		}
 		var _emote = {
 			name: _emote_name,
 			components: array_create(0),
-			parent_directory: _parent_directory,
 			outfit_directory: "",
 			target_button_directory: "emotions",
 		};
@@ -143,7 +139,6 @@ function parse_char_json(_emotions, _json_file) {
 			var _target_button_directory = _outfit_directory + "/emotions";
 			var _emote = {
 				name: _emote_name,
-				parent_directory: "",
 				outfit_directory: _outfit_directory,
 				components: array_create(0),
 				target_button_directory: _target_button_directory,
@@ -304,6 +299,30 @@ function find_path_2(_current_directory, _outfit_directory, _current_emote_compo
 	return find_file(_file_paths);
 }
 
+function format_path(_path) {
+	var _targets = ["\\", "//"];
+	var _output = _path;
+	while (true) {	
+		var _path_clear_of_replacements = true;
+		for (var _i = 0; _i < array_length(_targets); _i++) {
+			var _target = _targets[_i];
+			while (string_pos(_target, _output) != 0) {
+				_path_clear_of_replacements = false;
+				_output = string_replace_all(_output, _target, "/");
+			}
+		}
+		if (_path_clear_of_replacements) {
+			break;
+		}
+	}
+	if (string_starts_with(_output, "./")) {
+		return string_copy(_output, 3, string_length(_output));
+	}
+	if (string_starts_with(_output, "/")) {
+		return string_copy(_output, 2, string_length(_output));
+	}
+	return _output;
+}
 
 function clear_temp_folders(_directory) {
 	show_debug_message(_directory);
