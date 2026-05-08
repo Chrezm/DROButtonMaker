@@ -36,9 +36,11 @@ if (_rw > _vw || _rh > _vh) {
 	if (_rw / _rh) > (_vw / _vh) {
 		// If image is too wide
 		_general_height_multiplier = _vw / _rw;
+		_general_width_multiplier = _vw / _rw;
 	} else {
 		// If image is too tall
 		_general_width_multiplier = _vh / _rh;
+		_general_height_multiplier = _vh / _rh;
 	}
 }
 
