@@ -53,6 +53,7 @@
     {"$GMObjectProperty":"v2","%Name":"current_full_filenames","filters":[],"listItems":[],"multiselect":false,"name":"current_full_filenames","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"current_visible_component_indices","filters":[],"listItems":[],"multiselect":false,"name":"current_visible_component_indices","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"current_sprites","filters":[],"listItems":[],"multiselect":false,"name":"current_sprites","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"current_available_layers","filters":[],"listItems":[],"multiselect":false,"name":"current_available_layers","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

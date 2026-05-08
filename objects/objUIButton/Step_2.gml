@@ -1,5 +1,9 @@
 /// @description
 
+if (disabled) {
+	image_blend = c_gray;
+	exit;
+}
 var _x = cam_x(0);
 var _y = cam_y(0);
 
