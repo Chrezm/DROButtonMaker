@@ -12,7 +12,7 @@ if (file_exists(current_target_filename)) {
 	// Multiple frame conversions
 	objImageDisplay.multiple_frames = true;
 	var _zeroth_filename_index = array_find_index(full_filenames, function(_full_filename) {
-		return _full_filename == zeroth_filename
+		return pngify(_full_filename) == current_target_filename
 	});
 	full_filenames[_zeroth_filename_index] = current_zeroth_filename;
 	

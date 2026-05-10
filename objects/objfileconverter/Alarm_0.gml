@@ -10,7 +10,7 @@ if (CompletionStatusFromExecutedProcess(process)) {
 	// The last frame file imagemagick generates is garbage, so delete it
 	var _count = 0;
 	var _file_pattern = string_replace(current_target_filename, ".png", "-*.png");
-	var _file = file_find_first(current_target_filename, 0);
+	var _file = file_find_first(_file_pattern, 0);
 	while (_file != "") {
 		_count += 1;
 		_file = file_find_next();
