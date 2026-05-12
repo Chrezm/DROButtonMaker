@@ -16,13 +16,11 @@ if (CompletionStatusFromExecutedProcess(process)) {
 		_file = file_find_next();
 	}
 	file_find_close();
-	if (_count == 0) {
-		throw ("No files found that match pattern " + current_target_filename);
-	}
-	var _garbage_file;	
-	_garbage_file = string_replace(current_target_filename, ".png", "-" + string(_count) + ".png");
-	file_delete(_garbage_file);
-	
+	if (_count > 0) {
+		var _garbage_file;	
+		_garbage_file = string_replace(current_target_filename, ".png", "-" + string(_count) + ".png");
+		file_delete(_garbage_file);
+	}	
 	event_user(1);
 }
 else {

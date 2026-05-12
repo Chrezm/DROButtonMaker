@@ -28,6 +28,7 @@ if (file_exists(current_target_filename)) {
 	}
 	
 	objImageDisplay.available_frames = _i-1;
+	objImageDisplay.index_of_animated_filename = _zeroth_filename_index;
 } else {
 	show_messagebox_async(objMessageBox_Accept, "Failed to generate frames for file\n" + current_target_filename);
 }

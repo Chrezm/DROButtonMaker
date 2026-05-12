@@ -15,8 +15,8 @@ with objImageDisplay {
 		// This shouldn't happen
 		throw ("Empty current full filenames detected when trying to go to next frame");	
 	}
-	current_full_filenames[0] = string_replace(
-		current_full_filenames[0], 
+	current_full_filenames[index_of_animated_filename] = string_replace(
+		current_full_filenames[index_of_animated_filename], 
 		"-" + string(_previous_frame) + ".png",
 		"-" + string(current_frame) + ".png"
 	);

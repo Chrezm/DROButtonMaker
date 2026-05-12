@@ -54,6 +54,7 @@
     {"$GMObjectProperty":"v2","%Name":"current_visible_component_indices","filters":[],"listItems":[],"multiselect":false,"name":"current_visible_component_indices","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"current_sprites","filters":[],"listItems":[],"multiselect":false,"name":"current_sprites","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
     {"$GMObjectProperty":"v2","%Name":"current_available_layers","filters":[],"listItems":[],"multiselect":false,"name":"current_available_layers","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"index_of_animated_filename","filters":[],"listItems":[],"multiselect":false,"name":"index_of_animated_filename","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
