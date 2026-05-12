@@ -6,8 +6,8 @@
   "name":"objDialogButton_Accept",
   "overriddenProperties":[],
   "parent":{
-    "name":"Dialog Boxes",
-    "path":"folders/Objects/Dialog Boxes.yy",
+    "name":"Do not manually instantiate",
+    "path":"folders/Objects/Dialog Boxes/Do not manually instantiate.yy",
   },
   "parentObjectId":{
     "name":"objDialogButton",

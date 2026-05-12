@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (!sprite_exists(sprite_index)) {
+if (!preparing_frames && array_length(current_sprites) == 0) {
 	exit;
 }
 
@@ -17,38 +17,69 @@ var _vx = cam_x(0);
 var _vy = cam_y(0);
 var _vw = cam_w(0);
 var _vh = cam_h(0);
-var _small_x_offset = 0;
-var _small_y_offset = 0;
 
-var _sprite_width = sprite_width;
-var _sprite_height = sprite_height;
+var _reference_sprite = preparing_frames ? sprite_index : current_sprites[0];
+var _rw = _reference_sprite == -1 ? _vw : sprite_get_width(_reference_sprite);
+var _rh = _reference_sprite == -1 ? _vh : sprite_get_height(_reference_sprite);
 
-if (_sprite_width > _vw || _sprite_height > _vh) {
+var _general_x_multiplier = 1;
+var _general_x_offset = 0;
+var _general_y_multiplier = 1;
+var _general_y_offset = 0;
+var _general_width_multiplier = 1;
+var _general_width_offset = 0;
+var _general_height_multiplier = 1;
+var _general_height_offset = 0;
+
+if (_rw > _vw || _rh > _vh) {
 	// Rescale to fit
-	if (_sprite_width / _sprite_height) > (_vw / _vh) {
+	if (_rw / _rh) > (_vw / _vh) {
 		// If image is too wide
-		_sprite_height = _sprite_height * (_vw / _sprite_width);
-		_sprite_width = _vw;
+		_general_height_multiplier = _vw / _rw;
+		_general_width_multiplier = _vw / _rw;
 	} else {
 		// If image is too tall
-		_sprite_width = _sprite_width * (_vh / _sprite_height);
-		_sprite_height = _vh;
+		_general_width_multiplier = _vh / _rh;
+		_general_height_multiplier = _vh / _rh;
 	}
 }
 
-if (_sprite_width < _vw) {
-	_small_x_offset = (_vw - _sprite_width)/2;
+if (_rw < _vw) {
+	_general_x_offset = (_vw - _rw)/2;
 }
-if (_sprite_height < _vh) {
+if (_rh < _vh) {
 	if (preparing_frames) {
-		_small_y_offset = (_vh - _sprite_height)/2;
+		_general_y_offset = (_vh - _rh)/2;
 	} else {
-		_small_y_offset = (_vh - _sprite_height);
+		_general_y_offset = (_vh - _rh);
 	}
 }
-//draw_sprite(sprite_index, image_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset);
-draw_scaled(surface, sprite_index, x - _vx + _small_x_offset, y - _vy + _small_y_offset, _sprite_width, _sprite_height);
-//surface_reset_target();
+
+if (preparing_frames) {
+	var _ax = (x - _vx) * _general_x_multiplier + _general_x_offset;
+	var _ay = (y - _vy) * _general_y_multiplier + _general_y_offset;
+	var _aw = sprite_width * _general_width_multiplier + _general_width_offset;
+	var _ah = sprite_height * _general_height_multiplier + _general_height_offset;
+	draw_scaled(surface, sprite_index, _ax, _ay, _aw, _ah);
+} else {
+	for (var _i = 0; _i < array_length(current_sprites); _i++) {
+		if (current_sprites[_i] == -1) {
+			continue;
+		}
+		var _component_info = current_emote.components[_i]
+		var _sx = (x - _vx) + (is_undefined(_component_info.cx) ? 0 : _component_info.cx);
+		var _sy = (y - _vy) + (is_undefined(_component_info.cy) ? 0 : _component_info.cy);
+		var _sw = 0 + (is_undefined(_component_info.cw) ? _rw : _component_info.cw);
+		var _sh = 0 + (is_undefined(_component_info.ch) ? _rh : _component_info.ch);	
+	
+		var _ax = _sx * _general_x_multiplier + _general_x_offset;
+		var _ay = _sy * _general_y_multiplier + _general_y_offset;
+		var _aw = _sw * _general_width_multiplier + _general_width_offset;
+		var _ah = _sh * _general_height_multiplier + _general_height_offset;
+		
+		draw_scaled(surface, current_sprites[_i], _ax, _ay, _aw, _ah);
+	}
+}
 gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
 draw_surface(surface, _vx, _vy);
 gpu_set_blendmode(bm_normal);

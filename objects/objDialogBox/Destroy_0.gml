@@ -6,6 +6,9 @@ with (obj_dialogtext) {
 with (obj_dialoginput) {
 	instance_destroy();
 }
+with (obj_dialogmultiselect_container) {
+	instance_destroy();
+}
 
 for (var _i = 0; _i < ds_list_size(buttons); _i++) {
 	var _obj = ds_list_find_value(buttons, _i);

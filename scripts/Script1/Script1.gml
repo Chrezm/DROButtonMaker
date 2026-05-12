@@ -43,24 +43,29 @@ function parse_char_ini(_emotions, _ini_file) {
 		_emotion_line = string_replace_all(_emotion_line, "\\", "/");
 		var _emote_name = string_split(_emotion_line, "<num>")[0];
 	    var _path_minus_extension = string_split(_emotion_line, "<num>")[2];
-		var _parent_directory = "";
 		var _emote_stem = "";
 		var _parent_directory_delimiter_index = string_last_pos("/", _path_minus_extension);
 		if (_parent_directory_delimiter_index != 0) {
-			_parent_directory = string_copy(_path_minus_extension, 1, _parent_directory_delimiter_index - 1);
 			_emote_stem = string_copy(_path_minus_extension, _parent_directory_delimiter_index + 1, 
 			  string_length(_path_minus_extension) - _parent_directory_delimiter_index);
 		} else {
-			_parent_directory = "";
 			_emote_stem = _path_minus_extension;
-		}		
+		}
 		var _emote = {
 			name: _emote_name,
-			stem: _emote_stem,
-			parent_directory: _parent_directory,
-			path_minus_extension: _path_minus_extension,
-			target_button_directory: "emotions"
+			components: array_create(0),
+			outfit_directory: "",
+			target_button_directory: "emotions",
 		};
+		var _component = {
+			stem: _emote_stem,
+			layer_name: "",
+			cx: undefined,
+			cy: undefined,
+			cw: undefined,
+			ch: undefined,
+		};
+		array_push(_emote.components, _component);
 	    ds_map_add(_emotions, _i, _emote);
 	    _i += 1;
 	}
@@ -114,32 +119,67 @@ function parse_char_json(_emotions, _json_file) {
 	}
 	for (var _i = 0; _i < array_length(_outfits); _i++) {
 		var _outfit = array_get(_outfits, _i);
-		show_debug_message(_outfit);
 		var _outfit_file_path = _directory + "/outfits/" + _outfit + "/outfit.json";
 		var _outfit_json = json_load(_outfit_file_path);
 		if (is_undefined(_outfit_json)) {
 			continue;	
 		}
-		show_debug_message(_outfit_json);
-		var _emotes = _outfit_json.emotes;
+		var _emotes = struct_exists(_outfit_json, "emotes") ? _outfit_json.emotes : array_create(0);
 		if (array_length(_emotes) == 0) {
 			return;
 		}
+		var _layers = struct_exists(_outfit_json, "layers") ? _outfit_json.layers : array_create(0);
 		var _starting_size = ds_map_size(_emotions);
 		for (var _j = 0; _j < array_length(_emotes); _j++) {
 			var _json_emote = array_get(_emotes, _j);
-			var _emote_name = _json_emote.name;
-			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote .image : _emote_name;
+			var _emote_name = struct_exists(_json_emote, "name") ? _json_emote.name : "";
+			var _emote_stem = struct_exists(_json_emote , "image") ? _json_emote.image : _emote_name;
 			var _final_emote_index = _starting_size + _j + 1;
-			var _parent_directory = "outfits/" + _outfit;
-			var _target_button_directory = _parent_directory + "/emotions";
+			var _outfit_directory = "outfits/" + _outfit;
+			var _target_button_directory = _outfit_directory + "/emotions";
 			var _emote = {
 				name: _emote_name,
-				stem: _emote_stem,
-				parent_directory: _parent_directory,
-				path_minus_extension: _parent_directory + "/" + _emote_stem,
-				target_button_directory: _target_button_directory
+				outfit_directory: _outfit_directory,
+				components: array_create(0),
+				target_button_directory: _target_button_directory,
 			};
+			var _component = {
+				stem: _emote_stem,
+				layer_name: "",
+				cx: undefined,
+				cy: undefined,
+				cw: undefined,
+				ch: undefined,
+			}
+			array_push(_emote.components, _component);
+			for (var _k = 0; _k < array_length(_layers); _k++) {
+				var _layer_name = struct_exists(_layers[_k], "name") ? _layers[_k].name : "";
+				if (struct_exists(_json_emote, _layer_name)) {
+					var _emote_offsets = struct_exists(_layers[_k], "offset") ? _layers[_k].offset : undefined;
+					if (is_undefined(_emote_offsets)) {
+						_emote_offsets = {
+							cx: undefined,
+							cy: undefined,
+							cw: undefined,
+							ch: undefined,
+						}
+					}
+					_emote_stem = struct_get(_json_emote, _layer_name);
+					var _cx = struct_exists(_emote_offsets, "x") ? _emote_offsets.x : undefined;
+					var _cy = struct_exists(_emote_offsets, "y") ? _emote_offsets.y : undefined;
+					var _cw = struct_exists(_emote_offsets, "width") ? _emote_offsets.width : undefined;
+					var _ch = struct_exists(_emote_offsets, "height") ? _emote_offsets.height : undefined;
+					_component = {
+						stem: _emote_stem,
+						layer_name: _layer_name,
+						cx: _cx,
+						cy: _cy,
+						cw: _cw,
+						ch: _ch,
+					}
+					array_push(_emote.components, _component)
+				}
+			}
 			ds_map_add(_emotions, _final_emote_index, _emote);		
 		}
 	}
@@ -173,86 +213,11 @@ function create_target_button_directories(_emotions, _current_directory) {
 	ds_map_destroy(_target_button_directories_created);
 }
 
-function string_split(_s, _d) {
-	var _r = array_create(0);
-	var _p = string_pos(_d, _s);
-	var _dl = string_length(_d);
-	if (_dl) while (_p) {
-	    _p -= 1;
-	    array_push(_r, string_copy(_s, 1, _p));
-	    _s = string_delete(_s, 1, _p + _dl);
-	    _p = string_pos(_d, _s);
-	}
-	array_push(_r, _s);
-	return _r;
-}
-
-function string_startswith(_substr, _str) {
-	return string_pos(_substr, _str) == 1;
-}
-
 function target_button(_obj_image_display, _name, _suffix) {
 	var _emote = ds_map_find_value(_obj_image_display.emotions, _obj_image_display.current_index);
 	_name = string_replace_all(_name, "<num>", string(_obj_image_display.current_index));
 	_name = string_replace_all(_name, "<name>", string(_emote.name));
 	return _obj_image_display.current_directory + "/" + _emote.target_button_directory + "/" + _name + _suffix + ".png";
-}
-
-function draw_scaled(_surface, _sprite, _x, _y, _width, _height) {
-	surface_set_target(_surface);
-	sprite_index = _sprite;
-	var _scale_for_width = _width / sprite_width;
-	var _scale_for_height = _height / sprite_height;
-	if (_scale_for_width == 1 && _scale_for_height == 1)
-		draw_sprite(sprite_index, image_index, _x, _y);
-	else
-		better_scaling_draw_sprite(sprite_index, image_index, _x, _y, _scale_for_width, _scale_for_height, image_angle, image_blend, image_alpha, 1);
-	surface_reset_target();
-	return;
-}
-
-function draw_scaled_from_file(_surface, _source_file, _x, _y, _width, _height) {
-	var _file_sprite = sprite_add(_source_file, 1, 0, 0, 0, 0);
-	draw_scaled(_surface, _file_sprite, _x, _y, _width, _height);
-	return _file_sprite;
-}
-
-function draw_surface_part_clipped(_surf, _src_x, _src_y, _w, _h, _dst_x, _dst_y) {
-	if (!surface_exists(_surf)) return;
-
-	var _sw = surface_get_width(_surf);
-	var _sh = surface_get_height(_surf);
-
-	var _clip_x1 = max(0, _src_x);
-	var _clip_y1 = max(0, _src_y);
-	var _clip_x2 = min(_sw, _src_x + _w);
-	var _clip_y2 = min(_sh, _src_y + _h);
-
-	var _clip_w = _clip_x2 - _clip_x1;
-	var _clip_h = _clip_y2 - _clip_y1;
-
-	if (_clip_w <= 0 || _clip_h <= 0) return;
-
-	var _draw_x = _dst_x + (_clip_x1 - _src_x);
-	var _draw_y = _dst_y + (_clip_y1 - _src_y);
-
-	draw_surface_part(_surf, _clip_x1, _clip_y1, _clip_w, _clip_h, _draw_x, _draw_y);
-}
-
-function cam_x(_num) {
-	return camera_get_view_x(view_camera[_num]);
-}
-
-function cam_y(_num) {
-	return camera_get_view_y(view_camera[_num]);
-}
-
-function cam_h(_num) {
-	return camera_get_view_height(view_camera[_num]);
-}
-
-function cam_w(_num) {
-	return camera_get_view_width(view_camera[_num]);
 }
 
 function pngify(_filename) {
@@ -281,30 +246,103 @@ function split_frames(_source_filename, _target_filename) {
 	return _process;
 }
 
-function show_messagebox_async(_messagebox_type, _message) {
-	obj = instance_create_depth(x, y, objController.depth-10, _messagebox_type);
-	obj.text = _message;
-	obj.has_input_box = false;
-	return obj;	
+#macro lookup_prefixes ["/(a)", "/(a)/", "/"]
+#macro lookup_suffixes [".webp", ".apng", ".gif", ".png"]
+
+function find_path(_current_directory, _path_minus_extension) {
+	for (var _i = 0; _i < array_length(lookup_prefixes); _i++) {
+		var _lookup_prefix = lookup_prefixes[_i];
+		for (var _j = 0; _j < array_length(lookup_suffixes); _j++) {
+			var _lookup_suffix = lookup_suffixes[_j];
+			var _file = _current_directory + _lookup_prefix + _path_minus_extension + _lookup_suffix;
+			if (file_exists(_file)) {
+				return [_file, (_lookup_suffix != ".png")];
+			}
+		}
+	}
+	return [undefined, false];
 }
 
-function show_inputbox_async(_inputbox_type, _message, _default_value) {
-	obj = instance_create_depth(x, y, objController.depth-10, _inputbox_type);
-	obj.text = _message;
-	obj.has_input_box = true;
-	keyboard_string = string(_default_value);
-	return obj;
+// This is from DRO
+function build_paths(_base_path, _outfit_path, _subfolder, _image_name) {
+	var _output = array_create(0);
+	for (var _i = 0; _i < array_length(lookup_prefixes); _i++) {
+		var _prefix = lookup_prefixes[_i] + _image_name;
+		_output = array_concat(_output, [
+			_base_path + "/" + _outfit_path + "/" + _prefix,
+			_base_path + "/" + _outfit_path + "/" + _subfolder + "/" + _prefix,
+			_outfit_path + "/" + _prefix,
+			_outfit_path + "/" + _subfolder + "/" + _prefix,
+			_base_path + "/" + _prefix,
+			_base_path + "/" + _subfolder + "/" + _prefix,
+		]);
+	}
+	return _output;
 }
 
-function surface_create_based_on_camera(_camera_index) {
-	var _cam_w = cam_w(_camera_index);
-	var _cam_h = cam_h(_camera_index);
-	var _surface = surface_create(_cam_w, _cam_h);
-	return _surface;
+function find_file(_file_paths) {
+	for (var _i = 0; _i < array_length(_file_paths); _i++) {
+		var _file_path = _file_paths[_i];
+		for (var _j = 0; _j < array_length(lookup_suffixes); _j++) {
+			var _lookup_suffix = lookup_suffixes[_j];
+			var _file = _file_path + _lookup_suffix;
+			if (file_exists(_file)) {
+				return [_file, (_lookup_suffix != ".png")];
+			}
+		}
+	}
+	return [undefined, false];
 }
 
-function sprite_delete_if_valid(_index) {
-	if (_index >= 0) {
-		sprite_delete(_index);
+function find_path_2(_current_directory, _outfit_directory, _current_emote_component) {
+	var _file_paths = build_paths(_current_directory, _outfit_directory, _current_emote_component.layer_name, _current_emote_component.stem);
+	return find_file(_file_paths);
+}
+
+function format_path(_path) {
+	var _targets = ["\\", "//"];
+	var _output = _path;
+	while (true) {	
+		var _path_clear_of_replacements = true;
+		for (var _i = 0; _i < array_length(_targets); _i++) {
+			var _target = _targets[_i];
+			while (string_pos(_target, _output) != 0) {
+				_path_clear_of_replacements = false;
+				_output = string_replace_all(_output, _target, "/");
+			}
+		}
+		if (_path_clear_of_replacements) {
+			break;
+		}
+	}
+	if (string_starts_with(_output, "./")) {
+		return string_copy(_output, 3, string_length(_output));
+	}
+	if (string_starts_with(_output, "/")) {
+		return string_copy(_output, 2, string_length(_output));
+	}
+	return _output;
+}
+
+function clear_temp_folders(_directory) {
+	show_debug_message(_directory);
+	if (_directory == "") {
+		return;
+	}
+	if (directory_exists(_directory + "/bmtemp")) {
+		directory_destroy(_directory + "/bmtemp");
+	}
+	var _candidate_subfolder = file_find_first(_directory + "/*", fa_directory);
+	var _subfolders = array_create(0);
+	while (_candidate_subfolder != "") {
+		var _candidate_directory = _directory + "/" + _candidate_subfolder;
+		if (file_attributes(_candidate_directory, fa_directory)) {
+			array_push(_subfolders, _candidate_directory);
+		}
+		_candidate_subfolder = file_find_next();
+	}
+	file_find_close();
+	for (var _i = 0; _i < array_length(_subfolders); _i++) {
+		clear_temp_folders( _subfolders[_i]);
 	}
 }

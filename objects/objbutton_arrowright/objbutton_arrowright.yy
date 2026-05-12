@@ -38,5 +38,5 @@
     "path":"sprites/sprButton_ArrowRight/sprButton_ArrowRight.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

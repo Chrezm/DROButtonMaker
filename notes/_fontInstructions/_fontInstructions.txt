@@ -1,0 +1,1 @@
+Font used for the buttons is Source Sans Pro Bold 14, with antialiasing from GameMaker 8.

@@ -6,16 +6,24 @@ var _output = file_text_read_string_stdout(_fd);
 if (CompletionStatusFromExecutedProcess(process)) {
 	if (_output != "") {
 		show_messagebox_async(objMessageBox_Accept, _output);
-	}
-	event_user(1);
-	
+	}	
 	// The last frame file imagemagick generates is garbage, so delete it
-	var _garbage_file;
-	_garbage_file = string_replace(target_filename, ".png", "-" + string(objImageDisplay.available_frames) + ".png");
-	file_delete(_garbage_file);
+	var _count = 0;
+	var _file_pattern = string_replace(current_target_filename, ".png", "-*.png");
+	var _file = file_find_first(_file_pattern, 0);
+	while (_file != "") {
+		_count += 1;
+		_file = file_find_next();
+	}
+	file_find_close();
+	if (_count > 0) {
+		var _garbage_file;	
+		_garbage_file = string_replace(current_target_filename, ".png", "-" + string(_count) + ".png");
+		file_delete(_garbage_file);
+	}	
+	event_user(1);
 }
-else
-{
+else {
 	alarm[0] = 10;
 }
 file_text_close_stdout(_fd);

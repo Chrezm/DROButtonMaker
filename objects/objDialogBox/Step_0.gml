@@ -10,13 +10,15 @@ user_text = _keyboard_string;
 var _rows;
 var _num_buttons = ds_list_size(buttons);
 
-if (_num_buttons > 0 && has_input_box) {
-	_rows = 3;
-} else if (_num_buttons > 0 || has_input_box) { 
+if (array_length(multiselect_options) > 0) {
+	// Hardcoded
+	_rows = 5;
+} else if (has_input_box) {
 	_rows = 2;
 } else {
 	_rows = 1;
 }
+_rows += _num_buttons > 0 ? 1 : 0;
 
 // Text
 var _x_text_offset = sprite_width/2 - string_width(text)/2;
@@ -28,18 +30,40 @@ obj_dialogtext.text = text;
 obj_dialogtext.x = x + _x_text_offset;
 obj_dialogtext.y = y + _y_text_offset;
 
+// Multiselect box
+obj_dialogmultiselect_container.visible = array_length(multiselect_options) > 0;
+if (array_length(multiselect_options) > 0) {
+	var _x_box_offset = sprite_width/2 - obj_dialogmultiselect_container.sprite_width/2;
+	_x_box_offset = clamp(_x_box_offset, base_offset, sprite_width);
+	var _y_box_offset = sprite_height/(_rows+1)*2 - string_height(text)/2;
+	_y_box_offset = clamp(_y_box_offset, base_offset, sprite_height);
+	
+	obj_dialogmultiselect_container.x = x + _x_box_offset;
+	obj_dialogmultiselect_container.y = y + _y_box_offset;
+}
+
+var _current_hash = md5_string_utf8(json_stringify(multiselect_options));
+if (_current_hash != obj_dialogmultiselect_container.multiselect_options_hash) {
+	obj_dialogmultiselect_container.multiselect_options = array_clone(multiselect_options);
+	obj_dialogmultiselect_container.multiselect_options_hash = _current_hash;
+	obj_dialogmultiselect_container.multiselect_options_selected = array_clone(multiselect_options_selected);
+	with (obj_dialogmultiselect_container) {
+		event_user(0);
+	}
+}
+
 // Input box
 obj_dialoginput.visible = has_input_box;
 
 if (has_input_box) {
-	var _x_inputbox_offset = sprite_width/2 - obj_dialoginput.sprite_width/2;
-	_x_inputbox_offset = clamp(_x_inputbox_offset, base_offset, sprite_width);
-	var _y_inputbox_offset = sprite_height/(_rows+1)*2 - obj_dialoginput.sprite_height/2;
-	_y_inputbox_offset = clamp(_y_inputbox_offset, base_offset, sprite_height);
+	var _x_box_offset = sprite_width/2 - obj_dialoginput.sprite_width/2;
+	_x_box_offset = clamp(_x_box_offset, base_offset, sprite_width);
+	var _y_box_offset = sprite_height/(_rows+1)*2 - obj_dialoginput.sprite_height/2;
+	_y_box_offset = clamp(_y_box_offset, base_offset, sprite_height);
 
 	obj_dialoginput.user_text = user_text;
-	obj_dialoginput.x = x + _x_inputbox_offset;
-	obj_dialoginput.y = y + _y_inputbox_offset;
+	obj_dialoginput.x = x + _x_box_offset;
+	obj_dialoginput.y = y + _y_box_offset;
 }
 
 // Buttons

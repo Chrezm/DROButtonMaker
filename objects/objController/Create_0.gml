@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-window_set_caption("DRO Button Maker");
+window_set_caption("DRO Button Maker " + date_datetime_string(GM_build_date));
 instance_create_depth(x, y, depth, objImageDisplay);
 instance_create_depth(x, y, depth, objButtonGenerator);
 instance_create_depth(x, y, depth, objPreview);

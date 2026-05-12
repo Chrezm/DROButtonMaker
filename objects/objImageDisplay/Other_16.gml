@@ -3,5 +3,4 @@
 if (current_directory == "") {
 	exit;
 }
-
-directory_destroy(current_directory + "\\bmtemp")
+clear_temp_folders(current_directory);
